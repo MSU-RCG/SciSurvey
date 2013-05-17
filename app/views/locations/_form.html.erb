@@ -1,77 +1,98 @@
-<%= form_for(@location) do |f| %>
-  <% if @location.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h2>
-
-      <ul>
-      <% @location.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @location, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :building, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :building, :class => 'text_field' %>
     </div>
-  <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.label :rm_no, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :rm_no, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :bsi, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :bsi, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :inspection_date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.datetime_select :inspection_date, :class => 'datetime_select' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :inspector, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :inspector, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :ten_liter, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :ten_liter, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :microorg, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :microorg, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :toxin, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :toxin, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :micro_qty, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :micro_qty, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :toxin_qty, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :toxin_qty, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :research_loc, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :research_loc, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :exp_loc, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :exp_loc, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :store_loc, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :store_loc, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :protocol_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :protocol_id, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :modification_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :modification_id, :class => 'number_field' %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :building %><br />
-    <%= f.text_field :building %>
-  </div>
-  <div class="field">
-    <%= f.label :rm_no %><br />
-    <%= f.text_field :rm_no %>
-  </div>
-  <div class="field">
-    <%= f.label :bsi %><br />
-    <%= f.number_field :bsi %>
-  </div>
-  <div class="field">
-    <%= f.label :inspection_date %><br />
-    <%= f.datetime_select :inspection_date %>
-  </div>
-  <div class="field">
-    <%= f.label :inspector %><br />
-    <%= f.text_field :inspector %>
-  </div>
-  <div class="field">
-    <%= f.label :ten_liter %><br />
-    <%= f.text_field :ten_liter %>
-  </div>
-  <div class="field">
-    <%= f.label :microorg %><br />
-    <%= f.text_field :microorg %>
-  </div>
-  <div class="field">
-    <%= f.label :toxin %><br />
-    <%= f.text_field :toxin %>
-  </div>
-  <div class="field">
-    <%= f.label :micro_qty %><br />
-    <%= f.text_field :micro_qty %>
-  </div>
-  <div class="field">
-    <%= f.label :toxin_qty %><br />
-    <%= f.text_field :toxin_qty %>
-  </div>
-  <div class="field">
-    <%= f.label :research_loc %><br />
-    <%= f.text_field :research_loc %>
-  </div>
-  <div class="field">
-    <%= f.label :exp_loc %><br />
-    <%= f.text_field :exp_loc %>
-  </div>
-  <div class="field">
-    <%= f.label :store_loc %><br />
-    <%= f.text_field :store_loc %>
-  </div>
-  <div class="field">
-    <%= f.label :protocol_id %><br />
-    <%= f.text_field :protocol_id %>
-  </div>
-  <div class="field">
-    <%= f.label :modification_id %><br />
-    <%= f.text_field :modification_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                location_path, :class => 'btn' %>
   </div>
 <% end %>
