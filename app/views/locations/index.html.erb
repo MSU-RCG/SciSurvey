@@ -1,0 +1,51 @@
+<h1>Listing locations</h1>
+
+<table>
+  <tr>
+    <th>Building</th>
+    <th>Rm no</th>
+    <th>Bsi</th>
+    <th>Inspection date</th>
+    <th>Inspector</th>
+    <th>Ten liter</th>
+    <th>Microorg</th>
+    <th>Toxin</th>
+    <th>Micro qty</th>
+    <th>Toxin qty</th>
+    <th>Research loc</th>
+    <th>Exp loc</th>
+    <th>Store loc</th>
+    <th>Protocol</th>
+    <th>Modification</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @locations.each do |location| %>
+  <tr>
+    <td><%= location.building %></td>
+    <td><%= location.rm_no %></td>
+    <td><%= location.bsi %></td>
+    <td><%= location.inspection_date %></td>
+    <td><%= location.inspector %></td>
+    <td><%= location.ten_liter %></td>
+    <td><%= location.microorg %></td>
+    <td><%= location.toxin %></td>
+    <td><%= location.micro_qty %></td>
+    <td><%= location.toxin_qty %></td>
+    <td><%= location.research_loc %></td>
+    <td><%= location.exp_loc %></td>
+    <td><%= location.store_loc %></td>
+    <td><%= location.protocol_id %></td>
+    <td><%= location.modification_id %></td>
+    <td><%= link_to 'Show', location %></td>
+    <td><%= link_to 'Edit', edit_location_path(location) %></td>
+    <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Location', new_location_path %>

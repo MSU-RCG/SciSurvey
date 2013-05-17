@@ -1,0 +1,80 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Building:</b>
+  <%= @location.building %>
+</p>
+
+<p>
+  <b>Rm no:</b>
+  <%= @location.rm_no %>
+</p>
+
+<p>
+  <b>Bsi:</b>
+  <%= @location.bsi %>
+</p>
+
+<p>
+  <b>Inspection date:</b>
+  <%= @location.inspection_date %>
+</p>
+
+<p>
+  <b>Inspector:</b>
+  <%= @location.inspector %>
+</p>
+
+<p>
+  <b>Ten liter:</b>
+  <%= @location.ten_liter %>
+</p>
+
+<p>
+  <b>Microorg:</b>
+  <%= @location.microorg %>
+</p>
+
+<p>
+  <b>Toxin:</b>
+  <%= @location.toxin %>
+</p>
+
+<p>
+  <b>Micro qty:</b>
+  <%= @location.micro_qty %>
+</p>
+
+<p>
+  <b>Toxin qty:</b>
+  <%= @location.toxin_qty %>
+</p>
+
+<p>
+  <b>Research loc:</b>
+  <%= @location.research_loc %>
+</p>
+
+<p>
+  <b>Exp loc:</b>
+  <%= @location.exp_loc %>
+</p>
+
+<p>
+  <b>Store loc:</b>
+  <%= @location.store_loc %>
+</p>
+
+<p>
+  <b>Protocol:</b>
+  <%= @location.protocol_id %>
+</p>
+
+<p>
+  <b>Modification:</b>
+  <%= @location.modification_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_location_path(@location) %> |
+<%= link_to 'Back', locations_path %>

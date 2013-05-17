@@ -1,0 +1,77 @@
+<%= form_for(@location) do |f| %>
+  <% if @location.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h2>
+
+      <ul>
+      <% @location.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :building %><br />
+    <%= f.text_field :building %>
+  </div>
+  <div class="field">
+    <%= f.label :rm_no %><br />
+    <%= f.text_field :rm_no %>
+  </div>
+  <div class="field">
+    <%= f.label :bsi %><br />
+    <%= f.number_field :bsi %>
+  </div>
+  <div class="field">
+    <%= f.label :inspection_date %><br />
+    <%= f.datetime_select :inspection_date %>
+  </div>
+  <div class="field">
+    <%= f.label :inspector %><br />
+    <%= f.text_field :inspector %>
+  </div>
+  <div class="field">
+    <%= f.label :ten_liter %><br />
+    <%= f.text_field :ten_liter %>
+  </div>
+  <div class="field">
+    <%= f.label :microorg %><br />
+    <%= f.text_field :microorg %>
+  </div>
+  <div class="field">
+    <%= f.label :toxin %><br />
+    <%= f.text_field :toxin %>
+  </div>
+  <div class="field">
+    <%= f.label :micro_qty %><br />
+    <%= f.text_field :micro_qty %>
+  </div>
+  <div class="field">
+    <%= f.label :toxin_qty %><br />
+    <%= f.text_field :toxin_qty %>
+  </div>
+  <div class="field">
+    <%= f.label :research_loc %><br />
+    <%= f.text_field :research_loc %>
+  </div>
+  <div class="field">
+    <%= f.label :exp_loc %><br />
+    <%= f.text_field :exp_loc %>
+  </div>
+  <div class="field">
+    <%= f.label :store_loc %><br />
+    <%= f.text_field :store_loc %>
+  </div>
+  <div class="field">
+    <%= f.label :protocol_id %><br />
+    <%= f.text_field :protocol_id %>
+  </div>
+  <div class="field">
+    <%= f.label :modification_id %><br />
+    <%= f.text_field :modification_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

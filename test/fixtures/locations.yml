@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  building: MyString
+  rm_no: MyString
+  bsi: 1
+  inspection_date: 2013-05-17 09:59:58
+  inspector: MyString
+  ten_liter: 
+  microorg: 
+  toxin: 
+  micro_qty: MyString
+  toxin_qty: MyString
+  research_loc: 
+  exp_loc: 
+  store_loc: 
+  protocol_id: 
+  modification_id: 
+
+two:
+  building: MyString
+  rm_no: MyString
+  bsi: 1
+  inspection_date: 2013-05-17 09:59:58
+  inspector: MyString
+  ten_liter: 
+  microorg: 
+  toxin: 
+  micro_qty: MyString
+  toxin_qty: MyString
+  research_loc: 
+  exp_loc: 
+  store_loc: 
+  protocol_id: 
+  modification_id: 
