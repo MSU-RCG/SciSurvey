@@ -10,6 +10,9 @@ gem 'sqlite3'
 gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem 'therubyracer'
+gem 'pdfkit'
+gem 'wkhtmltopdf-binary'
+gem 'surveyor'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -37,4 +40,4 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'debugger'
+gem 'debugger'

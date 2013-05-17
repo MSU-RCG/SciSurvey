@@ -1,4 +1,9 @@
 Protocat::Application.routes.draw do
+  resources :protocols
+
+
+  mount Surveyor::Engine => "/surveys", :as => "surveyor"
+
   resources :locations
 
 
@@ -53,7 +58,7 @@ Protocat::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'welcome#index'
+  root :to => 'protocols#index'
 
   # See how all your routes lay out with "rake routes"
 
