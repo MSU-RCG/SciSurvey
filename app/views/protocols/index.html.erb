@@ -13,6 +13,7 @@
     <% @protocols.each do |protocol| %>
       <tr>
         <td><%= link_to protocol.access_code, "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}" %></td>
+        <td><%= link_to protocol.access_code, "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}.pdf" %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}/take", :class => 'btn btn-mini' %>

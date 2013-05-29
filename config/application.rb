@@ -55,7 +55,8 @@ module Protocat
 
     # Enable the asset pipeline
     config.assets.enabled = true
-
+    #PDF export support
+    config.middleware.use PDFKit::Middleware
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
   end
