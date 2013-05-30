@@ -82,8 +82,8 @@ survey "Protocol 1", :default_mandatory => false do
  section "IBC Questions" do
 
   group "Recombinant and Synthetic Nucleic Acid Molecules" do
-    dependency :rule => "DNA"
-    condition_DNA :q_application_type, "==", :a_1  
+    dependency :rule => "D"
+    condition_D :q_application_type, "==", :a_1  
 
 
   label "Fill out this section if your project involves the use of Recombinant and Synthetic Nucleic Acid Molecules.
@@ -147,9 +147,9 @@ survey "Protocol 1", :default_mandatory => false do
  
 end
 
-group "Microorganism Usage:" do  
-    dependency :rule => "Micro"
-    condition_Micro :q_application_type, "==", :a_2 
+group "Microorganism Usage Part 1" do  
+    dependency :rule => "M"
+    condition_M :q_application_type, "==", :a_2 
 
   label "Complete this section for all uses of microorganisms except non-pathogenic E. coli K-12, Bacillus subtilis, or Saccharomyces 
      cerevisiae recipients in host-vector systems. See the <a href='http://www.selectagents.gov/resources/List_of_Select_Agents_and_Toxins_2012-12-4-English.pdf'>
@@ -183,15 +183,22 @@ group "Microorganism Usage:" do
     answer "Yes"
     answer "No"
 
-  # repeater "5) Identify all locations where the microorganism will be stored, and/or weighed and where experiments will be conducted" do
+end
 
-  #   q " Add Location"
-  #   a "Building", :string
-  #   a "Rm#", :string
-  #   a "Facility", :string
-  #   a "Type", :string
-  #   a "Qty (storage location)", :string
-  # end
+  repeater "5) Identify all locations where the microorganism will be stored, and/or weighed and where experiments will be conducted" do
+    dependency :rule => "M"
+    condition_M :q_application_type, "==", :a_2 
+    q " Add Location"
+    a "Building", :string
+    a "Rm#", :string
+    a "Facility", :string
+    a "Type", :string
+    a "Qty (storage location)", :string
+  end
+
+group "Microorganism Usage Part 2" do  
+    dependency :rule => "M"
+    condition_M :q_application_type, "==", :a_2 
 
   label "Means of transportation (if storage and experiment locations are not the same):"
     a :text
@@ -220,8 +227,8 @@ group "Microorganism Usage:" do
   end
 
   group "Biological Toxin" do
-    dependency :rule => "BioToxin"
-    condition_BioToxin :q_application_type, "==", :a_3
+    dependency :rule => "B"
+    condition_B :q_application_type, "==", :a_3
 
     label "Complete this section if you are working with a biological toxin or select agent listed on the National Select Agent Registry,
       a microorganism which synthesizes a toxic molecule lethal for vertebrates below, or the biosynthesis of toxic molecules."
@@ -263,14 +270,22 @@ group "Microorganism Usage:" do
     label "See the required documentation for due diligence: <a href='http://www.selectagents.gov/Toxin_Due_Diligence_Provision.html'>
       http://www.selectagents.gov/Toxin_Due_Diligence_Provision.html.</a> Documentation must be provided to the IBC and approved prior to transfer."
 
-    # repeater "9) Identify all locations where the microorganism will be stored, and/or weighed and where experiments will be conducted" do
-    #   q " Add Location"
-    #     a "Building", :string
-    #     a "Rm#", :string
-    #     a "Facility", :string
-    #     a "Type", :string
-    #     a "Qty (storage location)", :string
-    # end
+  end
+
+    repeater "9) Identify all locations where the microorganism will be stored, and/or weighed and where experiments will be conducted" do
+    dependency :rule => "B"
+    condition_B :q_application_type, "==", :a_3
+      q " Add Location"
+        a "Building", :string
+        a "Rm#", :string
+        a "Facility", :string
+        a "Type", :string
+        a "Qty (storage location)", :string
+    end
+
+  group "Biological Toxin" do
+    dependency :rule => "B"
+    condition_B :q_application_type, "==", :a_3
 
     label "Means of transportation (if storage and experiment locations are not the same):"
       a :text
