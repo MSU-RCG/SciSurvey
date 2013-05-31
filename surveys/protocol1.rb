@@ -314,7 +314,7 @@ group "Microorganism Usage Part 2" do
     condition_H :q_application_type, "==", :a_3
     condition_M :q_application_type, "==", :a_2
     condition_D :q_application_type, "==", :a_1
-    q "As Principal Investigator, I understand there are federal regulations applicable to work with Select Agent toxins. ", :pick => :all
+    q "As Principal Investigator, I understand there are federal regulations applicable to work with Select Agent toxins. ", :pick => :any?
       a "I have reviewed the regulations and the proposed experiments are either exempt, or if not, I have obtained the necessary approvals."
     label "Description of use of Biological Materials</ br>
       This section is required for all applications.</ br>
