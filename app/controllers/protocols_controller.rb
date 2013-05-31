@@ -7,7 +7,7 @@ class ProtocolsController < ApplicationController
     @protocols.each do |p| 
       @surveys[p.survey_id.to_s] = Survey.find(p.survey_id).access_code
     end
-
+    @title_questions = Question.where(:text => "Project Title").map{|q| q.id}
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @protocols }
