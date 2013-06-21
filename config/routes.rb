@@ -1,13 +1,13 @@
 Protocat::Application.routes.draw do
+  resources :controlers
+  resources :statuses 
   resources :protocols
-
+  resources :locations
 
   mount Surveyor::Engine => "/surveys", :as => "surveyor"
 
-  resources :locations
-
-
   devise_for :users
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

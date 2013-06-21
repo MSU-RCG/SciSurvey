@@ -11,3 +11,64 @@
  *= require_self
  *= require_tree .
  */
+ 
+.qnum {
+	display: none;
+}
+
+#headernav {
+	position: absolute;
+	top: 17px;
+	left: 200px;
+	color: white;
+}
+
+#headernav a{
+	color: white;
+}
+
+#headernav ul li{
+	display: inline;
+}
+.nav
+{
+	position: absolute;
+	width: 1000px;
+	top: 70px;
+	left: 150px;
+	right: 0px;	
+}
+.whole
+{
+	
+	top: 70px;
+	left: 90px;
+	right: 0px;	
+}
+.selec
+{   left: 200px;
+	position: absolute;
+}
+
+/*.navbar-inner {
+
+	width: 600px;
+	top: 17px;
+	left: 200px;
+
+}
+
+.navbar .navbar-fluid-top {
+	position: absolute;
+	width: 600px;
+	top: 17px;
+	left: 200px;
+}
+.btn .btn-navbar
+{
+	position: absolute;
+	width: 600px;
+	top: 17px;
+	left: 100px;
+}
+*/
