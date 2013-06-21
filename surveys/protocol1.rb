@@ -1,7 +1,8 @@
 # encoding: UTF-8
 # Question#is_mandatory is now false by default. The default_mandatory option allows you to set
 #   is_mandatory for all questions in a survey.
-survey "Protocol 1", :default_mandatory => false do
+
+survey "IBC Protocol", :default_mandatory => false do
 
   section "Protocol Type" do
     # When :pick isn't specified, the default is :none (no checkbox or radio button)

@@ -1,0 +1,43 @@
+<%= form_for(@status) do |f| %>
+  <% if @status.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@status.errors.count, "error") %> prohibited this status from being saved:</h2>
+
+      <ul>
+      <% @status.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%- if !@protocols.nil? -%>
+  <div class="field">
+    <%= f.label :survey_id %><br />
+
+
+    <%= f.select(:survey_id, options_for_select(@protocols.all.map{|protocol| protocol.responses.where(:question_id => @title_questions).count > 0 ? [protocol.responses.where(:question_id => @title_questions).first.string_value ,protocol.access_code] : ["In Progress- Unitited", protocol.access_code]}))%>
+
+          
+</select>
+  </div>
+  <div class="field">
+    <%= f.label :state %><br />
+
+    <%= f.select(:state, options_for_select([['submitted','submitted'],['review','review'],['accepted','accepted'],['archived','archived']])) %>
+
+
+    
+
+   
+  </div>
+  <div class="action">
+    <%= f.submit %>
+  </div>
+ 
+<% end %>
+
+<%end%>
+
+
+
+
