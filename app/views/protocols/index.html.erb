@@ -6,13 +6,18 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:projcet_title) %></th>
+
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
-    <% @protocols.each do |protocol| %>
+    <% @protocols.each do |protocol| %>      
       <tr>
-        <td><%= link_to protocol.responses.where(:question_id => @title_questions).first.string_value, "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}" %></td>
+        <% if protocol.responses.where(:question_id => @title_questions).count > 0 %>
+          <td><%= link_to protocol.responses.where(:question_id => @title_questions).first.string_value, "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}" %></td>
+        <%else%>
+          <td><%= link_to "In Progess- Untitled", "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}" %></td>
+        <%end%>
         <td><%= link_to protocol.access_code, "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}.pdf" %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
