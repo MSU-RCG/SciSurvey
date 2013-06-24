@@ -1,41 +1,42 @@
-survey "Investigator", :default_mandatory => false do
-	section "Request for Designation of Research as Exempt" do
-label "********************************************************************************************
-THIS AREA IS FOR INSTITUTIONAL REVIEW BOARD USE ONLY. DO NOT WRITE IN THIS AREA.
-       Confirmation Date:
-       Application Number:
-********************************************************************************************
-"
-label "DATE of SUBMISSION:"
-label "Address each section – do not leave any section blank. "
-label "I.   INVESTIGATOR:"
-q_1 "Name: "
-a_1 :string 
-q_2 "Home or School Mailing Address: "
-a_2 :string
-q_3 " Telephone Number:"
-a_3 :string
-q_4 " E-Mail Address:"
-a_4 :string
-q_5 "DATE TRAINING COMPLETED "
-a_5 :string
-label "[Required training: CITI training; see website for link]"
-q_6 "Investigator Signature "
-a_6 :string
-q_7 "Name of Project Advisor: "
-a_7 :string
-q_8 "E-Mail Address of Project Advisor: "
-a_8 :string
-q_9 "II.   TITLE OF RESEARCH PROJECT: "
-a_9 :string
-q_10 "III.        BRIEF DESCRIPTION OF RESEARCH 
-METHODS (If using a survey/questionnaire, provide a copy). "
-a_10 :string
-q_11 "IV.        RISKS AND INCONVENIENCES TO SUBJECTS (do not answer ‘None’): "
-a_11 :string
+survey "Human Studies Protocol", :default_mandatory => true do
+
+  section "Information Section" do
+    label "I.   INVESTIGATOR:"
+    q_1 "Name: "
+    a_1 :string 
+    q_2 "Home or School Mailing Address: "
+    a_2 :string
+    q_3 " Telephone Number:"
+    a_3 :string
+    q_4 " E-Mail Address:"
+    a_4 :string
+    q_5 "DATE TRAINING COMPLETED "
+    a_5 :string
+    label "[Required training: CITI training; see website for link]"
+    q_6 "Investigator Signature "
+    a_6 :string
+    q_7 "Name of Project Advisor: "
+    a_7 :string
+    q_8 "E-Mail Address of Project Advisor: "
+    a_8 :string
+    end
+    	section "Title of Research Project" do
+    q_9 "II.   TITLE OF RESEARCH PROJECT: "
+    a_9 :string
+  end
+section "Brief Description of Research Methods" do
+    q_10 "III.        BRIEF DESCRIPTION OF RESEARCH 
+    METHODS (If using a survey/questionnaire, provide a copy). "
+    a_10 :text
+    end
+    	section "Risks and Inconviences to Subjects" do
+    q_11 "IV.        RISKS AND INCONVENIENCES TO SUBJECTS (do not answer ‘None’): "
+    a_11 :text
+end
+section "Subjects" do
 label "V.         SUBJECTS:"
 q_12 "A.         Expected numbers of subjects:"
-a_12 :string
+a_12 :integer
 q_13 "B.        Will research involve minors (age <18 years)? 
                 (If 'Yes', please specify and justify.)", :pick => :one, :display_type => :dropdown
     ["Yes","No"].each{ |level| a level}
@@ -46,10 +47,9 @@ q_14 "C.        Will research involve prisoners?", :pick => :one, :display_type 
 q_15 "Will research involve any specific ethnic, racial, religious, etc.  groups of people?   
                 (If 'Yes', please specify and justify.)", :pick => :one, :display_type => :dropdown
     ["Yes","No"].each{ |level| a level}
-q_16 "VI.        FOR RESEARCH INVOLVING SURVEYS OR QUESTIONNAIRES: 
+label "VI.        FOR RESEARCH INVOLVING SURVEYS OR QUESTIONNAIRES: 
         (Be sure to indicate on each instrument, 
         	survey or questionnaire that participation is voluntary.)"
-a_16 :string
 label "Is information being collected about: "
 q_17 "Sexual behavior? ", :pick => :one, :display_type => :dropdown
     ["Yes","No"].each{ |level| a level}
@@ -75,6 +75,8 @@ q_25 "By other identifying information", :pick => :one, :display_type => :dropdo
 q_26 "Does this survey utilize a standardized and/or validated survey tool/questionnaire? 
  (If yes, see IRB website for required wording on surveys and questionnaires.)", :pick => :one, :display_type => :dropdown
     ["Yes","No"].each{ |level| a level}
+end
+section "Research Conducted in a Classroom Setting" do
 label "VII.        FOR RESEARCH BEING CONDUCTED IN A CLASSROOM SETTING INVOLVING NORMAL EDUCATIONAL PRACTICES: "
 label "A. This research project must be approved by your Principal or School Administrator, unless there are circumstances or policies that do not make this possible.  Provide a copy of the principal’s signed approval.  If such approval is not possible, please explain.
 
@@ -98,7 +100,6 @@ label "A. This research project must be approved by your Principal or School Adm
 
 </ br>PLEASE TYPE YOUR RESPONSES.  Applications can be emailed (cherylj@montana.edu) or mailed to: Institutional Review Board Chair, Mark Quinn, MSU Immunology and Infectious Diseases, 960 Technology Blvd., Room 127, Bozeman, MT 59717. Submit one (1) copy of this application, along with one (1) copy of any surveys, subject consent forms, and all other relevant materials.  For information and assistance, call 994-6783.  
 </ br>Please type responses in bold. Do not type in all capitals."
-
 
 end
 
