@@ -64,7 +64,14 @@
                       <% end %>
         </td><td>
           <% if Status.find_by_survey_id(protocol.access_code) %>
-            <!--<%= link_to "Unsubmit", status_url(Status.find_by_survey_id(protocol.access_code), :method => :delete) %>-->
+            <% if Status.find_by_survey_id(protocol.access_code) &&  Status.find_by_survey_id(protocol.access_code).state == 'review'%>
+
+               <%= form_for (Status.find_by_survey_id(protocol.access_code)), :url => status_path(Status.find_by_survey_id(protocol.access_code)), :method=> 'put'  do |f| %>
+                 <%= f.hidden_field :survey_id, :value => protocol.access_code %>
+                 <%= f.hidden_field :state, :value => 'submitted' %>
+                 <%= f.submit "Submit" %>
+               <% end %>
+              <%end%>
           <% else %>
             <%= form_for(Status.new) do |f| %>
               <%= f.hidden_field :survey_id, :value => protocol.access_code %>
