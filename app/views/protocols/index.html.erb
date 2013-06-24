@@ -11,7 +11,8 @@
 <table class="aab"><tr>
 <div>
   
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+  <h1>My <%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+  <br/>
 </tr>
 </div>
 <!-- <div>
@@ -19,9 +20,9 @@
      <li><%= link_to "archived", protocols_path(:status => 'archived') %></li>
   </ul>
 </div> -->
-<%= link_to "Show all Protocols", protocols_path %>
+<%= link_to "View All My Protocols", protocols_path, :class=>"btn-small"%>
 <%= form_tag protocols_path, :method => :get do %>
-<label>Show Protol by status</lable>
+<label>Show Protocol by status</lable>
 <%= select_tag 'status', "<option>submitted</option><option>review</option><option>accepted</option><option>archived</option>".html_safe %>
 <%= submit_tag 'Go' %>
 </div><% end %>
