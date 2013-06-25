@@ -117,4 +117,4 @@ after "deploy:setup",       "assets:setup"
 # This happens every deploy
 after "deploy:update_code", "db:symlink"
 after "deploy:update_code", "assets:symlink"
-after 'deploy:restart', 'unicorn:reload' # app IS NOT preloaded
+#after 'deploy:restart', 'unicorn:reload' # app IS NOT preloaded
