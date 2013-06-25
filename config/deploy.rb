@@ -133,4 +133,5 @@ after "deploy:setup",       "assets:setup"
 after "deploy:update_code", "db:symlink"
 after "deploy:update_code", "assets:symlink"
 
-after 'rcg_unicorn:stop', 'rcg_unicorn:start'
+after "deploy:restart", "rcg_unicorn:stop"
+after "rcg_unicorn:stop", "rcg_unicorn:start"

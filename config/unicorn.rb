@@ -41,8 +41,8 @@ listen "/var/rails/current/tmp/sockets/unicorn.sock", :backlog => 64
 timeout 30
 
 # feel free to point this anywhere accessible on the filesystem
-pid "/path/to/app/shared/pids/unicorn.pid"
-pid APP_PATH + "/tmp/pid/unicorn.pid"
+pid "/var/rails/shared/pids/unicorn.pid"
+#pid APP_PATH + "/tmp/pid/unicorn.pid"
 
 # By default, the Unicorn logger will write to stderr.
 # Additionally, ome applications/frameworks log to stderr or stdout,
