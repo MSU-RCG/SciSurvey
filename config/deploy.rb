@@ -54,7 +54,7 @@ namespace :rcg_unicorn do
 
    desc "Stop unicorn"
    task :stop, :except => { :no_release => true } do
-     run "kill -s QUIT `cat #{current_release}/tmp/pids/unicorn.pid`"
+     run "kill -s QUIT `cat #{deploy_to}/#{shared_dir}/pids/unicorn.pid`"
    end
    
 end
@@ -108,6 +108,9 @@ namespace :assets do
     run "ln -nfs #{deploy_to}/#{shared_dir}/assets/temp_data #{release_path}/temp_data"
     run "ln -nfs #{deploy_to}/#{shared_dir}/assets/data #{release_path}/data"
   end
+  task :compile do
+    run "cd #{current_path}; RAILS_ENV=production bundle exec rake assets:precompile:all"
+  end
 end
 
 ##
@@ -132,6 +135,7 @@ after "deploy:setup",       "assets:setup"
 # This happens every deploy
 after "deploy:update_code", "db:symlink"
 after "deploy:update_code", "assets:symlink"
+after "deploy:update_code", "assets:compile"
 
 after "deploy:restart", "rcg_unicorn:start"
 #after "rcg_unicorn:stop", "rcg_unicorn:start"
