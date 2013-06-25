@@ -120,6 +120,7 @@ GEM
       net-ssh (>= 2.6.5)
     orm_adapter (0.4.0)
     pdfkit (0.5.3)
+    pg (0.15.1)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
@@ -215,6 +216,7 @@ DEPENDENCIES
   devise
   jquery-rails
   pdfkit
+  pg
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
   sqlite3

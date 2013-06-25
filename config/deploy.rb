@@ -54,7 +54,7 @@ namespace :rcg_unicorn do
 
    desc "Stop unicorn"
    task :stop, :except => { :no_release => true } do
-     run "kill -s QUIT `cat #{shared_dir}/pids/unicorn.pid`"
+     run "kill -s QUIT `cat #{current_release}/tmp/pids/unicorn.pid`"
    end
    
 end
