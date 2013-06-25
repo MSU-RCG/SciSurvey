@@ -42,6 +42,21 @@ namespace :deploy do
   task :restart, :roles => :app do
     run "touch #{current_release}/tmp/restart.txt"
   end
+ 
+end
+
+namespace :rcg_unicorn do
+  
+  desc "Start Unicorn"
+   task :start do
+     run "cd #{current_release}; RAILS_ENV=production bundle exec unicorn_rails -c #{current_release}/config/unicorn.rb -D"
+   end
+
+   desc "Stop unicorn"
+   task :stop, :except => { :no_release => true } do
+     run "kill -s QUIT `cat #{shared_dir}/pids/unicorn.pid`"
+   end
+   
 end
 
 namespace :db do
@@ -117,4 +132,5 @@ after "deploy:setup",       "assets:setup"
 # This happens every deploy
 after "deploy:update_code", "db:symlink"
 after "deploy:update_code", "assets:symlink"
-#after 'deploy:restart', 'unicorn:reload' # app IS NOT preloaded
+
+after 'rcg_unicorn:stop', 'rcg_unicorn:start'
