@@ -4,9 +4,9 @@ require "bundler/capistrano"
 require 'capistrano-unicorn'
 
 set :application, "rescomp"
-set :bundle_cmd,      "/usr/local/gems/ruby-2.0.0-p195/bin/bundle"
+set :bundle_cmd,      "bundle"
 set :scm, :git
-set :repository,  "git@github.com:MSU-RCG/SciSurvey.git"
+set :repository,  "https://github.com/MSU-RCG/SciSurvey.git"
 set :shell, "/bin/bash"
 set :use_sudo,    false
 set :deploy_via, :remote_cache
@@ -20,7 +20,7 @@ set :unicorn_user, "rails"
 desc "Setup Production Settings"
 task :production do
 
-  set :branch, "production"
+  set :branch, "unicorn"
   role :web, "rescomp.rcg.montana.edu"
   role :app, "rescomp.rcg.montana.edu"
   role :db,  "rescomp.rcg.montana.edu", :primary => true
