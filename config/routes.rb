@@ -4,7 +4,11 @@ Protocat::Application.routes.draw do
 
   resources :controlers
   resources :statuses 
-  resources :protocols
+  resources :protocols do
+    collection do
+      get :admin
+    end
+  end
   resources :locations
 
   mount Surveyor::Engine => "/surveys", :as => "surveyor"
