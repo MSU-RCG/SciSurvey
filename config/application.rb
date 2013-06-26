@@ -56,6 +56,7 @@ module Protocat
     # Enable the asset pipeline
     config.assets.enabled = true
     #PDF export support
+    require 'pdfkit'
     config.middleware.use PDFKit::Middleware
     PDFKit.configure do |config|
       config.wkhtmltopdf = '/opt/pdfkit/wkhtmltopdf'
