@@ -30,6 +30,7 @@
   <thead>
     <tr>
       <th>Protocol Title</th>
+      <th>Type</th>
       <th>Status</th>
       <th><%=t '.actions', :default => t("helpers.Actions") %>
       <th></th>
@@ -45,6 +46,7 @@
             <%= link_to "In Progess- Untitled", "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}" %>
           <%end%>
         </td>
+        <td><%=protocol.survey.title%></td>
         <!--<td><a href="#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}.pdf"><img src="http://findicons.com/files/icons/990/vistaico_toolbar/128/arrow_down.png"></td></a>-->
 
           <td>

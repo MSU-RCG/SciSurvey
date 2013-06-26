@@ -26,6 +26,7 @@
     <tr>
       <th>Protocol Title</th>
       <th>Investigator</th>
+      <th>Type</th>
       <th>Date Submitted</th>
       <th>Status</th>
       <th><%=t '.actions', :default => t("helpers.Actions") %>
@@ -41,11 +42,13 @@
           <%else%>
             <%= link_to "In Progess- Untitled", "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}" %>
           <%end%>
-        </td>
+        </td>        
+        
         <!--<td><a href="#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}.pdf"><img src="http://findicons.com/files/icons/990/vistaico_toolbar/128/arrow_down.png"></td></a>-->
          <td>
            <%=protocol.user.email%>
          </td>
+         <td><%=protocol.survey.title%></td>
          <td>
            <%= Status.find_by_survey_id(protocol.access_code) ? Status.find_by_survey_id(protocol.access_code).updated_at : ""  %>
          </td>

@@ -14,7 +14,7 @@ class ProtocolsController < ApplicationController
     @protocols.each do |p| 
       @surveys[p.survey_id.to_s] = Survey.find(p.survey_id).access_code
     end
-    @title_questions = Question.where(:text => "Project Title").map{|q| q.id}
+    @title_questions = Question.where("text LIKE '%Title%'").map{|q| q.id} + Question.where("text LIKE '%TITLE%'").map{|q| q.id}
     # @statuses = Status.where(:survey_id => @protocols.map { |e|  e.access_code}) 
     respond_to do |format|
       format.html # index.html.erb
@@ -43,7 +43,7 @@ class ProtocolsController < ApplicationController
     @protocols.each do |p| 
       @surveys[p.survey_id.to_s] = Survey.find(p.survey_id).access_code
     end
-    @title_questions = Question.where(:text => "Project Title").map{|q| q.id}
+    @title_questions = Question.where("text LIKE '%Title%'").map{|q| q.id} + Question.where("text LIKE '%TITLE%'").map{|q| q.id}
     # @statuses = Status.where(:survey_id => @protocols.map { |e|  e.access_code}) 
     respond_to do |format|
       format.html # index.html.erb
