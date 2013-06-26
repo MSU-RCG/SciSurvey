@@ -11,9 +11,7 @@ gem 'unicorn-rails'
 gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem 'therubyracer'
-gem "pdfkit", "~> 0.5.4"
-gem 'wkhtmltopdf'
-#gem 'wkhtmltopdf-binary'
+gem 'wicked_pdf'
 gem 'surveyor'
 gem 'activeadmin'
 # Gems used only for assets and not required

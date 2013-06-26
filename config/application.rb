@@ -56,12 +56,9 @@ module Protocat
     # Enable the asset pipeline
     config.assets.enabled = true
     #PDF export support
-    require 'pdfkit'
-    config.middleware.use PDFKit::Middleware
-    PDFKit.configure do |config|
-      config.wkhtmltopdf = '/opt/pdfkit/wkhtmltopdf'
-      config.default_options[:ignore_load_errors] = true
-    end
+    require 'wicked_pdf'
+    WickedPdf.config = { :exe_path => '/opt/pdfkit/wkhtmltopdf' }
+    config.middleware.use WickedPdf::Middleware
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
   end
