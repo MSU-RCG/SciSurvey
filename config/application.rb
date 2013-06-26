@@ -58,7 +58,7 @@ module Protocat
     #PDF export support
     config.middleware.use PDFKit::Middleware
     PDFKit.configure do |config|
-      config.wkhtmltopdf = 'opt/pdfkit/wkhtmltopdf'
+      config.wkhtmltopdf = '/opt/pdfkit/wkhtmltopdf'
       config.default_options[:ignore_load_errors] = true
     end
     # Version of your assets, change this if you want to expire all your assets

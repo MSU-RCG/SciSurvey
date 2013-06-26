@@ -135,7 +135,7 @@ after "deploy:setup",       "assets:setup"
 # This happens every deploy
 after "deploy:update_code", "db:symlink"
 after "deploy:update_code", "assets:symlink"
-after "deploy:update_code", "assets:compile"
+#after "deploy:update_code", "assets:compile"
 
 after "deploy:restart", "rcg_unicorn:start"
 #after "rcg_unicorn:stop", "rcg_unicorn:start"
