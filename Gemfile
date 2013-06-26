@@ -11,7 +11,7 @@ gem 'unicorn-rails'
 gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem 'therubyracer'
-gem 'pdfkit'
+gem "pdfkit", "~> 0.5.4"
 gem 'wkhtmltopdf'
 #gem 'wkhtmltopdf-binary'
 gem 'surveyor'
