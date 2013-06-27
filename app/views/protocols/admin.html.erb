@@ -15,7 +15,7 @@
      <li><%= link_to "archived", admin_protocols_path(:status => 'archived') %></li>
   </ul>
 </div> -->
-<%= link_to "View all Protocols", admin_protocols_path, :class=>"btn-small"%>
+<%= link_to "View all Protocols", admin_protocols_path, :class=>"btn"%>
 <%= form_tag admin_protocols_path, :method => :get do %>
 <label>Show Protocol By Status </lablel>
 <%= select_tag 'status', "<option>submitted</option><option>review</option><option>accepted</option><option>archived</option>".html_safe %>
@@ -30,6 +30,7 @@
       <th>Date Submitted</th>
       <th>Status</th>
       <th><%=t '.actions', :default => t("helpers.Actions") %>
+      <th></th><th></th>
       <th></th>
     </tr>
   </thead>
@@ -50,21 +51,24 @@
          </td>
          <td><%=protocol.survey.title%></td>
          <td>
-           <%= Status.find_by_survey_id(protocol.access_code) ? Status.find_by_survey_id(protocol.access_code).updated_at : ""  %>
+           <%= Status.find_by_survey_id(protocol.access_code) ? Status.find_by_survey_id(protocol.access_code).updated_at.strftime("%m/%d/%Y") : ""  %>
          </td>
           <td>
             <%= Status.find_by_survey_id(protocol.access_code) ? Status.find_by_survey_id(protocol.access_code).state : "none"  %>
          </td>
          <td>
-         <%= link_to  'Download', "#{surveyor_path}/#{protocol.survey.access_code}/#{protocol.access_code}.pdf", :format => 'pdf', :class => 'icon-circle-arrow-right' %>
+         <%= link_to  'Download', "#{surveyor_path}/#{protocol.survey.access_code}/#{protocol.access_code}.pdf", :format => 'pdf', :class => 'icon-circle-arrow-right btn-small' %>
+         </td>
+         <td>
          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}/take", :class => "icon-pencil" %>
-         
+                      "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}/take", :class => "icon-pencil btn-small" %>
+         </td>
+         <td>
          <% if !Status.find_by_survey_id(protocol.access_code) %><%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       protocol_path(protocol.access_code),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'icon-trash' %><% else %> <%= 'none' %>
+                      :class => 'icon-trash btn-small' %><% else %> <%= %>
 
                       <% end %>
         </td>

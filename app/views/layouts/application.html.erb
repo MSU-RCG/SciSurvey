@@ -43,20 +43,21 @@
       <div id='headernav'>
 
           <a class="brand" href=<%= "#{protocols_path}"%> >Research Compliance</a>
-<div class="nav">
-           
-<table><tr><td> <ul class="whole">
-              <li><%= link_to "New Protocol | ", surveyor_path %>  </li> </td>
-             <td> <li><%= link_to "My Protocals |", protocols_path  %>   </li></td>
-             <td> <li><%= link_to "Admin |", admin_protocols_path  %>   </li></td>
-</ul>
+          <div class="container-fluid nav-collapse">
+          <div class="nav">
+             <ul>
+               <li><%= link_to "New Protocol | ", surveyor_path %>  </li> 
+               <li><%= link_to "My Protocals |", protocols_path  %>   </li>
+               <li><%= link_to "Admin |", admin_protocols_path  %>   </li>
+             
           <%- if current_user %>
 
-              <li class="pull-right"><%= link_to "Logout[#{current_user.email}]", destroy_user_session_path(), :method => :delete %></li>
+              <li class="pull-right" style="padding:5px;"><%= link_to "Logout[#{current_user.email}]", destroy_user_session_path(), :method => :delete %></li>
 
-          <%- end -%></tr></table>
-     </div>       
-            
+          <%- end -%>
+          </ul>
+          </div>       
+        </div>
       </div>
 
       
