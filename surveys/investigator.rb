@@ -11,7 +11,7 @@ survey "Human Studies Protocol", :default_mandatory => true do
     q_4 " E-Mail Address:"
     a_4 :string
     q_5 "DATE TRAINING COMPLETED "
-    a_5 :string
+    a_5 :date
     label "[Required training: CITI training; see website for link]"
     q_6 "Investigator Signature "
     a_6 :string
