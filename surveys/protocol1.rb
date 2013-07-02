@@ -47,6 +47,11 @@ survey "IBC Protocol", :default_mandatory => false do
     a_6 "Invertebrate Animals"
     a_7 "Vertebrate Animals"
     a_8 "Human Subjects"
+
+    q_cla2 "Select If considered", :pick => :any
+    a_9 "Synthetic Nucleic Acids"
+    dependency :rule=>"Z"
+    condition_Z :q_classifications, "==", :a_1
     
     q "Required Biosaftey Level", :pick => :one, :display_type => :dropdown
     ["Exempt","BSL1", "BSL2", "BSL3"].each{ |level| a level}
