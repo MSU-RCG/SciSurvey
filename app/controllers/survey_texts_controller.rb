@@ -60,6 +60,10 @@ class SurveyTextsController < ApplicationController
 
     respond_to do |format|
       if @survey_text.update_attributes(params[:survey_text])
+        filename = "surveys/survey_#{@survey_text.title}_#{Time.now().to_i}.rb"
+        File.open(filename, 'w') {|f| f.write(@survey_text.body) }
+        Surveyor::Parser.parse_file(filename)
+        #puts "SYSTEM TASKS***********************************#{`bundle exec rake surveyor FILE=#{filename}`}"
         format.html { redirect_to @survey_text, notice: 'Survey text was successfully updated.' }
         format.json { head :no_content }
       else

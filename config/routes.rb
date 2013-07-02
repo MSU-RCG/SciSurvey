@@ -10,7 +10,7 @@ Protocat::Application.routes.draw do
     end
   end
   resources :locations
-
+  resources :survey_texts
   mount Surveyor::Engine => "/surveys", :as => "surveyor"
 
   devise_for :users
