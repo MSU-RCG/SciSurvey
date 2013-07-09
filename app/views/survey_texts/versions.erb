@@ -1,0 +1,32 @@
+<%- model_class = SurveyText -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %>: <%=@survey_text.title%> Previous Versions </h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @survey_text.versions.each do |version| %>
+      <tr>
+        <td><%= link_to version.id%></td>
+        <td><%=l version.created_at %></td>
+        <td>
+ 
+         <%= link_to t('.show', :default => t("helpers.links.show")),
+                      survey_text_version_path(@survey_text, :version_id => version.id), :class => 'btn btn-mini' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              survey_texts_path, :class => 'btn'  %>
+
+</div>

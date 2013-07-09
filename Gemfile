@@ -14,6 +14,7 @@ gem 'therubyracer'
 gem 'wicked_pdf'
 gem 'surveyor'
 gem 'activeadmin'
+gem 'paper_trail'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

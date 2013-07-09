@@ -84,4 +84,21 @@ class SurveyTextsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def versions
+    @survey_text = SurveyText.find(params[:survey_text_id])
+    respond_to do |format|
+      format.html 
+      format.json { render json: @survey_text.versions}
+    end
+  end
+  
+  def version
+    @survey_text = SurveyText.find(params[:survey_text_id])
+    @version = @survey_text.versions.where(:id=>params[:version_id]).first.reify
+    respond_to do |format|
+      format.html 
+      format.json { render json: @survey_text.versions}
+    end
+  end
 end
