@@ -49,8 +49,11 @@
           <%- if current_user %>
             <ul>
               <li><%= link_to "New Protocol | ", surveyor_path %>  </li> 
-              <li><%= link_to "My Protocals |", protocols_path  %>   </li>
-              <li><%= link_to "Admin |", admin_protocols_path  %>   </li>
+              <li><%= link_to "My Protocols |", protocols_path  %>   </li>
+              <%if current_user.has_role?("Admin") %>
+                <li><%= link_to "Admin Protocols |", admin_protocols_path  %>   </li>
+                <li><%= link_to "Modify Surveys |", survey_texts_path  %>   </li>
+              <% end %>
               <li class="pull-right" style="padding:5px;"><%= link_to "Logout[#{current_user.email}]", destroy_user_session_path(), :method => :delete %></li>
 
           <%- end -%>

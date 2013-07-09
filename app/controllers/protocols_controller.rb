@@ -1,27 +1,30 @@
 class ProtocolsController < ApplicationController
   def admin
   
-    
-    if !params[:status]
-        @protocols = ResponseSet.all
-    else
+    if current_user.has_role?("Admin") 
+      if !params[:status]
+          @protocols = ResponseSet.all
+      else
 
-      statuses = Status.where(:state => params[:status])
-      @protocols = ResponseSet.where(:access_code => statuses.map { |s| s.survey_id } )
-    end
+        statuses = Status.where(:state => params[:status])
+        @protocols = ResponseSet.where(:access_code => statuses.map { |s| s.survey_id } )
+      end
 
-    @surveys = {}
-    @protocols.each do |p| 
-      @surveys[p.survey_id.to_s] = Survey.find(p.survey_id).access_code
-    end
-    @title_questions = Question.where("text LIKE '%Title%'").map{|q| q.id} + Question.where("text LIKE '%TITLE%'").map{|q| q.id}
-    # @statuses = Status.where(:survey_id => @protocols.map { |e|  e.access_code}) 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @protocols }
+      @surveys = {}
+      @protocols.each do |p| 
+        @surveys[p.survey_id.to_s] = Survey.find(p.survey_id).access_code
+      end
+      @title_questions = Question.where("text LIKE '%Title%'").map{|q| q.id} + Question.where("text LIKE '%TITLE%'").map{|q| q.id}
+      # @statuses = Status.where(:survey_id => @protocols.map { |e|  e.access_code}) 
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @protocols }
 
       
 
+      end
+    else
+      redirect_to :back
     end
   end
   
