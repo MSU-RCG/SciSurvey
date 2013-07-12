@@ -52,7 +52,7 @@ survey "IBC Protocol", :default_mandatory => false do
     a_9 "Synthetic Nucleic Acids"
     dependency :rule=>"Z"
     condition_Z :q_classifications, "==", :a_1
-    
+
     q "Required Biosaftey Level", :pick => :one, :display_type => :dropdown
     ["Exempt","BSL1", "BSL2", "BSL3"].each{ |level| a level}
     
@@ -345,5 +345,134 @@ group "Microorganism Usage Part 2" do
       Appendix F</a>) if Select Agents are involved."
      end
    end
+    section "NIH GUIDELINES ASSESSMENT FOR RESEARCH INVOLVING RECOMBINANT DNA (rDNA)" do
+    q_class2 "Mark the appropriate section(s) that describes this project. If experiment does not fall into any of these categories, contact Biosafety Office for assistance (check all that apply):", :pick => :any
+    a_1 "III A....must receive approval from IBC and NIH Director before initiation of experiments."
+    a_2 "III B….must receive approval from NIH/OBA and IBC before initiation of experiments."
+    a_3 "III C.....must receive approval from IBC, IRB, and RAC review before research participant enrollment."
+    a_4 "III D....must receive approval from IBC before initiation of experiments."
+    a_5 "rDNA Involving Whole Animal"
+    a_6 "rDNA Involving Whole Plants:"
+    a_7 " III E….must notify IBC simultaneously upon initiation of research."
+    a_8 "III F......exempt from IBC Review. To request an official exemption letter email lindstrom@montana.edu"
+    label "Section III-A-1-a: The deliberate transfer of a drug resistance trait to microorganisms that are not known to acquire 
+    the trait naturally if such acquisition could compromise the use of the drug to control disease agents in humans, 
+    veterinary medicine, or agriculture. (Note that antibiotic resistance markers used for selecting and propagating plasmids in E. coli are not included.)"
+    dependency :rule=>"Z"
+    condition_Z :q_class2, "==", :a_1    
+    label "Section III-B-1: Experiments involving the cloning of toxin molecules with LD50 of <100ng per kg body weight (e.g., 
+      microbial toxins such as botulinum toxin, tetanus toxin)."
+    dependency :rule=>"Z"
+    condition_Z :q_class2, "==", :a_2    
+    label "Section III-C-1: Experiments involving the deliberate transfer of rDNA, or DNA or RNA derived from rDNA, into one or more human research participants."
+    dependency :rule=>"Z"
+    condition_Z :q_class2, "==", :a_3
+    label "< NOTE: Attach response to Points to Consider: Appendix M of the NIH Guidelines and submit any  
+    supplemental documents such as investigator brochure, clinical study, correspondence with NIH, etc. "
+    label "For rDNA experiments falling under Sections III-D-5-a through III-D-5-d, physical containment requirements may be reduced to the next lower level by appropriate biological containment practices, 
+    such as conducting experiments on a virus with an obligate insect vector in the absence of that vector or using a genetically attenuated strain."
+    dependency :rule=>"Z"
+    condition_Z :q_class2, "==", :a_6
+    group "III-D" do
+    dependency :rule=>"Z"
+    condition_Z :q_class2, "==", :a_4  
+    q_class22 "III-D-1-a", :pick => :any
+    a_1 "Introduction of rDNA into Risk Group 2 (RG-2) agents."
+    q_class23 "III-D-1-b", :pick => :any
+    a_1 "Introduction of rDNA into Risk Group 3 (RG-3) agents."
+    q_class24 "III-D-2-a", :pick => :any
+    a_1 "Experiments in which DNA from RG- 2, RG- 3 agents, or RG-4 agents is transferred into nonpathogenic prokaryotes or lower eukaryotes."
+    q_class25 "III-D-3-a", :pick => :any
+    a_1 "Use of infectious or defective RG-2 viruses in the presence of helper virus."
+    q_class26 "III-D-3-b", :pick => :any
+    a_1 "Use of infectious or defective RG-3 viruses in the presence of helper virus may be conducted at BL3 containment."
+    q_class27 "III-D-3-d", :pick => :any
+    a_1 "Use of infectious or defective restricted poxviruses in the presence of helper virus shall be determined on a case-by-case 
+    basis following NIH/OBA review. A USDA permit is required for work with plant or animal pathogens."
+    q_class28 "III-D-3-e", :pick => :any
+    a_1 "Use of infectious or defective viruses in the presence of helper virus not covered in Sections III-D-3-a through III-D-3-d."
+  end
+  group "rDNA" do
+    dependency :rule=>"Z"
+    condition_Z :q_class2, "==", :a_5
+    q_class2v9 "III-D-4-a", :pick => :any
+    a_1 "rDNA, or DNA or RNA molecules derived therefrom, from any source except for greater than two-thirds of eukaryotic viral genome may be transferred to any non-human vertebrate or any invertebrate organism and propagated under conditions of physical containment comparable to BSL1 or BSL1-N and appropriate to the organism under study. Animals that contain sequences from viral vectors, which do not lead to transmissible infection either directly or indirectly as a result of complementation or recombination in animals, may be propagated under conditions of physical containment comparable to BSL1 or BSL1-N and appropriate to the organism under study. Experiments involving the introduction of other sequences from eukaryotic viral genomes into
+     animals are covered under Section III-D-4-b. Investigator must demonstrate that the fraction of the viral genome being utilized does not lead to productive infection."
+    q_cwlass30 "III-D-4-b", :pick => :any
+    a_1 "Experiments involving rDNA, or DNA or RNA derived therefrom, involving whole animals, including transgenic animals, and not covered by 
+    Sections III-D-1 or III-D-4-a, may be conducted at the appropriate containment determined by the IBC."
+    q_clas2s3c1"III-D-4-c-1", :pick => :any
+    a_1 "Experiments involving the generation of transgenic rodents that require BSL1 containment."
+    q_class3c"III-D-4-c-2", :pick => :any
+    a_1 "Purchase or transfer of transgenic rodents is exempt from the “NIH Guidelines”, but register with the IBC (Form 4)."
+
+  end
+  group "rDNA" do
+    dependency :rule=>"Z"
+    condition_Z :q_class2, "==", :a_6
+    q_class29 "III-D-5-a", :pick => :any
+    a_1 "BSL3-P (Plants) or BSL2-P + biological containment is recommended for experiments of most exotic infectious agents with recognized potential 
+    for serious detrimental impact on managed or natural ecosystems when rDNA techniques are associated with whole plants."
+    q_class30 "III-D-5-b", :pick => :any
+    a_1 "BSL3-P or BSL2-P + biological containment is recommended for experiments involving plants containing cloned genomes of readily transmissible exotic infectious agents with recognized potential for serious detrimental effects on managed or natural ecosystems in 
+    which there exists the possibility of reconstituting the complete and functional genome of the infectious agent by genomic complementation in planta."
+    q_class3c1" III-D-5-c", :pick => :any
+    a_1 "BSL4-P containment is recommended for experiments with a small number of readily transmissible exotic infectious agents, such as the soybean rust fungus (Phakospora pachyrhizi) and maize streak or other viruses in the presence of
+     their specific arthropod vectors that have the potential of being serious pathogens of major U.S. crops."
+    q_class3c2 "III-D-5-d ", :pick => :any
+    a_1 "BSL3-P containment is recommended for experiments involving sequences encoding potent vertebrate toxins introduced into plants or associated organisms (also refer to Section III-B-1)."
+    q_class3c3 "III-D-5-e", :pick => :any
+    a_1 "BSL3-P or BSL2-P + biological containment is recommended for experiments with microbial pathogens of insects or small animals associated with plants if the 
+    rDNA-modified organism has a recognized potential for serious detrimental impact on managed or natural ecosystems."
+    q_class3c4 "III-D-6", :pick => :any
+    a_1 "Experiments involving more than 10 liters of culture. The appropriate containment will be decided by the IBC."
+
+  end
+group " III E" do
+    dependency :rule=>"Z"
+    condition_Z :q_class2, "==", :a_7
+    q_class29tr "III-E-1", :pick => :any
+    a_1 "Experiments involving the formation of rDNA molecules containing  no more than 2/3 of the genome of any eukaryotic virus
+     (All viruses from a single Family being considered identical.) may be propagated and maintained in cells in tissue culture using BSL1."
+    q_class3043 "III-E-2-a ", :pick => :any
+    a_1 "BSL1-P is recommended for all experiments with rDNA-containing plants and plant-associated microorganisms not covered in Section III-E-2-b or other sections of the NIH Guidelines. Examples of such experiments are those involving rDNA-modified plants that are not noxious weeds or that cannot interbreed with noxious weeds in the immediate geographic area, and experiments involving whole plants and rDNA-modified non-exotic microorganisms that have no recognized potential for rapid and widespread dissemination or for 
+    serious detrimental impact on managed or natural ecosystems (e.g., Rhizobium spp. and Agrobacterium spp.). Use FORM 3 Registration of rDNA modified Whole Plants."
+    q_class3c10"III-E-2-b", :pick => :any
+    a_1 "BSL2-P or BSL1-P + biological containment is recommended for the following experiments:"
+    q_class3c11"III-E-2-b-(1)", :pick => :any
+    a_1 "Plants modified by rDNA that are noxious weeds or can interbreed with noxious weeds in the immediate geographic area."
+    q_class3c12 "III-E-2-b-(2)", :pick => :any
+    a_1 "Plants in which the introduced DNA represents the complete genome of a non-exotic infectious agent."
+    q_clas1s3c13 "III-E-2-b-(3)", :pick => :any
+    a_1 "Plants associated with rDNA-modified non-exotic microorganisms that have a recognized potential for serious detrimental impact on managed or natural ecosystems."
+    q_class3c14 "III-E-2-b-(4)", :pick => :any
+    a_1 "Plants associated with rDNA-modified exotic microorganisms that have no recognized potential for serious detrimental impact on managed or natural ecosystems."
+    q_class3c15 "III-E-2-b-(5)", :pick => :any
+    a_1 "Experiments with rDNA-modified arthropods or small animals associated with plants, or with arthropods or small animals with rDNA-modified microorganisms associated with them if the
+     rDNA-modified microorganisms have no recognized potential for serious detrimental impact on managed or natural ecosystems."
+    q_class3c1e "II-E-3", :pick => :any
+    a_1 "Experiments involving the generation of rodents in which the animal’s genome has been altered by stable introduction of rDNA, or DNA derived therefrom, into 
+    the germ0line (transgenic rodents). Use FORM 4 Registration of Transgenic Animals."
+  end
+group "rDNA" do
+    dependency :rule=>"Z"
+    condition_Z :q_class2, "==", :a_8
+    q_class291 "III-F-1", :pick => :any
+    a_1 "rDNA molecules that are not in organisms or viruses."
+    q_class302 "III-F-2", :pick => :any
+    a_1 "rDNA molecules that consist entirely of DNA segments from a single nonchromosomal or viral DNA source, though one or more of the segments may be a synthetic equivalent."
+    q_class3c13"III-F-3", :pick => :any
+    a_1 "rDNA molecules that consist entirely of DNA from a prokaryotic host including its indigenous plasmids or viruses when propagated only in that
+     host (or a closely related strain of the same species), or when transferred to another host by well established physiological means."
+    q_class3c24 "III-F-4", :pick => :any
+    a_1 "rDNA molecules that consist entirely of DNA from a eukaryotic host including its chloroplasts, mitochondria, or plasmids (but excluding viruses) when propagated only in that host (or closely related strain of the same species)."
+    q_class3c35 "III-F-5", :pick => :any
+    a_1 "rDNA molecules that consist entirely of DNA segments from different species that exchange DNA by known physiological processes, though one or more of the segments may be a synthetic equivalent."
+    q_class3c46 "III-F-6", :pick => :any
+    a_1 "rDNA experiments that do not present a significant risk to health or the environment as determined by the NIH Director, RAC and  following appropriate notice and opportunity for public comment. "
+
+  end
+
+    end
 end
 
