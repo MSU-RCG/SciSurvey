@@ -6,8 +6,8 @@ gem 'pg'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-#gem 'unicorn-rails'
-gem 'puma'
+gem 'unicorn-rails'
+#gem 'puma'
 gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem 'therubyracer'
