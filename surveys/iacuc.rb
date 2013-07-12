@@ -134,7 +134,8 @@ survey "IACUC Protocol", :default_mandatory => false do
     a_s12 "Guinea Pig"
     a_s13 "Ferrets"
     a_s14 "Cats"
-    
+    end
+    section "Mouse" do
     group "Mouse" do
     dependency :rule => "M"
     condition_M :q_application_type1, "==", :a_s1   
@@ -804,9 +805,10 @@ survey "IACUC Protocol", :default_mandatory => false do
     condition_A :q_m30qb, "count>0"
     condition_B :q_m30qb, "!=", :a_no
     
-
+end
 
     end
+    section "Rat" do
      group "Rat" do  
     dependency :rule => "R"
     condition_R :q_application_type1, "==", :a_s2 
@@ -1436,6 +1438,8 @@ survey "IACUC Protocol", :default_mandatory => false do
     condition_A :q_r27qb, "count>0"
     condition_B :q_r27qb, "!=", :a_no
     end
+    end
+    section "Hamster" do
     group "Hamster" do
     dependency :rule => "R"
     condition_R :q_application_type1, "==", :a_s3 
@@ -2065,6 +2069,8 @@ survey "IACUC Protocol", :default_mandatory => false do
     condition_A :q_h27qb, "count>0"
     condition_B :q_h27qb, "!=", :a_no
     end
+end
+section "Rabbit" do
      group "Rabbit" do  
     dependency :rule => "R"
     condition_R :q_application_type1, "==", :a_s4 
@@ -2694,6 +2700,8 @@ survey "IACUC Protocol", :default_mandatory => false do
     condition_A :q_rb27qb, "count>0"
     condition_B :q_rb27qb, "!=", :a_no
         end
+        end
+        section "Gerbil" do
     group "Gerbil" do  
     dependency :rule => "R"
     condition_R :q_application_type1, "==", :a_s5
@@ -3322,7 +3330,9 @@ survey "IACUC Protocol", :default_mandatory => false do
     dependency :rule=>"A and B"
     condition_A :q_g27qb, "count>0"
     condition_B :q_g27qb, "!=", :a_no
+    end
 end
+section "Sheep" do
 group "Sheep" do
     dependency :rule => "R"
     condition_R :q_application_type1, "==", :a_s6 
@@ -3930,6 +3940,8 @@ group "Sheep" do
     condition_A :q_h127qb, "count>0"
     condition_B :q_h127qb, "!=", :a_no
     end
+    end
+    section "Cattle" do
     group "Cattle" do
     dependency :rule => "R"
     condition_R :q_application_type1, "==", :a_s7 
@@ -4537,6 +4549,8 @@ group "Sheep" do
     condition_A :q_sh127qb, "count>0"
     condition_B :q_sh127qb, "!=", :a_no
     end
+    end
+    section "Horse" do
 
     group "Horse" do
     dependency :rule => "R"
@@ -5144,9 +5158,9 @@ group "Sheep" do
     dependency :rule=>"A and B"
     condition_A :q_ho127qb, "count>0"
     condition_B :q_ho127qb, "!=", :a_no
-
-
+end
     end
+    section "Primates" do
     group "Primates" do
     dependency :rule => "R"
     condition_R :q_application_type1, "==", :a_s9 
@@ -5726,8 +5740,9 @@ group "Sheep" do
     a :string
     dependency :rule=>"A"
     condition_A :q_pr127q, "==", :a_yes
-    
     end
+    end
+    section "Agriculture Research" do
     group "Agriculture Research" do
     dependency :rule => "R"
     condition_R :q_application_type1, "==", :a_s10 
@@ -6330,6 +6345,8 @@ group "Sheep" do
     condition_A :q_agr127qb, "count>0"
     condition_B :q_agr127qb, "!=", :a_no
     end
+    end
+    section "Primates" do
     group "Primates" do
     dependency :rule => "R"
     condition_R :q_application_type1, "==", :a_s9 
@@ -6909,8 +6926,9 @@ group "Sheep" do
     a :string
     dependency :rule=>"A"
     condition_A :q_pr127qe, "==", :a_yes
-    
     end
+    end
+    section "Laboartory Held Fish and Amphibians" do
     group "Laboartory Held Fish and Amphibians" do
     dependency :rule => "R"
     condition_R :q_application_type1, "==", :a_s11 
@@ -7534,9 +7552,9 @@ group "Sheep" do
     dependency :rule=>"A and B"
     condition_A :q_agr127q, "count>0"
     condition_B :q_agr127q, "!=", :a_no
-
-    
+end    
     end
+    section "Guinea Pig" do
      group "Guinea Pig" do
     dependency :rule => "R"
     condition_R :q_application_type1, "==", :a_s12 
@@ -8168,9 +8186,9 @@ group "Sheep" do
     dependency :rule=>"A and B"
     condition_A :q_gup127qb, "count>0"
     condition_B :q_gup127qb, "!=", :a_no
-
-    
+end    
     end
+    section "Ferrets" do
     group "Ferrets" do
     dependency :rule => "R"
     condition_R :q_application_type1, "==", :a_s13 
@@ -8802,8 +8820,9 @@ group "Sheep" do
     dependency :rule=>"A and B"
     condition_A :q_fer127qb, "count>0"
     condition_B :q_fer127qb, "!=", :a_no
-    
     end
+    end
+    section "Cats" do
     group "Cats" do
     dependency :rule => "R"
     condition_R :q_application_type1, "==", :a_s14 
