@@ -1,0 +1,9 @@
+<h1>UserRoles#add</h1>
+<br/>
+<%=form_tag("/user_roles") do%>
+User: <%=select_tag "user", options_from_collection_for_select(@users, "id", "email")%>
+
+Role To Assign: <%=select_tag "role", options_from_collection_for_select(@roles, "id", "name")%>
+<br/><br/>
+<%=submit_tag "Submit"%>
+<%end%>

@@ -1,0 +1,40 @@
+<h1>Listing Users</h1>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Username</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+<% @users.each do |user| %>
+
+<tr>
+        
+ </tr>
+
+
+  <tr>
+    <td><%= user.id %></td>
+    <td><%= user.email %></td>
+    <td><%user.roles.each do |r|%>
+      <%= link_to r.name,
+                  "/user_roles?user=#{user.id}&role=#{r.id}",
+                  :method => :delete,
+                  :data => { :confirm => 'Are you sure you want to remove this role?' },
+                  :class => 'btn btn-mini btn-danger' %>
+      <% end %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<br />
+<%= link_to t('.add', :default => t("helpers.links.add_role_to_user")),
+            add_user_roles_path,
+            :class => 'btn btn-primary' %>
+
