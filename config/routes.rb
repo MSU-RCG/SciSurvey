@@ -1,11 +1,18 @@
 Protocat::Application.routes.draw do
+  resources :user_roles do
+    collection do
+      get :add
+      delete :destroy
+    end
+  end
+
   resources :roles
 
 
   # devise_for :admin_users, ActiveAdmin::Devise.config
   # ActiveAdmin.routes(self)
 
-  resources :controlers
+
   resources :statuses 
   resources :protocols do
     collection do
