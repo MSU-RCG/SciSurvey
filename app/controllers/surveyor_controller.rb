@@ -10,6 +10,7 @@ module SurveyorControllerCustomMethods
   def new
     super
     # @title = "You can take these surveys"
+      @title = "Available Protocol Forms"
   end
   def create
     super
@@ -28,6 +29,7 @@ module SurveyorControllerCustomMethods
   def surveyor_index
     # most of the above actions redirect to this method
     super # surveyor.available_surveys_path
+    #@title = "Available Protocol Forms"
   end
   def surveyor_finish
     # the update action redirects to this method if given params[:finish]

@@ -8,5 +8,14 @@
 *= require custom
 */
 
+body{
+  font-size: 1.2em;
+}
+#surveyor{background-color: #EDEDED;font-size: 1em;}
 
-#surveyor{background-color: #EDEDED;}
+ol{font-size: 1em;}
+ul{font-size: 0.8em;}
+#protocols_table td{
+  font-size: 1em;
+}
+#nav{font-size: 1em;}

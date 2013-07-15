@@ -1,12 +1,33 @@
 Protocat::Application.routes.draw do
-  resources :controlers
-  resources :statuses 
-  resources :protocols
-  resources :locations
+  resources :user_roles do
+    collection do
+      get :add
+      delete :destroy
+    end
+  end
 
+  resources :roles
+
+
+  # devise_for :admin_users, ActiveAdmin::Devise.config
+  # ActiveAdmin.routes(self)
+
+
+  resources :statuses 
+  resources :protocols do
+    collection do
+      get :admin
+    end
+  end
+  resources :locations
+  resources :survey_texts do
+    get :versions
+    get :version
+  end
   mount Surveyor::Engine => "/surveys", :as => "surveyor"
 
   devise_for :users
+  # ActiveAdmin.routes(self)
 
 
   # The priority is based upon order of creation:

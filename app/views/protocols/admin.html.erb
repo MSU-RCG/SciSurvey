@@ -1,0 +1,131 @@
+
+<script>
+  $(document).ready(function() { 
+    $.getScript('assets/javascripts/datatables.js', function() {
+      $('#protocols_table').dataTable();
+    })
+  }
+
+</script>
+<%- model_class = Protocol -%>
+<strong>Showing <%= params[:status].nil? ? "All" : params[:status].capitalize%> Protocols</strong>
+<br/><br/>
+<!-- <div>
+  <ul>
+     <li><%= link_to "archived", admin_protocols_path(:status => 'archived') %></li>
+  </ul>
+</div> -->
+<%= link_to "View all Protocols", admin_protocols_path, :class=>"btn"%>
+<%= form_tag admin_protocols_path, :method => :get do %>
+<label>Show Protocol By Status </lablel>
+<%= select_tag 'status', "<option>submitted</option><option>review</option><option>accepted</option><option>archived</option>".html_safe %>
+<%= submit_tag 'Go' %>
+</div><% end %>
+<table id="protocols_table"  class="table table-striped">
+  <thead>
+    <tr>
+      <th>Protocol Title</th>
+      <th>Investigator</th>
+      <th>Type</th>
+      <th>Date Submitted</th>
+      <th>Status</th>
+      <th><%=t '.actions', :default => t("helpers.Actions") %>
+      <th></th><th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @protocols.each do |protocol| %>  
+      <tr>
+        <td>
+          <% if protocol.responses.where(:question_id => @title_questions).count > 0 %>
+            <%= link_to protocol.responses.where(:question_id => @title_questions).first.string_value, "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}" %>
+          <%else%>
+            <%= link_to "In Progess- Untitled", "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}" %>
+          <%end%>
+        </td>        
+        
+        <!--<td><a href="#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}.pdf"><img src="http://findicons.com/files/icons/990/vistaico_toolbar/128/arrow_down.png"></td></a>-->
+         <td>
+           <%=protocol.user.email%>
+         </td>
+         <td><%=protocol.survey.title%></td>
+         <td>
+           <%= Status.find_by_survey_id(protocol.access_code) ? Status.find_by_survey_id(protocol.access_code).updated_at.strftime("%m/%d/%Y") : ""  %>
+         </td>
+          <td>
+            <%= Status.find_by_survey_id(protocol.access_code) ? Status.find_by_survey_id(protocol.access_code).state : "none"  %>
+         </td>
+         <td>
+         <%= link_to  'Download', "#{surveyor_path}/#{protocol.survey.access_code}/#{protocol.access_code}.pdf", :format => 'pdf', :class => 'icon-circle-arrow-right btn-small' %>
+         </td>
+         <td>
+         <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}/take", :class => "icon-pencil btn-small" %>
+         </td>
+         <td>
+         <% if !Status.find_by_survey_id(protocol.access_code) %><%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      protocol_path(protocol.access_code),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'icon-trash btn-small' %><% else %> <%= %>
+
+                      <% end %>
+        </td>
+        <td>
+          <% if Status.find_by_survey_id(protocol.access_code)%>
+            <!--<%= link_to "Unsubmit", status_url(Status.find_by_survey_id(protocol.access_code), :method => :delete) %>-->
+          <% else %>
+            <%= form_for(Status.new) do |f| %>
+              <%= f.hidden_field :survey_id, :value => protocol.access_code %>
+              <%= f.hidden_field :state, :value => 'submitted' %>
+              <%= f.submit "Submit" %>
+            <% end %>
+           <%end%> 
+           <% if Status.find_by_survey_id(protocol.access_code) &&  Status.find_by_survey_id(protocol.access_code).state == 'review'%>
+ 
+             <%= form_for (Status.find_by_survey_id(protocol.access_code)), :url => status_path(Status.find_by_survey_id(protocol.access_code)), :method=> 'put'  do |f| %>
+               <%= f.hidden_field :survey_id, :value => protocol.access_code %>
+               <%= f.hidden_field :state, :value => 'submitted' %>
+               <%= f.submit "Submit" %>
+             <% end %>
+            <%end%>
+        </td>
+          <td>
+          <% if Status.find_by_survey_id(protocol.access_code) && Status.find_by_survey_id(protocol.access_code).state == 'submitted'%>
+            <%= form_for (Status.find_by_survey_id(protocol.access_code)), :url => status_path(Status.find_by_survey_id(protocol.access_code)), :method=> 'put'  do |f| %>
+              <%= f.hidden_field :survey_id, :value => protocol.access_code %>
+              <%= f.hidden_field :state, :value => 'review' %>
+              <%= f.submit "Return For Review" %>
+            <% end %>
+            <!--<%= link_to "Unsubmit", status_url(Status.find_by_survey_id(protocol.access_code), :method => :delete) %>-->
+          <% else %>
+            
+           <%end%> 
+        </td>     
+        <td>
+          <% if Status.find_by_survey_id(protocol.access_code) && Status.find_by_survey_id(protocol.access_code).state == 'submitted'%>
+
+            <%= form_for (Status.find_by_survey_id(protocol.access_code)), :url => status_path(Status.find_by_survey_id(protocol.access_code)), :method=> 'put'  do |f| %>
+              <%= f.hidden_field :survey_id, :value => protocol.access_code %>
+              <%= f.hidden_field :state, :value => 'accepted' %>
+              <%= f.submit "Accept" %>
+            <% end %>
+           <%end%> 
+        </td>
+        <td>
+          <% if Status.find_by_survey_id(protocol.access_code) && Status.find_by_survey_id(protocol.access_code).state == 'accepted'%>
+
+            <%= form_for (Status.find_by_survey_id(protocol.access_code)), :url => status_path(Status.find_by_survey_id(protocol.access_code)), :method=> 'put'  do |f| %>
+              <%= f.hidden_field :survey_id, :value => protocol.access_code %>
+              <%= f.hidden_field :state, :value => 'archived' %>
+              <%= f.submit "Archive" %>
+            <% end %>
+           <%end%> 
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</table>
+
