@@ -1,9 +1,7 @@
 /*
-*= require surveyor/reset
 *= require surveyor/jquery-ui-1.10.0.custom
 *= require surveyor/jquery-ui-timepicker-addon
 *= require surveyor/ui.slider.extras
-*= require surveyor/results
 *= require surveyor
 *= require custom
 */
@@ -11,11 +9,23 @@
 body{
   font-size: 1.2em;
 }
-#surveyor{background-color: #EDEDED;font-size: 1em;}
 
-ol{font-size: 1em;}
-ul{font-size: 0.8em;}
+#surveyor{
+  background-color: #EDEDED;font-size: 1em;
+}
+
+ol{
+  font-size: 1em;
+}
+
+ul{
+  font-size: 0.8em;
+}
+
 #protocols_table td{
   font-size: 1em;
 }
-#nav{font-size: 1em;}
+
+#nav{
+  font-size: 1em;
+}

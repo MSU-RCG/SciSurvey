@@ -12,63 +12,58 @@
  *= require_tree .
  */
  
+.main {
+	background-color: #FFF;
+}
+
 .qnum {
 	display: none;
 }
 
-#headernav {
-	position: absolute;
-	top: 17px;
-	left: 200px;
+.headertext a{
 	color: white;
 }
 
-#headernav a{
-	color: white;
+.navbar {
+	background-color: #224;
 }
 
-#headernav ul li{
-	display: inline;
+.headertext a:hover{
+	color: #DDD;
+	text-decoration: none;
 }
-.nav
-{
-	position: absolute;
-	width: 1000px;
-	top: 70px;
-	left: 150px;
-	right: 0px;	
-}
-.whole
-{
-	
+
+.whole{
 	top: 70px;
 	left: 90px;
 	right: 0px;	
 }
-.selec
-{   left: 200px;
-	position: absolute;
-}
 
-/*.navbar-inner {
-
-	width: 600px;
-	top: 17px;
+.selec{   
 	left: 200px;
-
-}
-
-.navbar .navbar-fluid-top {
 	position: absolute;
-	width: 600px;
-	top: 17px;
-	left: 200px;
 }
-.btn .btn-navbar
-{
-	position: absolute;
-	width: 600px;
-	top: 17px;
-	left: 100px;
+
+.footer {
+	text-align: center;
+	padding: 30px 0;
+	margin-top: 70px;
+	border-top: 1px solid #e5e5e5;
+	background-color: #f5f5f5;
+	color: #AAA;
 }
-*/
+
+#msu-logo{
+	background-color: #003F7E; 
+	height: 116px; 
+	background-image: url('http://www.montana.edu/msucommon/home/images/banner.png'); 
+	background-repeat: no-repeat;
+}
+
+input {
+	height: 30px;
+}
+
+#error_explanation h2{
+	font-size: 85%;
+}
