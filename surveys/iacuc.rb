@@ -1,63 +1,62 @@
 survey "IACUC Protocol", :default_mandatory => false do
-	section "Information Section" do
-  
-  q_information_1 "1. Project Title:"
-    a :string
-  
-  q_information_2 "2. Project Type:"
-    a :string   
-  
-  q_1 "a) If a renewal or revision, please provide previous protocol number:"
-    a :string
-  
-  q_6 "3. Principal Investigator/Faculty Advisor (Note: I am aware that electronic 
-        submission of this form constitutes my signature.)"
-    a "a) First Name:", :string 
-    a "b) Last Name:", :string
-    a "c) Department:", :string
-    a "d) Title:", :string
-    a "e) Phone #:", :string
-    a "f) Email address:", :string
-  
-  q_application_type "g) Has the P.I. attended ARC training/orientation?", :pick => :any
-    a "Yes"    
-  
-  q_grant "Extramural grant application (NIH, USDA, etc.)"
-    a "i. Provide funding agency name:", :string
-    a "ii. Assigned grant number (if available):", :string
-
-    label "iii. Submission date:"
-  
-  q_sub_date_month "month", :pick => :one, :display_type => :dropdown
-    ["January","February", "March", "April","May","June","July","August","September","October","November","December"].each do |month| 
-        a month
-    end
-  
-  q_sub_date_day "day", :pick => :one, :display_type => :dropdown
-    [ "1","2", "3", "4","5","6","7","8","9","10","11","12",
-      "13","14","15","16","17","18","19","20","21","22","23",
-      "24","25","26","27","28","29","30"].each do |day| 
-        a day
-    end
-  
-  q_sub_date_year "Year"
-    a :string   
-  
-  q_ngrant1 "iv. In whose name is the grant submitted:"
-    a :string   
-  
-  q_intr "b) Intramural funding application (Dept/College):", :pick => :any
-    a "Yes" 
-  
-  q_comm "Commercial/Industry funding (Private Sector):", :pick => :any
-    a "Yes" 
-  
-  q_i "i. Provide complete company name:"
-    a :string
-  
-  q_o1 "d) Other :"
-    a :text 
-	end
+  section "Information Section" do
+    
+    q_information_1 "1. Project Title:"
+      a :string
+    
+    q_information_2 "2. Project Type:"
+      a :string   
+    
+    q_1 "a) If a renewal or revision, please provide previous protocol number:"
+      a :string
+    
+    q_6 "3. Principal Investigator/Faculty Advisor (Note: I am aware that electronic 
+          submission of this form constitutes my signature.)"
+      a "a) First Name:", :string 
+      a "b) Last Name:", :string
+      a "c) Department:", :string
+      a "d) Title:", :string
+      a "e) Phone #:", :string
+      a "f) Email address:", :string
+    
+    q_application_type "g) Has the P.I. attended ARC training/orientation?", :pick => :any
+      a "Yes"    
+    
+    q_grant "Extramural grant application (NIH, USDA, etc.)"
+      a "i. Provide funding agency name:", :string
+      a "ii. Assigned grant number (if available):", :string
+  label "iii. Submission date:"
+    
+    q_sub_date_month "month", :pick => :one, :display_type => :dropdown
+      ["January","February", "March", "April","May","June","July","August","September","October","November","December"].each do |month| 
+          a month
+      end
+    
+    q_sub_date_day "day", :pick => :one, :display_type => :dropdown
+      [ "1","2", "3", "4","5","6","7","8","9","10","11","12",
+        "13","14","15","16","17","18","19","20","21","22","23",
+        "24","25","26","27","28","29","30"].each do |day| 
+          a day
+      end
+    
+    q_sub_date_year "Year"
+      a :string   
+    
+    q_ngrant1 "iv. In whose name is the grant submitted:"
+      a :string   
+    
+    q_intr "b) Intramural funding application (Dept/College):", :pick => :any
+      a "Yes" 
+    
+    q_comm "Commercial/Industry funding (Private Sector):", :pick => :any
+      a "Yes" 
+    
+    q_i "i. Provide complete company name:"
+      a :string
+    
+    q_o1 "d) Other :"
+      a :text 
+  end
 
 	section "General Section" do
   	q_1g "1. Provide an abstract that summarizes the overall scientific goals 
@@ -66,110 +65,113 @@ survey "IACUC Protocol", :default_mandatory => false do
   	scientific discipline can understand. Define all abbreviations.)"
       a :text	
     
-  q_2g "2. Describe in non-scientific language (high-school level of 
+    q_2g "2. Describe in non-scientific language (high-school level of 
       understanding) how the proposed project will benefit human or 
-  	animal health, the advancement of knowledge, or the good of society."
-      a :text
-      label "3. As primary investigator, I have determined, by means of the 
+  	  animal health, the advancement of knowledge, or the good of society."
+    a :text
+    
+   label "3. As primary investigator, I have determined, by means of the 
       following sources, searches, or methods, that alternatives to 
       procedures which may cause pain or distress are not available, and 
       that this protocol does not unnecessarily duplicate previous 
       experiments. USDA regulations require documentation (to be 
       maintained by the PI) of the following sources searched."
-  	q_ngrant "a) Databases searched (Minimum of two):"
-      a_2ca :string
+  	
+    q_ngrant "a) Databases searched (Minimum of two):"
+    a_2ca :string
     
-  q_o "b) Specify all key words that were used in the search (e.g. MESH headings):"
-      a :text	
+    q_o "b) Specify all key words that were used in the search (e.g. MESH headings):"
+    a :text	
     
-  q_ngrant2 "c) What years were covered by the search?"
-      a_222 :string
-      label "d) Provide the most recent date on which the search was 
-      performed. (must be within six months):[yyyy/mm/dd]"
-      q "month2", :pick => :one, :display_type => :dropdown
-      ["January","February", "March", "April","May","June","July","August","September","October","November","December"].each{ |level| a level}
-      q "day2", :pick => :one, :display_type => :dropdown
-      ["1","2", "3", "4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"].each{ |level| a level}
-    
-  q_Year2 "Year"
+    q_ngrant2 "c) What years were covered by the search?"
+    a_222 :string
+   label "d) Provide the most recent date on which the search was 
+    performed. (must be within six months):[yyyy/mm/dd]"
+    q "month2", :pick => :one, :display_type => :dropdown
+    ["January","February", "March", "April","May","June","July","August","September","October","November","December"].each{ |level| a level}
+    q "day2", :pick => :one, :display_type => :dropdown
+    ["1","2", "3", "4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"].each{ |level| a level}
+  
+    q_Year2 "Year"
       a_2c :string
-    
-  q_classifications "e) Did your search find any alternatives 
-  	to your proposed animal related procedures that would allow...", :pick => :any
+      
+    q_classifications "e) Did your search find any alternatives 
+    	to your proposed animal related procedures that would allow...", :pick => :any
       a_12 "i. Reduction?"
-    
-  q_e1 "Explain:"
+      
+    q_e1 "Explain:"
       a :text
       a_2a "ii. Replacement?"
-    
-  q_e2 "Explain:"
+      
+    q_e2 "Explain:"
       a :text
       a_3 "iii. Refinement?"
-    
-  q_e3 "Explain:"
+      
+    q_e3 "Explain:"
       a :text
-    
-  q_wh "4. Why must animals be used in this study? (Check the appropriate boxes)", :pick => :any
+      
+    q_wh "4. Why must animals be used in this study? (Check the appropriate boxes)", :pick => :any
       a_1a "a) No in vitro options are available."
       a_2b "b) Systemic interactions are needed."
       a_3 "c) Studies cannot or should not be undertaken in humans"
       a_41 "d) studies involve analysis of behaviors or biologic processes"
-  	a_5 "e) Other:"
-  	q_ea3 "*If you selected 'Other', Explain:"
+    	a_5 "e) Other:"
+    	
+    q_ea3 "*If you selected 'Other', Explain:"
       a :text
-    
-  q_por "5. Will any portion of the live work performed under this protocol be conducted 
+      
+    q_por "5. Will any portion of the live work performed under this protocol be conducted 
       at facilities or institutions outside Montana State University?", :pick => :any
       a_4 "Yes"
-    
-  q_i2 "i. What procedures will be done?"
-      a :text
-    
-  q_ii "ii. What species will be involved?"
-      a_21 :string
-    
-  q_ii1 "iii. At what institution will this activity take place?"
-      a_22 :string
-    
-  q_ii2 "iv. Provide the Office of Laboratory Animal Welfare 
-      (OLAW) Assurance Number of the institution."
-      a_23 :string
-    
-  q_ii3 "v. Provide the IACUC approval number (a copy of the 
-      approval letter must be submitted to the IACUC office):"
-      a_24 :string
-    
-  q_fund1 "6. Will any live animals be housed outside the Animal 
-      Resources Center for continuous periods of longer than 12 hours?", :pick => :any
-      a_45 "Yes"
-    
-  q_i3 "i. Building:"
-      a :text
-    
-  q_ii4 "ii. Room number:"
-      a :text
-    
-  q_iii3 "iii. Provide justification:"
-      a :text
+      
+    q_i2 "i. What procedures will be done?"
+        a :text
+      
+    q_ii "ii. What species will be involved?"
+        a_21 :string
+      
+    q_ii1 "iii. At what institution will this activity take place?"
+        a_22 :string
+      
+    q_ii2 "iv. Provide the Office of Laboratory Animal Welfare 
+        (OLAW) Assurance Number of the institution."
+        a_23 :string
+      
+    q_ii3 "v. Provide the IACUC approval number (a copy of the 
+        approval letter must be submitted to the IACUC office):"
+        a_24 :string
+      
+    q_fund1 "6. Will any live animals be housed outside the Animal 
+        Resources Center for continuous periods of longer than 12 hours?", :pick => :any
+        a_45 "Yes"
+      
+    q_i3 "i. Building:"
+        a :text
+      
+    q_ii4 "ii. Room number:"
+        a :text
+      
+    q_iii3 "iii. Provide justification:"
+        a :text
 	end
 
   section "Species" do
   
-  q_application_type1 "Select all that apply", :pick => :any
-    a_s1 "Mouse"
-    a_s2 "Rat"
-    a_s3 "Hamster"
-    a_s4 "Rabbit"
-    a_s5 "Gerbil"
-    a_s6 "Sheep"
-    a_s7 "Cattle"
-    a_s8 "Horse"
-    a_s9 "Primates"
-    a_s10 "Agriculture Research"
-    a_s11 "Laboartory Held Fish and Amphibians"
-    a_s12 "Guinea Pig"
-    a_s13 "Ferrets"
-    a_s14 "Cats"
+    q_application_type1 "Select all that apply", :pick => :any
+      a_s1 "Mouse"
+      a_s2 "Rat"
+      a_s3 "Hamster"
+      a_s4 "Rabbit"
+      a_s5 "Gerbil"
+      a_s6 "Sheep"
+      a_s7 "Cattle"
+      a_s8 "Horse"
+      a_s9 "Primates"
+      a_s10 "Agriculture Research"
+      a_s11 "Laboartory Held Fish and Amphibians"
+      a_s12 "Guinea Pig"
+      a_s13 "Ferrets"
+      a_s14 "Cats"
   end
   
   section "Mouse" do
@@ -198,7 +200,7 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_m4 "4. Describe, in chronological order, all procedures that will include the use of animals:  *Note:  This description should allow the IACUC to understand the experimental course of an animal from its entry into the experiment to the endpoint of the study"
           a :text
           
-          q "5. Justify the number of animals required for the 3 year duration of the IACUC protocol (Check and complete all that apply)", :pick => :any
+      q "5. Justify the number of animals required for the 3 year duration of the IACUC protocol (Check and complete all that apply)", :pick => :any
           answer "a)Animals will be assigned to experimental groups.  Provide statistical or equivalent justification for the number of groups and number of animals per group Justify:"
           answer "b) The procedures are technically difficult, and extra animals will be needed to replace failure of the experiment.  Explain:"
           answer "c)This experiement is for obtaining pilot data that will be used to develop or learn new procedures or provide data for planning future studies.  Explain:"
@@ -207,7 +209,7 @@ survey "IACUC Protocol", :default_mandatory => false do
           answer "f)This protocol is a teaching or training"
           answer "g) Other experimental design or justification"
 
-          label :"6.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
+      label :"6.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
         
       q_m6a "a) Total number of animals justified "
           a :string
@@ -220,33 +222,30 @@ survey "IACUC Protocol", :default_mandatory => false do
         
       q_m6d  "d) Category E: unrelieved pain/distress"
           a :string
-
         
       q_m7 "7.  Describe the most commonly recognized signs or side effects the animals may experience in reponse to the proposed experiment.  What, if anything, can be done to alleviate these clinical signs?  How will animals be monitored for an adverse reaction (including frequency of monitoring)?"
           a :text
         
       q_m8 "8. where will the animals be housed?"
-          a :string
-              
-        
+          a :string             
+      
       q_mmm "9.  Will any specialized housing and/or husbandry be required (special diets, single housing, metabolic cages, etc.)?", :pick => :one
           a_yes "Yes"
           a_no  "No"
 
-          q "a) Describe and justify"
+      q "a) Describe and justify"
           a :text
           dependency :rule=>"A"
-          condition_A :q_mmm, "==", :a_yes
-        
+          condition_A :q_mmm, "==", :a_yes        
         
       q_yes1 "10.  Will a surgical procedure, either survival or terminal, or tissue harvest prior to death be performed on the animals?", :pick => :one
           a_yes "Yes"
           a_no "No"
-          q "a) Describe the required pre-operative procedures (fasting, etc):"
+      q "a) Describe the required pre-operative procedures (fasting, etc):"
           a :text
           dependency :rule=>"A"
           condition_A :q_yes1, "==", :a_yes
-          q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
+      q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
           a :text
           dependency :rule=>"A and B"
           condition_A :q_yes1, "count>0"
@@ -315,7 +314,8 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_m11q "11.  Will the animals be anesthetized?", :pick => :one
           a_yes "Yes"
           a_no  "No"
-          label "a) induction"
+          
+      label "a) induction"
           dependency :rule=>"A"
           condition_A :q_m11q, "==", :a_yes
         
@@ -336,7 +336,8 @@ survey "IACUC Protocol", :default_mandatory => false do
           dependency :rule=>"A and B"
           condition_A :q_m11q, "count>0"
           condition_B :q_m11q, "!=", :a_no
-          label "b) Maintenance"
+          
+      label "b) Maintenance"
           dependency :rule=>"A and B"
           condition_A :q_m11q, "count>0"
           condition_B :q_m11q, "!=", :a_no
@@ -380,7 +381,8 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_m12q "12.  Will muscle relaxants (paralytics, neuromuscular blocking agents) be utilized?", :pick => :one
           a_yes "Yes"
           a_no "No"
-          label "a) induction"
+          
+      label "a) induction"
           dependency :rule=>"A"
           condition_A :q_m12q, "==", :a_yes
         
@@ -423,7 +425,8 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_m13q "13. Will anlgesics (pain relievers) be used?", :pick => :one
           a_yes "Yes"
           a_no "No"
-          label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
+          
+      label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
           dependency :rule=>"A"
           condition_A :q_m13q, "==", :a_yes
         
@@ -454,7 +457,8 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_m14q "14. Will animals be immunized?", :pick => :one
           a_yes "Yes"
           a_no "No"
-          label "a) Initial Immunization"
+          
+      label "a) Initial Immunization"
           dependency :rule=>"A"
           condition_A :q_m14q, "==", :a_yes
         
@@ -493,7 +497,8 @@ survey "IACUC Protocol", :default_mandatory => false do
           dependency :rule=>"A and B"
           condition_A :q_m14q, "count>0"
           condition_B :q_m14q, "!=", :a_no
-          label "b) Re-immunization (booster)"
+
+      label "b) Re-immunization (booster)"
           dependency :rule=>"A and B"
           condition_A :q_m14q, "count>0"
           condition_B :q_m14q, "!=", :a_no
@@ -1008,7 +1013,7 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_r4 "4. Describe, in chronological order, all procedures that will include the use of animals:  *Note:  This description should allow the IACUC to understand the experimental course of an animal from its entry into the experiment to the endpoint of the study"
         a :text
             
-        q "5. Justify the number of animals required for the 3 year duration of the IACUC protocol (Check and complete all that apply)", :pick => :any
+      q "5. Justify the number of animals required for the 3 year duration of the IACUC protocol (Check and complete all that apply)", :pick => :any
         answer "a)Animals will be assigned to experimental groups.  Provide statistical or equivalent justification for the number of groups and number of animals per group Justify:"
         answer "b) The procedures are technically difficult, and extra animals will be needed to replace failure of the experiment.  Explain:"
         answer "c)This experiement is for obtaining pilot data that will be used to develop or learn new procedures or provide data for planning future studies.  Explain:"
@@ -1017,7 +1022,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         answer "f)This protocol is a teaching or training"
         answer "g) Other experimental design or justification"
 
-        label :"6.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
+      label :"6.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
       
       q_r6a "a) Total number of animals justified "
         a :string
@@ -1030,38 +1035,36 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_r6d  "d) Category E: unrelieved pain/distress"
         a :string
-
       
       q_r7 "7.  Describe the most commonly recognized signs or side effects the animals may experience in reponse to the proposed experiment.  What, if anything, can be done to alleviate these clinical signs?  How will animals be monitored for an adverse reaction (including frequency of monitoring)?"
         a :text
       
       q_r8 "8. where will the animals be housed?"
-        a :string
-            
+        a :string         
       
       q_rrr "9.  Will any specialized housing and/or husbandry be required (special diets, single housing, metabolic cages, etc.)?", :pick => :one
         a_yes "Yes"
         a_no  "No"
 
-        q "a) Describe and justify"
-        a :text
-        dependency :rule=>"A"
-        condition_A :q_rrr, "==", :a_yes
-      
-      
-      q_yes13 "10.  Will a surgical procedure, either survival or terminal, or tissue harvest prior to death be performed on the animals?", :pick => :one
-        a_yes "Yes"
-        a_no "No"
-        q "a) Describe the required pre-operative procedures (fasting, etc):"
-        a :text
-        dependency :rule=>"A"
-        condition_A :q_yes13, "==", :a_yes
-        q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
-        a :text
-        dependency :rule=>"A and B"
-        condition_A :q_yes13, "count>0"
-        condition_B :q_yes13, "!=", :a_no
-      
+      q "a) Describe and justify"
+          a :text
+          dependency :rule=>"A"
+          condition_A :q_rrr, "==", :a_yes        
+        
+        q_yes13 "10.  Will a surgical procedure, either survival or terminal, or tissue harvest prior to death be performed on the animals?", :pick => :one
+          a_yes "Yes"
+          a_no "No"
+      q "a) Describe the required pre-operative procedures (fasting, etc):"
+          a :text
+          dependency :rule=>"A"
+          condition_A :q_yes13, "==", :a_yes
+
+      q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
+          a :text
+          dependency :rule=>"A and B"
+          condition_A :q_yes13, "count>0"
+          condition_B :q_yes13, "!=", :a_no
+        
       q_r1c "c)Who will perform the surgical procedure or tissue harvest?"
         a :string
         dependency :rule=>"A and B"
@@ -1125,7 +1128,8 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_r11q "11.  Will the animals be anesthetized?", :pick => :one
         a_yes "Yes"
         a_no  "No"
-        label "a) induction"
+
+     label "a) induction"
         dependency :rule=>"A"
         condition_A :q_r11q, "==", :a_yes
       
@@ -1146,7 +1150,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_r11q, "count>0"
         condition_B :q_r11q, "!=", :a_no
-        label "b) Maintenance"
+     label "b) Maintenance"
         dependency :rule=>"A and B"
         condition_A :q_r11q, "count>0"
         condition_B :q_r11q, "!=", :a_no
@@ -1189,8 +1193,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_r12q "12.  Will muscle relaxants (paralytics, neuromuscular blocking agents) be utilized?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a) induction"
+        a_no  "No"
+        
+     label "a) induction"
         dependency :rule=>"A"
         condition_A :q_r12q, "==", :a_yes
       
@@ -1232,8 +1237,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_r13q "13. Will anlgesics (pain relievers) be used?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
+        a_no  "No"
+        
+     label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
         dependency :rule=>"A"
         condition_A :q_r13q, "==", :a_yes
       
@@ -1263,8 +1269,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_r14q "14. Will animals be immunized?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a) Initial Immunization"
+        a_no  "No"
+        
+     label "a) Initial Immunization"
         dependency :rule=>"A"
         condition_A :q_r14q, "==", :a_yes
       
@@ -1303,7 +1310,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_r14q, "count>0"
         condition_B :q_r14q, "!=", :a_no
-        label "b) Re-immunization (booster)"
+     label "b) Re-immunization (booster)"
         dependency :rule=>"A and B"
         condition_A :q_r14q, "count>0"
         condition_B :q_r14q, "!=", :a_no
@@ -1337,8 +1344,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_r14q, "count>0"
         condition_B :q_r14q, "!=", :a_no
-        
-      
+              
       q_r15q "15. Will blood be collected from the animals?", :pick => :one
         a_yes "Yes"
         a_no "No"
@@ -1498,8 +1504,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_r19q, "count>0"
         condition_B :q_r20q, "!=", :a_no
-        
-      
+              
       q_r20q "20.  Will radioisotopes be administered to the animals in the study?", :pick => :one
         a_yes "Yes"
         a_no "No"
@@ -1658,8 +1663,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_r24q, "count>0"
         condition_B :q_r24q, "!=", :a_no
-        
-      
+              
       q_r25q "25. Is Natural (no intervention) death required as an endpoint for this study?", :pick => :one
         a_yes "Yes"
         a_no "No"
@@ -1753,7 +1757,6 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_h2 "2.Age or Weight"
         a :string
-
       
       q_h3q "3.Rationale for using this species", :pick => :one
         a_a "a)There is demonostrated similarity of the process under study to that of humans"
@@ -1770,7 +1773,7 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_h4 "4. Describe, in chronological order, all procedures that will include the use of animals:  *Note:  This description should allow the IACUC to understand the experimental course of an animal from its entry into the experiment to the endpoint of the study"
         a :text
             
-        q "5. Justify the number of animals required for the 3 year duration of the IACUC protocol (Check and complete all that apply)", :pick => :any
+      q "5. Justify the number of animals required for the 3 year duration of the IACUC protocol (Check and complete all that apply)", :pick => :any
         answer "a)Animals will be assigned to experimental groups.  Provide statistical or equivalent justification for the number of groups and number of animals per group Justify:"
         answer "b) The procedures are technically difficult, and extra animals will be needed to replace failure of the experiment.  Explain:"
         answer "c)This experiement is for obtaining pilot data that will be used to develop or learn new procedures or provide data for planning future studies.  Explain:"
@@ -1779,7 +1782,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         answer "f)This protocol is a teaching or training"
         answer "g) Other experimental design or justification"
 
-        label :"6.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
+      label :"6.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
       
       q_h6a "a) Total number of animals justified "
         a :string
@@ -1792,7 +1795,6 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_h6d  "d) Category E: unrelieved pain/distress"
         a :string
-
       
       q_h7 "7.  Describe the most commonly recognized signs or side effects the animals may experience in reponse to the proposed experiment.  What, if anything, can be done to alleviate these clinical signs?  How will animals be monitored for an adverse reaction (including frequency of monitoring)?"
         a :text
@@ -1805,7 +1807,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         a_yes "Yes"
         a_no  "No"
 
-        q "a) Describe and justify"
+      q "a) Describe and justify"
         a :text
         dependency :rule=>"A"
         condition_A :q_hhh, "==", :a_yes
@@ -1814,11 +1816,11 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_yes14 "10.  Will a surgical procedure, either survival or terminal, or tissue harvest prior to death be performed on the animals?", :pick => :one
         a_yes "Yes"
         a_no "No"
-        q "a) Describe the required pre-operative procedures (fasting, etc):"
+      q "a) Describe the required pre-operative procedures (fasting, etc):"
         a :text
         dependency :rule=>"A"
         condition_A :q_yes14, "==", :a_yes
-        q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
+      q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
         a :text
         dependency :rule=>"A and B"
         condition_A :q_yes14, "count>0"
@@ -1887,7 +1889,8 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_h11q "11.  Will the animals be anesthetized?", :pick => :one
         a_yes "Yes"
         a_no  "No"
-        label "a) induction"
+        
+      label "a) induction"
         dependency :rule=>"A"
         condition_A :q_h11q, "==", :a_yes
       
@@ -1908,7 +1911,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_h11q, "count>0"
         condition_B :q_h11q, "!=", :a_no
-        label "b) Maintenance"
+      label "b) Maintenance"
         dependency :rule=>"A and B"
         condition_A :q_h11q, "count>0"
         condition_B :q_h11q, "!=", :a_no
@@ -1951,8 +1954,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_h12q "12.  Will muscle relaxants (paralytics, neuromuscular blocking agents) be utilized?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a) induction"
+        a_no  "No"
+        
+      label "a) induction"
         dependency :rule=>"A"
         condition_A :q_h12q, "==", :a_yes
       
@@ -1994,8 +1998,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_h13q "13. Will anlgesics (pain relievers) be used?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
+        a_no  "No"
+        
+      label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
         dependency :rule=>"A"
         condition_A :q_h13q, "==", :a_yes
       
@@ -2025,8 +2030,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_h14q "14. Will animals be immunized?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a) Initial Immunization"
+        a_no  "No"
+        
+      label "a) Initial Immunization"
         dependency :rule=>"A"
         condition_A :q_h14q, "==", :a_yes
       
@@ -2065,7 +2071,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_h14q, "count>0"
         condition_B :q_h14q, "!=", :a_no
-        label "b) Re-immunization (booster)"
+      label "b) Re-immunization (booster)"
         dependency :rule=>"A and B"
         condition_A :q_h14q, "count>0"
         condition_B :q_h14q, "!=", :a_no
@@ -2100,7 +2106,6 @@ survey "IACUC Protocol", :default_mandatory => false do
         condition_A :q_h14q, "count>0"
         condition_B :q_h14q, "!=", :a_no
         
-      
       q_h15q "15. Will blood be collected from the animals?", :pick => :one
         a_yes "Yes"
         a_no "No"
@@ -2260,8 +2265,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_h19q, "count>0"
         condition_B :q_h20q, "!=", :a_no
-        
-      
+              
       q_h20q "20.  Will radioisotopes be administered to the animals in the study?", :pick => :one
         a_yes "Yes"
         a_no "No"
@@ -2420,8 +2424,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_h24q, "count>0"
         condition_B :q_h24q, "!=", :a_no
-        
-      
+              
       q_h25q "25. Is Natural (no intervention) death required as an endpoint for this study?", :pick => :one
         a_yes "Yes"
         a_no "No"
@@ -2515,7 +2518,6 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_rb2 "2.Age or Weight"
         a :string
-
       
       q_rb3q "3.Rationale for using this species", :pick => :one
         a_a "a)There is demonostrated similarity of the process under study to that of humans"
@@ -2532,7 +2534,7 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_rb4 "4. Describe, in chronological order, all procedures that will include the use of animals:  *Note:  This description should allow the IACUC to understand the experimental course of an animal from its entry into the experiment to the endpoint of the study"
         a :text
             
-        q "5. Justify the number of animals required for the 3 year duration of the IACUC protocol (Check and complete all that apply)", :pick => :any
+      q "5. Justify the number of animals required for the 3 year duration of the IACUC protocol (Check and complete all that apply)", :pick => :any
         answer "a)Animals will be assigned to experimental groups.  Provide statistical or equivalent justification for the number of groups and number of animals per group Justify:"
         answer "b) The procedures are technically difficult, and extra animals will be needed to replace failure of the experiment.  Explain:"
         answer "c)This experiement is for obtaining pilot data that will be used to develop or learn new procedures or provide data for planning future studies.  Explain:"
@@ -2541,7 +2543,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         answer "f)This protocol is a teaching or training"
         answer "g) Other experimental design or justification"
 
-        label :"6.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
+      label :"6.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
       
       q_rb6a "a) Total number of animals justified "
         a :string
@@ -2554,7 +2556,6 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_rb6d  "d) Category E: unrelieved pain/distress"
         a :string
-
       
       q_rb7 "7.  Describe the most commonly recognized signs or side effects the animals may experience in reponse to the proposed experiment.  What, if anything, can be done to alleviate these clinical signs?  How will animals be monitored for an adverse reaction (including frequency of monitoring)?"
         a :text
@@ -2567,7 +2568,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         a_yes "Yes"
         a_no  "No"
 
-        q "a) Describe and justify"
+      q "a) Describe and justify"
         a :text
         dependency :rule=>"A"
         condition_A :q_rbrr, "==", :a_yes
@@ -2576,11 +2577,11 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_yes15 "10.  Will a surgical procedure, either survival or terminal, or tissue harvest prior to death be performed on the animals?", :pick => :one
         a_yes "Yes"
         a_no "No"
-        q "a) Describe the required pre-operative procedures (fasting, etc):"
+      q "a) Describe the required pre-operative procedures (fasting, etc):"
         a :text
         dependency :rule=>"A"
         condition_A :q_yes15, "==", :a_yes
-        q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
+      q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
         a :text
         dependency :rule=>"A and B"
         condition_A :q_yes15, "count>0"
@@ -2649,7 +2650,8 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_rb11q "11.  Will the animals be anesthetized?", :pick => :one
         a_yes "Yes"
         a_no  "No"
-        label "a) induction"
+        
+      label "a) induction"
         dependency :rule=>"A"
         condition_A :q_rb11q, "==", :a_yes
       
@@ -2670,7 +2672,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_rb11q, "count>0"
         condition_B :q_rb11q, "!=", :a_no
-        label "b) Maintenance"
+      label "b) Maintenance"
         dependency :rule=>"A and B"
         condition_A :q_rb11q, "count>0"
         condition_B :q_rb11q, "!=", :a_no
@@ -2713,8 +2715,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_rb12q "12.  Will muscle relaxants (paralytics, neuromuscular blocking agents) be utilized?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a) induction"
+        a_no  "No"
+        
+      label "a) induction"
         dependency :rule=>"A"
         condition_A :q_rb12q, "==", :a_yes
       
@@ -2756,8 +2759,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_rb13q "13. Will anlgesics (pain relievers) be used?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
+        a_no  "No"
+        
+      label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
         dependency :rule=>"A"
         condition_A :q_rb13q, "==", :a_yes
       
@@ -2787,8 +2791,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_rb14q "14. Will animals be immunized?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a) Initial Immunization"
+        a_no  "No"
+        
+      label "a) Initial Immunization"
         dependency :rule=>"A"
         condition_A :q_rb14q, "==", :a_yes
       
@@ -2827,7 +2832,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_rb14q, "count>0"
         condition_B :q_rb14q, "!=", :a_no
-        label "b) Re-immunization (booster)"
+      label "b) Re-immunization (booster)"
         dependency :rule=>"A and B"
         condition_A :q_rb14q, "count>0"
         condition_B :q_rb14q, "!=", :a_no
@@ -2861,8 +2866,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_rb14q, "count>0"
         condition_B :q_rb14q, "!=", :a_no
-        
-      
+              
       q_rb15q "15. Will blood be collected from the animals?", :pick => :one
         a_yes "Yes"
         a_no "No"
@@ -3293,7 +3297,7 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_g4 "4. Describe, in chronological order, all procedures that will include the use of animals:  *Note:  This description should allow the IACUC to understand the experimental course of an animal from its entry into the experiment to the endpoint of the study"
         a :text
             
-        q "5. Justify the number of animals required for the 3 year duration of the IACUC protocol (Check and complete all that apply)", :pick => :any
+      q "5. Justify the number of animals required for the 3 year duration of the IACUC protocol (Check and complete all that apply)", :pick => :any
         answer "a)Animals will be assigned to experimental groups.  Provide statistical or equivalent justification for the number of groups and number of animals per group Justify:"
         answer "b) The procedures are technically difficult, and extra animals will be needed to replace failure of the experiment.  Explain:"
         answer "c)This experiement is for obtaining pilot data that will be used to develop or learn new procedures or provide data for planning future studies.  Explain:"
@@ -3302,7 +3306,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         answer "f)This protocol is a teaching or training"
         answer "g) Other experimental design or justification"
 
-        label :"6.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
+      label :"6.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
       
       q_g6a "a) Total number of animals justified "
         a :string
@@ -3315,7 +3319,6 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_g6d  "d) Category E: unrelieved pain/distress"
         a :string
-
       
       q_g7 "7.  Describe the most commonly recognized signs or side effects the animals may experience in reponse to the proposed experiment.  What, if anything, can be done to alleviate these clinical signs?  How will animals be monitored for an adverse reaction (including frequency of monitoring)?"
         a :text
@@ -3328,7 +3331,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         a_yes "Yes"
         a_no  "No"
 
-        q "a) Describe and justify"
+      q "a) Describe and justify"
         a :text
         dependency :rule=>"A"
         condition_A :q_grr, "==", :a_yes
@@ -3337,11 +3340,11 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_yes12 "10.  Will a surgical procedure, either survival or terminal, or tissue harvest prior to death be performed on the animals?", :pick => :one
         a_yes "Yes"
         a_no "No"
-        q "a) Describe the required pre-operative procedures (fasting, etc):"
+      q "a) Describe the required pre-operative procedures (fasting, etc):"
         a :text
         dependency :rule=>"A"
         condition_A :q_yes12, "==", :a_yes
-        q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
+      q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
         a :text
         dependency :rule=>"A and B"
         condition_A :q_yes12, "count>0"
@@ -3410,7 +3413,8 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_g11q "11.  Will the animals be anesthetized?", :pick => :one
         a_yes "Yes"
         a_no  "No"
-        label "a) induction"
+        
+      label "a) induction"
         dependency :rule=>"A"
         condition_A :q_g11q, "==", :a_yes
       
@@ -3431,7 +3435,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_g11q, "count>0"
         condition_B :q_g11q, "!=", :a_no
-        label "b) Maintenance"
+      label "b) Maintenance"
         dependency :rule=>"A and B"
         condition_A :q_g11q, "count>0"
         condition_B :q_g11q, "!=", :a_no
@@ -3474,8 +3478,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_g12q "12.  Will muscle relaxants (paralytics, neuromuscular blocking agents) be utilized?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a) induction"
+        a_no  "No"
+        
+      label "a) induction"
         dependency :rule=>"A"
         condition_A :q_g12q, "==", :a_yes
       
@@ -3517,8 +3522,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_g13q "13. Will anlgesics (pain relievers) be used?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
+        a_no  "No"
+        
+      label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
         dependency :rule=>"A"
         condition_A :q_g13q, "==", :a_yes
       
@@ -3548,8 +3554,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_g14q "14. Will animals be immunized?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a) Initial Immunization"
+        a_no  "No"
+        
+      label "a) Initial Immunization"
         dependency :rule=>"A"
         condition_A :q_g14q, "==", :a_yes
       
@@ -3588,7 +3595,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_g14q, "count>0"
         condition_B :q_g14q, "!=", :a_no
-        label "b) Re-immunization (booster)"
+      label "b) Re-immunization (booster)"
         dependency :rule=>"A and B"
         condition_A :q_g14q, "count>0"
         condition_B :q_g14q, "!=", :a_no
@@ -3623,7 +3630,6 @@ survey "IACUC Protocol", :default_mandatory => false do
         condition_A :q_g14q, "count>0"
         condition_B :q_g14q, "!=", :a_no
         
-      
       q_g15q "15. Will blood be collected from the animals?", :pick => :one
         a_yes "Yes"
         a_no "No"
@@ -3783,8 +3789,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_g19q, "count>0"
         condition_B :q_g20q, "!=", :a_no
-        
-      
+              
       q_g20q "20.  Will radioisotopes be administered to the animals in the study?", :pick => :one
         a_yes "Yes"
         a_no "No"
@@ -3943,8 +3948,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_g24q, "count>0"
         condition_B :q_g24q, "!=", :a_no
-        
-      
+              
       q_g25q "25. Is Natural (no intervention) death required as an endpoint for this study?", :pick => :one
         a_yes "Yes"
         a_no "No"
@@ -4056,7 +4060,7 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_sh15 "5. Describe, in chronological order, all procedures that will include the use of animals:  *Note:  This description should allow the IACUC to understand the experimental course of an animal from its entry into the experiment to the endpoint of the study"
         a :text        
-        q "6. Justify the number of animals required for the 3 year duration of the IACUC protocol (Check and complete all that apply)", :pick => :any
+      q "6. Justify the number of animals required for the 3 year duration of the IACUC protocol (Check and complete all that apply)", :pick => :any
         answer "a)Animals will be assigned to experimental groups.  Provide statistical or equivalent justification for the number of groups and number of animals per group Justify:"
         answer "b) The procedures are technically difficult, and extra animals will be needed to replace failure of the experiment.  Explain:"
         answer "c)This experiement is for obtaining pilot data that will be used to develop or learn new procedures or provide data for planning future studies.  Explain:"
@@ -4065,7 +4069,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         answer "f)This protocol is a teaching or training"
         answer "g) Other experimental design or justification"
 
-        label :"7.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
+      label :"7.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
       
       q_h16aa "a) Total number of animals justified "
         a :string
@@ -4078,7 +4082,6 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_h16dd  "d) Category E: unrelieved pain/distress"
         a :string
-
       
       q_h17 "8.  Describe the most commonly recognized signs or side effects the animals may experience in reponse to the proposed experiment.  What, if anything, can be done to alleviate these clinical signs?  How will animals be monitored for an adverse reaction (including frequency of monitoring)?"
         a :text
@@ -4098,11 +4101,11 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_yes14a "11.  Will a surgical procedure, either survival or terminal, or tissue harvest prior to death be performed on the animals?", :pick => :one
         a_yes "Yes"
         a_no "No"
-        q "a) Describe the required pre-operative procedures (fasting, etc):"
+      q "a) Describe the required pre-operative procedures (fasting, etc):"
         a :text
         dependency :rule=>"A"
         condition_A :q_yes14a, "==", :a_yes
-        q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
+      q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
         a :text
         dependency :rule=>"A and B"
         condition_A :q_yes14a, "count>0"
@@ -4171,7 +4174,8 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_h111q "12.  Will the animals be anesthetized?", :pick => :one
         a_yes "Yes"
         a_no  "No"
-        label "a) induction"
+        
+      label "a) induction"
         dependency :rule=>"A"
         condition_A :q_h111q, "==", :a_yes
       
@@ -4235,8 +4239,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_h112q "13.  Will muscle relaxants (paralytics, neuromuscular blocking agents) be utilized?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a) induction"
+        a_no  "No"
+        
+      label "a) induction"
         dependency :rule=>"A"
         condition_A :q_h112q, "==", :a_yes
       
@@ -4278,8 +4283,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_h113q "14. Will anlgesics (pain relievers) be used?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
+        a_no  "No"
+        
+      label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
         dependency :rule=>"A"
         condition_A :q_h113q, "==", :a_yes
       
@@ -4309,8 +4315,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_h114q "15. Will animals be immunized?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a) Initial Immunization"
+        a_no  "No"
+        
+      label "a) Initial Immunization"
         dependency :rule=>"A"
         condition_A :q_h114q, "==", :a_yes
       
@@ -4349,7 +4356,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_h114q, "count>0"
         condition_B :q_h114q, "!=", :a_no
-        label "b) Re-immunization (booster)"
+      label "b) Re-immunization (booster)"
         dependency :rule=>"A and B"
         condition_A :q_h114q, "count>0"
         condition_B :q_h114q, "!=", :a_no
@@ -4787,7 +4794,7 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_sh155 "5. Describe, in chronological order, all procedures that will include the use of animals:  *Note:  This description should allow the IACUC to understand the experimental course of an animal from its entry into the experiment to the endpoint of the study"
         a :text        
-        q "6. Justify the number of animals required for the 3 year duration of the IACUC protocol (Check and complete all that apply)", :pick => :any
+      q "6. Justify the number of animals required for the 3 year duration of the IACUC protocol (Check and complete all that apply)", :pick => :any
         answer "a)Animals will be assigned to experimental groups.  Provide statistical or equivalent justification for the number of groups and number of animals per group Justify:"
         answer "b) The procedures are technically difficult, and extra animals will be needed to replace failure of the experiment.  Explain:"
         answer "c)This experiement is for obtaining pilot data that will be used to develop or learn new procedures or provide data for planning future studies.  Explain:"
@@ -4796,7 +4803,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         answer "f)This protocol is a teaching or training"
         answer "g) Other experimental design or justification"
 
-        label :"7.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
+      label :"7.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
       
       q_sh16a "a) Total number of animals justified "
         a :string
@@ -4809,33 +4816,30 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_sh16d  "d) Category E: unrelieved pain/distress"
         a :string
-
       
       q_sh17 "8.  Describe the most commonly recognized signs or side effects the animals may experience in reponse to the proposed experiment.  What, if anything, can be done to alleviate these clinical signs?  How will animals be monitored for an adverse reaction (including frequency of monitoring)?"
         a :text
       
       q_sh18 "9. where will the animals be housed?"
-        a :string
-            
+        a :string          
       
       q_sh1hh "10.  Will any specialized housing and/or husbandry be required (special diets, single housing, metabolic cages, etc.)?", :pick => :one
         a_yes "Yes"
         a_no  "No"
 
-        q "a) Describe and justify"
+      q "a) Describe and justify"
         a :text
         dependency :rule=>"A"
-        condition_A :q_sh1hh, "==", :a_yes
-      
+        condition_A :q_sh1hh, "==", :a_yes      
       
       q_yes14b "11.  Will a surgical procedure, either survival or terminal, or tissue harvest prior to death be performed on the animals?", :pick => :one
         a_yes "Yes"
         a_no "No"
-        q "a) Describe the required pre-operative procedures (fasting, etc):"
+      q "a) Describe the required pre-operative procedures (fasting, etc):"
         a :text
         dependency :rule=>"A"
         condition_A :q_yes14b, "==", :a_yes
-        q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
+      q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
         a :text
         dependency :rule=>"A and B"
         condition_A :q_yes14b, "count>0"
@@ -4904,7 +4908,8 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_sh111q "12.  Will the animals be anesthetized?", :pick => :one
         a_yes "Yes"
         a_no  "No"
-        label "a) induction"
+        
+      label "a) induction"
         dependency :rule=>"A"
         condition_A :q_sh111q, "==", :a_yes
       
@@ -4925,7 +4930,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_sh111q, "count>0"
         condition_B :q_sh111q, "!=", :a_no
-        label "b) Maintenance"
+      label "b) Maintenance"
         dependency :rule=>"A and B"
         condition_A :q_sh111q, "count>0"
         condition_B :q_sh111q, "!=", :a_no
@@ -4968,8 +4973,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_sh112q "13.  Will muscle relaxants (paralytics, neuromuscular blocking agents) be utilized?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a) induction"
+        a_no  "No"
+        
+      label "a) induction"
         dependency :rule=>"A"
         condition_A :q_sh112q, "==", :a_yes
       
@@ -5011,8 +5017,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_sh113q "14. Will anlgesics (pain relievers) be used?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
+        a_no  "No"
+        
+      label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
         dependency :rule=>"A"
         condition_A :q_sh113q, "==", :a_yes
       
@@ -5042,8 +5049,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_sh114q "15. Will animals be immunized?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a) Initial Immunization"
+        a_no  "No"
+        
+      label "a) Initial Immunization"
         dependency :rule=>"A"
         condition_A :q_sh114q, "==", :a_yes
       
@@ -5082,7 +5090,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_sh114q, "count>0"
         condition_B :q_sh114q, "!=", :a_no
-        label "b) Re-immunization (booster)"
+      label "b) Re-immunization (booster)"
         dependency :rule=>"A and B"
         condition_A :q_sh114q, "count>0"
         condition_B :q_sh114q, "!=", :a_no
@@ -5116,8 +5124,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_sh114q, "count>0"
         condition_B :q_sh114q, "!=", :a_no
-        
-      
+              
       q_sh115q "16. Will blood be collected from the animals?", :pick => :one
         a_yes "Yes"
         a_no "No"
@@ -5253,7 +5260,6 @@ survey "IACUC Protocol", :default_mandatory => false do
         condition_A :q_sh119q, "count>0"
         condition_B :q_sh120q, "!=", :a_no
         
-      
       q_sh120q "21.  Will radioisotopes be administered to the animals in the study?", :pick => :one
         a_yes "Yes"
         a_no "No"
@@ -5412,8 +5418,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_sh124q, "count>0"
         condition_B :q_sh124q, "!=", :a_no
-        
-      
+             
       q_sh125q "26. Is Natural (no intervention) death required as an endpoint for this study?", :pick => :one
         a_yes "Yes"
         a_no "No"
@@ -5520,7 +5525,7 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_ho155 "5. Describe, in chronological order, all procedures that will include the use of animals:  *Note:  This description should allow the IACUC to understand the experimental course of an animal from its entry into the experiment to the endpoint of the study"
         a :text        
-        q "6. Justify the number of animals required for the 3 year duration of the IACUC protocol (Check and complete all that apply)", :pick => :any
+      q "6. Justify the number of animals required for the 3 year duration of the IACUC protocol (Check and complete all that apply)", :pick => :any
         answer "a)Animals will be assigned to experimental groups.  Provide statistical or equivalent justification for the number of groups and number of animals per group Justify:"
         answer "b) The procedures are technically difficult, and extra animals will be needed to replace failure of the experiment.  Explain:"
         answer "c)This experiement is for obtaining pilot data that will be used to develop or learn new procedures or provide data for planning future studies.  Explain:"
@@ -5529,7 +5534,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         answer "f)This protocol is a teaching or training"
         answer "g) Other experimental design or justification"
 
-        label :"7.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
+      label :"7.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
       
       q_ho16a "a) Total number of animals justified "
         a :string
@@ -5542,7 +5547,6 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_ho16d  "d) Category E: unrelieved pain/distress"
         a :string
-
       
       q_ho17 "8.  Describe the most commonly recognized signs or side effects the animals may experience in reponse to the proposed experiment.  What, if anything, can be done to alleviate these clinical signs?  How will animals be monitored for an adverse reaction (including frequency of monitoring)?"
         a :text
@@ -5555,7 +5559,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         a_yes "Yes"
         a_no  "No"
 
-        q "a) Describe and justify"
+      q "a) Describe and justify"
         a :text
         dependency :rule=>"A"
         condition_A :q_ho1hh, "==", :a_yes
@@ -5564,11 +5568,11 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_yes14ho "11.  Will a surgical procedure, either survival or terminal, or tissue harvest prior to death be performed on the animals?", :pick => :one
         a_yes "Yes"
         a_no "No"
-        q "a) Describe the required pre-operative procedures (fasting, etc):"
+      q "a) Describe the required pre-operative procedures (fasting, etc):"
         a :text
         dependency :rule=>"A"
         condition_A :q_yes14ho, "==", :a_yes
-        q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
+      q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
         a :text
         dependency :rule=>"A and B"
         condition_A :q_yes14ho, "count>0"
@@ -5637,7 +5641,8 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_ho111q "12.  Will the animals be anesthetized?", :pick => :one
         a_yes "Yes"
         a_no  "No"
-        label "a) induction"
+        
+      label "a) induction"
         dependency :rule=>"A"
         condition_A :q_ho111q, "==", :a_yes
       
@@ -5658,7 +5663,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_ho111q, "count>0"
         condition_B :q_ho111q, "!=", :a_no
-        label "b) Maintenance"
+      label "b) Maintenance"
         dependency :rule=>"A and B"
         condition_A :q_ho111q, "count>0"
         condition_B :q_ho111q, "!=", :a_no
@@ -5701,8 +5706,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_ho112q "13.  Will muscle relaxants (paralytics, neuromuscular blocking agents) be utilized?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a) induction"
+        a_no  "No"
+        
+      label "a) induction"
         dependency :rule=>"A"
         condition_A :q_ho112q, "==", :a_yes
       
@@ -5744,8 +5750,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_ho113q "14. Will anlgesics (pain relievers) be used?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
+        a_no  "No"
+          
+      label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
         dependency :rule=>"A"
         condition_A :q_ho113q, "==", :a_yes
       
@@ -5775,8 +5782,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_ho114q "15. Will animals be immunized?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a) Initial Immunization"
+        a_no  "No"
+        
+      label "a) Initial Immunization"
         dependency :rule=>"A"
         condition_A :q_ho114q, "==", :a_yes
       
@@ -5815,7 +5823,8 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_ho114q, "count>0"
         condition_B :q_ho114q, "!=", :a_no
-        label "b) Re-immunization (booster)"
+
+      label "b) Re-immunization (booster)"
         dependency :rule=>"A and B"
         condition_A :q_ho114q, "count>0"
         condition_B :q_ho114q, "!=", :a_no
@@ -5849,8 +5858,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_ho114q, "count>0"
         condition_B :q_ho114q, "!=", :a_no
-        
-      
+              
       q_ho115q "16. Will blood be collected from the animals?", :pick => :one
         a_yes "Yes"
         a_no "No"
@@ -5985,8 +5993,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_ho119q, "count>0"
         condition_B :q_ho120q, "!=", :a_no
-        
-      
+              
       q_ho120q "21.  Will radioisotopes be administered to the animals in the study?", :pick => :one
         a_yes "Yes"
         a_no "No"
@@ -6145,8 +6152,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_ho124q, "count>0"
         condition_B :q_ho124q, "!=", :a_no
-        
-      
+              
       q_ho125q "26. Is Natural (no intervention) death required as an endpoint for this study?", :pick => :one
         a_yes "Yes"
         a_no "No"
@@ -6247,7 +6253,7 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_pr155 "3. Describe, in chronological order, all procedures that will include the use of animals:  *Note:  This description should allow the IACUC to understand the experimental course of an animal from its entry into the experiment to the endpoint of the study"
         a :text        
-        q "4. Justify the number of animals required for the 3 year duration of the IACUC protocol (Check and complete all that apply)", :pick => :any
+      q "4. Justify the number of animals required for the 3 year duration of the IACUC protocol (Check and complete all that apply)", :pick => :any
         answer "a)Animals will be assigned to experimental groups.  Provide statistical or equivalent justification for the number of groups and number of animals per group Justify:"
         answer "b) The procedures are technically difficult, and extra animals will be needed to replace failure of the experiment.  Explain:"
         answer "c)This experiement is for obtaining pilot data that will be used to develop or learn new procedures or provide data for planning future studies.  Explain:"
@@ -6256,7 +6262,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         answer "f)This protocol is a teaching or training"
         answer "g) Other experimental design or justification"
 
-        label :"5.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
+      label :"5.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
       
       q_pr16a "a) Total number of animals justified "
         a :string
@@ -6269,7 +6275,6 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_pr16d  "d) Category E: unrelieved pain/distress"
         a :string
-
       
       q_pr17 "6.  Describe the most commonly recognized signs or side effects the animals may experience in reponse to the proposed experiment.  What, if anything, can be done to alleviate these clinical signs?  How will animals be monitored for an adverse reaction (including frequency of monitoring)?"
         a :text
@@ -6285,11 +6290,11 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_yes14pr "9.  Will a surgical procedure, either survival or terminal, or tissue harvest prior to death be performed on the animals?", :pick => :one
         a_yes "Yes"
         a_no "No"
-        q "a) Describe the required pre-operative procedures (fasting, etc):"
+      q "a) Describe the required pre-operative procedures (fasting, etc):"
         a :text
         dependency :rule=>"A"
         condition_A :q_yes14pr, "==", :a_yes
-        q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
+      q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
         a :text
         dependency :rule=>"A and B"
         condition_A :q_yes14pr, "count>0"
@@ -6358,7 +6363,8 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_pr111q "10.  Will the animals be anesthetized?", :pick => :one
         a_yes "Yes"
         a_no  "No"
-        label "a) induction"
+        
+      label "a) induction"
         dependency :rule=>"A"
         condition_A :q_pr111q, "==", :a_yes
       
@@ -6379,7 +6385,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_pr111q, "count>0"
         condition_B :q_pr111q, "!=", :a_no
-        label "b) Maintenance"
+      label "b) Maintenance"
         dependency :rule=>"A and B"
         condition_A :q_pr111q, "count>0"
         condition_B :q_pr111q, "!=", :a_no
@@ -6422,8 +6428,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_pr112q "11.  Will muscle relaxants (paralytics, neuromuscular blocking agents) be utilized?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a) induction"
+        a_no  "No"
+        
+      label "a) induction"
         dependency :rule=>"A"
         condition_A :q_pr112q, "==", :a_yes
       
@@ -6465,8 +6472,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_pr113q "12. Will anlgesics (pain relievers) be used?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
+        a_no  "No"
+        
+      label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
         dependency :rule=>"A"
         condition_A :q_pr113q, "==", :a_yes
       
@@ -6496,8 +6504,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_pr114q "13. Will animals be immunized?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a) Initial Immunization"
+        a_no  "No"
+        
+      label "a) Initial Immunization"
         dependency :rule=>"A"
         condition_A :q_pr114q, "==", :a_yes
       
@@ -6536,7 +6545,8 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_pr114q, "count>0"
         condition_B :q_pr114q, "!=", :a_no
-        label "b) Re-immunization (booster)"
+
+      label "b) Re-immunization (booster)"
         dependency :rule=>"A and B"
         condition_A :q_pr114q, "count>0"
         condition_B :q_pr114q, "!=", :a_no
@@ -6706,8 +6716,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_pr119q, "count>0"
         condition_B :q_pr120q, "!=", :a_no
-        
-      
+              
       q_pr120q "19.  Will radioisotopes be administered to the animals in the study?", :pick => :one
         a_yes "Yes"
         a_no "No"
@@ -6866,8 +6875,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_pr124q, "count>0"
         condition_B :q_pr124q, "!=", :a_no
-        
-      
+              
       q_pr125q "24. Is Natural (no intervention) death required as an endpoint for this study?", :pick => :one
         a_yes "Yes"
         a_no "No"
@@ -6953,7 +6961,7 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_agr155 "5. Describe, in chronological order, all procedures that will include the use of animals:  *Note:  This description should allow the IACUC to understand the experimental course of an animal from its entry into the experiment to the endpoint of the study"
         a :text        
-        q "6. Justify the number of animals required for the 3 year duration of the IACUC protocol (Check and complete all that apply)", :pick => :any
+      q "6. Justify the number of animals required for the 3 year duration of the IACUC protocol (Check and complete all that apply)", :pick => :any
         answer "a)Animals will be assigned to experimental groups.  Provide statistical or equivalent justification for the number of groups and number of animals per group Justify:"
         answer "b) The procedures are technically difficult, and extra animals will be needed to replace failure of the experiment.  Explain:"
         answer "c)This experiement is for obtaining pilot data that will be used to develop or learn new procedures or provide data for planning future studies.  Explain:"
@@ -6962,7 +6970,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         answer "f)This protocol is a teaching or training"
         answer "g) Other experimental design or justification"
 
-        label :"7.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
+      label :"7.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
       
       q_agr16a "a) Total number of animals justified "
         a :string
@@ -6975,7 +6983,6 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_agr16d  "d) Category E: unrelieved pain/distress"
         a :string
-
       
       q_agr17 "8.  Describe any specialized housing and/or husbandry be required (special diets, single housing, metabolic cages, etc.)?"
         a :text
@@ -6998,11 +7005,11 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_yes14agr "11.  Will a surgical procedure, either survival or terminal, or tissue harvest prior to death be performed on the animals?", :pick => :one
         a_yes "Yes"
         a_no "No"
-        q "a) Describe the required pre-operative procedures (fasting, etc):"
+      q "a) Describe the required pre-operative procedures (fasting, etc):"
         a :text
         dependency :rule=>"A"
         condition_A :q_yes14agr, "==", :a_yes
-        q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
+      q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
         a :text
         dependency :rule=>"A and B"
         condition_A :q_yes14agr, "count>0"
@@ -7071,7 +7078,8 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_agr111q "12.  Will the animals be anesthetized?", :pick => :one
         a_yes "Yes"
         a_no  "No"
-        label "a) induction"
+        
+      label "a) induction"
         dependency :rule=>"A"
         condition_A :q_agr111q, "==", :a_yes
       
@@ -7092,7 +7100,8 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_agr111q, "count>0"
         condition_B :q_agr111q, "!=", :a_no
-        label "b) Maintenance"
+
+      label "b) Maintenance"
         dependency :rule=>"A and B"
         condition_A :q_agr111q, "count>0"
         condition_B :q_agr111q, "!=", :a_no
@@ -7135,8 +7144,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_agr112q "13.  Will muscle relaxants (paralytics, neuromuscular blocking agents) be utilized?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a) induction"
+        a_no  "No"
+        
+      label "a) induction"
         dependency :rule=>"A"
         condition_A :q_agr112q, "==", :a_yes
       
@@ -7178,8 +7188,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_agr113q "14. Will anlgesics (pain relievers) be used?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
+        a_no  "No"
+        
+      label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
         dependency :rule=>"A"
         condition_A :q_agr113q, "==", :a_yes
       
@@ -7209,8 +7220,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_agr114q "15. Will animals be immunized?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a) Initial Immunization"
+        a_no  "No"
+        
+      label "a) Initial Immunization"
         dependency :rule=>"A"
         condition_A :q_agr114q, "==", :a_yes
       
@@ -7249,7 +7261,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_agr114q, "count>0"
         condition_B :q_agr114q, "!=", :a_no
-        label "b) Re-immunization (booster)"
+      label "b) Re-immunization (booster)"
         dependency :rule=>"A and B"
         condition_A :q_agr114q, "count>0"
         condition_B :q_agr114q, "!=", :a_no
@@ -7283,8 +7295,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_agr114q, "count>0"
         condition_B :q_agr114q, "!=", :a_no
-        
-      
+              
       q_agr115q "16. Will blood be collected from the animals?", :pick => :one
         a_yes "Yes"
         a_no "No"
@@ -7419,8 +7430,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_agr119q, "count>0"
         condition_B :q_agr120q, "!=", :a_no
-        
-      
+              
       q_agr120q "21.  Will radioisotopes be administered to the animals in the study?", :pick => :one
         a_yes "Yes"
         a_no "No"
@@ -7579,8 +7589,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_agr124q, "count>0"
         condition_B :q_agr124q, "!=", :a_no
-        
-      
+              
       q_agr125q "26. Is Natural (no intervention) death required as an endpoint for this study?", :pick => :one
         a_yes "Yes"
         a_no "No"
@@ -7666,8 +7675,7 @@ survey "IACUC Protocol", :default_mandatory => false do
     
       q_pr11hos "1. Species"
         a :string
-        
-      
+              
       q_pr144q1 "2. Rationale for using this Species:", :pick => :one
         a_a "a)There is demonostrated similarity of the process under study to that of humans"
         a_b1 "b)A large amount of relevant data has already been derived from this species"
@@ -7683,7 +7691,7 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_pr135 "3. Describe, in chronological order, all procedures that will include the use of animals:  *Note:  This description should allow the IACUC to understand the experimental course of an animal from its entry into the experiment to the endpoint of the study"
         a :text        
-        q "4. Justify the number of animals required for the 3 year duration of the IACUC protocol (Check and complete all that apply)", :pick => :any
+      q "4. Justify the number of animals required for the 3 year duration of the IACUC protocol (Check and complete all that apply)", :pick => :any
         answer "a)Animals will be assigned to experimental groups.  Provide statistical or equivalent justification for the number of groups and number of animals per group Justify:"
         answer "b) The procedures are technically difficult, and extra animals will be needed to replace failure of the experiment.  Explain:"
         answer "c)This experiement is for obtaining pilot data that will be used to develop or learn new procedures or provide data for planning future studies.  Explain:"
@@ -7692,7 +7700,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         answer "f)This protocol is a teaching or training"
         answer "g) Other experimental design or justification"
 
-        label :"5.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
+      label :"5.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
       
       q_pr16ae "a) Total number of animals justified "
         a :string
@@ -7705,7 +7713,6 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_pr16de  "d) Category E: unrelieved pain/distress"
         a :string
-
       
       q_pr17ee "6.  Describe the most commonly recognized signs or side effects the animals may experience in reponse to the proposed experiment.  What, if anything, can be done to alleviate these clinical signs?  How will animals be monitored for an adverse reaction (including frequency of monitoring)?"
         a :text
@@ -7721,11 +7728,11 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_yes14pre "9.  Will a surgical procedure, either survival or terminal, or tissue harvest prior to death be performed on the animals?", :pick => :one
         a_yes "Yes"
         a_no "No"
-        q "a) Describe the required pre-operative procedures (fasting, etc):"
+      q "a) Describe the required pre-operative procedures (fasting, etc):"
         a :text
         dependency :rule=>"A"
         condition_A :q_yes14pre, "==", :a_yes
-        q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
+      q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
         a :text
         dependency :rule=>"A and B"
         condition_A :q_yes14pre, "count>0"
@@ -7794,7 +7801,8 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_pr111eq "10.  Will the animals be anesthetized?", :pick => :one
         a_yes "Yes"
         a_no  "No"
-        label "a) induction"
+        
+      label "a) induction"
         dependency :rule=>"A"
         condition_A :q_pr111eq, "==", :a_yes
       
@@ -7815,7 +7823,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_pr111eq, "count>0"
         condition_B :q_pr111eq, "!=", :a_no
-        label "b) Maintenance"
+      label "b) Maintenance"
         dependency :rule=>"A and B"
         condition_A :q_pr111eq, "count>0"
         condition_B :q_pr111eq, "!=", :a_no
@@ -7858,9 +7866,10 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_pr112eq "11.  Will muscle relaxants (paralytics, neuromuscular blocking agents) be utilized?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a) induction"
-        dependency :rule=>"A"
+        a_no  "No"
+          
+      label "a) induction"
+       dependency :rule=>"A"
         condition_A :q_pr112eq, "==", :a_yes
       
       q_pr111a2ee "agent"
@@ -7901,8 +7910,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_pr113eq "12. Will anlgesics (pain relievers) be used?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
+        a_no  "No"
+        
+      label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
         dependency :rule=>"A"
         condition_A :q_pr113eq, "==", :a_yes
       
@@ -7932,8 +7942,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_pr114qe "13. Will animals be immunized?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a) Initial Immunization"
+        a_no  "No"
+        
+      label "a) Initial Immunization"
         dependency :rule=>"A"
         condition_A :q_pr114qe, "==", :a_yes
       
@@ -7972,7 +7983,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_pr114qe, "count>0"
         condition_B :q_pr114qe, "!=", :a_no
-        label "b) Re-immunization (booster)"
+      label "b) Re-immunization (booster)"
         dependency :rule=>"A and B"
         condition_A :q_pr114qe, "count>0"
         condition_B :q_pr114qe, "!=", :a_no
@@ -8007,7 +8018,6 @@ survey "IACUC Protocol", :default_mandatory => false do
         condition_A :q_pr114qe, "count>0"
         condition_B :q_pr114qe, "!=", :a_no
         
-      
       q_pr115qe "14. Will blood be collected from the animals?", :pick => :one
         a_yes "Yes"
         a_no "No"
@@ -8142,8 +8152,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_pr119qe, "count>0"
         condition_B :q_pr119qe, "!=", :a_no
-        
-      
+            
       q_pr120qe "19.  Will radioisotopes be administered to the animals in the study?", :pick => :one
         a_yes "Yes"
         a_no "No"
@@ -8302,8 +8311,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_pr124qe, "count>0"
         condition_B :q_pr124qe, "!=", :a_no
-        
-      
+              
       q_pr125qe "24. Is Natural (no intervention) death required as an endpoint for this study?", :pick => :one
         a_yes "Yes"
         a_no "No"
@@ -8389,7 +8397,7 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_lhf155 "4. Describe, in chronological order, all procedures that will include the use of animals:  *Note:  This description should allow the IACUC to understand the experimental course of an animal from its entry into the experiment to the endpoint of the study"
         a :text        
-        q "5. Justify the number of animals required for the 3 year duration of the IACUC protocol (Check and complete all that apply)", :pick => :any
+      q "5. Justify the number of animals required for the 3 year duration of the IACUC protocol (Check and complete all that apply)", :pick => :any
         answer "a)Animals will be assigned to experimental groups.  Provide statistical or equivalent justification for the number of groups and number of animals per group Justify:"
         answer "b) The procedures are technically difficult, and extra animals will be needed to replace failure of the experiment.  Explain:"
         answer "c)This experiement is for obtaining pilot data that will be used to develop or learn new procedures or provide data for planning future studies.  Explain:"
@@ -8398,7 +8406,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         answer "f)This protocol is a teaching or training"
         answer "g) Other experimental design or justification"
 
-        label :"6.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
+      label :"6.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
       
       q_lhf16a "a) Total number of animals justified "
         a :string
@@ -8411,7 +8419,6 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_lhf16d  "d) Category E: unrelieved pain/distress"
         a :string
-
       
       q_lhf17 "7.  Describe the most commonly recognized signs or side effects the animals may experience in reponse to the proposed experiment.  What, if anything, can be done to alleviate these clinical signs?  How will animals be monitored for an adverse reaction (including frequency of monitoring)?"
         a :text
@@ -8422,7 +8429,7 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_yeg99 "9. Will any specialized housing and/or husbandry be required (special diets, single housing, metabolic cages, etc.)?", :pick => :one
         a_yes "Yes"
         a_no "No"
-        q "a)Describe and justify:"
+      q "a)Describe and justify:"
         a :text
         dependency :rule=>"A"
         condition_A :q_yeg99, "==", :a_yes
@@ -8430,11 +8437,11 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_yes14per2 "10.  Will a surgical procedure, either survival or terminal, or tissue harvest prior to death be performed on the animals?", :pick => :one
         a_yes "Yes"
         a_no "No"
-        q "a) Describe the required pre-operative procedures (fasting, etc):"
+      q "a) Describe the required pre-operative procedures (fasting, etc):"
         a :text
         dependency :rule=>"A"
         condition_A :q_yes14per2, "==", :a_yes
-        q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
+      q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
         a :text
         dependency :rule=>"A and B"
         condition_A :q_yes14per2, "count>0"
@@ -8503,7 +8510,8 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_lhf111q "11.  Will the animals be anesthetized?", :pick => :one
         a_yes "Yes"
         a_no  "No"
-        label "a) induction"
+        
+      label "a) induction"
         dependency :rule=>"A"
         condition_A :q_lhf111q, "==", :a_yes
       
@@ -8524,7 +8532,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_lhf111q, "count>0"
         condition_B :q_lhf111q, "!=", :a_no
-        label "b) Maintenance"
+      label "b) Maintenance"
         dependency :rule=>"A and B"
         condition_A :q_lhf111q, "count>0"
         condition_B :q_lhf111q, "!=", :a_no
@@ -8567,8 +8575,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_lhf112q "12.  Will muscle relaxants (paralytics, neuromuscular blocking agents) be utilized?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a) induction"
+        a_no  "No"
+        
+      label "a) induction"
         dependency :rule=>"A"
         condition_A :q_lhf112q, "==", :a_yes
       
@@ -8610,8 +8619,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_lhf113q "13. Will anlgesics (pain relievers) be used?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
+        a_no  "No"
+        
+      label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
         dependency :rule=>"A"
         condition_A :q_lhf113q, "==", :a_yes
       
@@ -8719,8 +8729,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_lhf119q, "count>0"
         condition_B :q_lhf120q, "!=", :a_no
-        
-      
+              
       q_lhf120q "17.  Will radioisotopes be administered to the animals in the study?", :pick => :one
         a_yes "Yes"
         a_no "No"
@@ -8879,8 +8888,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_lhf124q, "count>0"
         condition_B :q_lhf124q, "!=", :a_no
-        
-      
+              
       q_lhf125q "22. Is Natural (no intervention) death required as an endpoint for this study?", :pick => :one
         a_yes "Yes"
         a_no "No"
@@ -9055,8 +9063,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_lhf124qe, "count>0"
         condition_B :q_lhf124qe, "!=", :a_no
-        
-      
+              
       q_lhf125qe "26. Is Natural (no intervention) death required as an endpoint for this study?", :pick => :one
         a_yes "Yes"
         a_no "No"
@@ -9173,7 +9180,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"Z"
         condition_Z :q_gup2, "==", :a_e3
 
-        label :"6.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
+      label :"6.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
       
       q_gup16a1 "a) Total number of animals justified "
         a :string
@@ -9186,7 +9193,6 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_gup16d4  "d) Category E: unrelieved pain/distress"
         a :string
-
       
       q_gup17 "7.  Describe the most commonly recognized signs or side effects the animals may experience in reponse to the proposed experiment.  What, if anything, can be done to alleviate these clinical signs?  How will animals be monitored for an adverse reaction (including frequency of monitoring)?"
         a :text
@@ -9197,7 +9203,7 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_ye99 "9. Will any specialized housing and/or husbandry be required (special diets, single housing, metabolic cages, etc.)?", :pick => :one
         a_yes "Yes"
         a_no "No"
-        q "a)Describe and justify:"
+      q "a)Describe and justify:"
         a :text
         dependency :rule=>"A"
         condition_A :q_ye99, "==", :a_yes
@@ -9205,11 +9211,11 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_gupyes2 "10.  Will a surgical procedure, either survival or terminal, or tissue harvest prior to death be performed on the animals?", :pick => :one
         a_yes "Yes"
         a_no "No"
-        q "a) Describe the required pre-operative procedures (fasting, etc):"
+      q "a) Describe the required pre-operative procedures (fasting, etc):"
         a :text
         dependency :rule=>"A"
         condition_A :q_gupyes2, "==", :a_yes
-        q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
+      q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
         a :text
         dependency :rule=>"A and B"
         condition_A :q_gupyes2, "count>0"
@@ -9278,7 +9284,8 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_gup111q "11.  Will the animals be anesthetized?", :pick => :one
         a_yes "Yes"
         a_no  "No"
-        label "a) induction"
+        
+      label "a) induction"
         dependency :rule=>"A"
         condition_A :q_gup111q, "==", :a_yes
       
@@ -9299,7 +9306,8 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_gup111q, "count>0"
         condition_B :q_gup111q, "!=", :a_no
-        label "b) Maintenance"
+
+      label "b) Maintenance"
         dependency :rule=>"A and B"
         condition_A :q_gup111q, "count>0"
         condition_B :q_gup111q, "!=", :a_no
@@ -9342,8 +9350,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_gup112q "12.  Will muscle relaxants (paralytics, neuromuscular blocking agents) be utilized?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a) induction"
+        a_no  "No"
+        
+      label "a) induction"
         dependency :rule=>"A"
         condition_A :q_gup112q, "==", :a_yes
       
@@ -9385,8 +9394,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_gup113q "13. Will anlgesics (pain relievers) be used?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
+        a_no  "No"
+        
+      label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
         dependency :rule=>"A"
         condition_A :q_gup113q, "==", :a_yes
       
@@ -9416,8 +9426,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_gup14q "14. Will animals be immunized?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a) Initial Immunization"
+        a_no  "No"
+        
+      label "a) Initial Immunization"
         dependency :rule=>"A"
         condition_A :q_gup14q, "==", :a_yes
       
@@ -9456,7 +9467,8 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_gup14q, "count>0"
         condition_B :q_gup14q, "!=", :a_no
-        label "b) Re-immunization (booster)"
+
+      label "b) Re-immunization (booster)"
         dependency :rule=>"A and B"
         condition_A :q_gup14q, "count>0"
         condition_B :q_gup14q, "!=", :a_no
@@ -9677,7 +9689,6 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_gup22q, "count>0"
         condition_B :q_gup22q, "!=", :a_no
-
       
       q_gup121q "21. Will organisms that are potentially infectious to humans (classified by CDC at some biosafety level) be administered to the animals?", :pick => :one
         a_yes "Yes"
@@ -9810,8 +9821,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_gup124q, "count>0"
         condition_B :q_gup124q, "!=", :a_no
-        
-      
+              
       q_gup125q "25. Is Natural (no intervention) death required as an endpoint for this study?", :pick => :one
         a_yes "Yes"
         a_no "No"
@@ -9940,7 +9950,7 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"Z"
         condition_Z :q_fer2, "==", :a_e3
 
-        label :"6.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
+    label :"6.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
       
       q_fer16a1 "a) Total number of animals justified "
         a :string
@@ -9953,7 +9963,6 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_fer16d4  "d) Category E: unrelieved pain/distress"
         a :string
-
       
       q_fer17 "7.  Describe the most commonly recognized signs or side effects the animals may experience in reponse to the proposed experiment.  What, if anything, can be done to alleviate these clinical signs?  How will animals be monitored for an adverse reaction (including frequency of monitoring)?"
         a :text
@@ -9964,7 +9973,7 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_fer99 "9. Will any specialized housing and/or husbandry be required (special diets, single housing, metabolic cages, etc.)?", :pick => :one
         a_yes "Yes"
         a_no "No"
-        q "a)Describe and justify:"
+      q "a)Describe and justify:"
         a :text
         dependency :rule=>"A"
         condition_A :q_ye99, "==", :a_yes
@@ -9972,11 +9981,11 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_feryes2 "10.  Will a surgical procedure, either survival or terminal, or tissue harvest prior to death be performed on the animals?", :pick => :one
         a_yes "Yes"
         a_no "No"
-        q "a) Describe the required pre-operative procedures (fasting, etc):"
+      q "a) Describe the required pre-operative procedures (fasting, etc):"
         a :text
         dependency :rule=>"A"
         condition_A :q_feryes2, "==", :a_yes
-        q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
+      q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
         a :text
         dependency :rule=>"A and B"
         condition_A :q_feryes2, "count>0"
@@ -10045,7 +10054,8 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_fer111q "11.  Will the animals be anesthetized?", :pick => :one
         a_yes "Yes"
         a_no  "No"
-        label "a) induction"
+        
+      label "a) induction"
         dependency :rule=>"A"
         condition_A :q_fer111q, "==", :a_yes
       
@@ -10066,7 +10076,8 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_fer111q, "count>0"
         condition_B :q_fer111q, "!=", :a_no
-        label "b) Maintenance"
+
+      label "b) Maintenance"
         dependency :rule=>"A and B"
         condition_A :q_fer111q, "count>0"
         condition_B :q_fer111q, "!=", :a_no
@@ -10109,8 +10120,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_fer112q "12.  Will muscle relaxants (paralytics, neuromuscular blocking agents) be utilized?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a) induction"
+        a_no  "No"
+        
+      label "a) induction"
         dependency :rule=>"A"
         condition_A :q_fer112q, "==", :a_yes
       
@@ -10152,8 +10164,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_fer113q "13. Will anlgesics (pain relievers) be used?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
+        a_no  "No"
+        
+      label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
         dependency :rule=>"A"
         condition_A :q_fer113q, "==", :a_yes
       
@@ -10183,8 +10196,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_fer14q "14. Will animals be immunized?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a) Initial Immunization"
+        a_no  "No"
+        
+      label "a) Initial Immunization"
         dependency :rule=>"A"
         condition_A :q_fer14q, "==", :a_yes
       
@@ -10223,7 +10237,8 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_fer14q, "count>0"
         condition_B :q_fer14q, "!=", :a_no
-        label "b) Re-immunization (booster)"
+
+      label "b) Re-immunization (booster)"
         dependency :rule=>"A and B"
         condition_A :q_fer14q, "count>0"
         condition_B :q_fer14q, "!=", :a_no
@@ -10444,7 +10459,6 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_fer22q, "count>0"
         condition_B :q_fer22q, "!=", :a_no
-
       
       q_fer121q "21. Will organisms that are potentially infectious to humans (classified by CDC at some biosafety level) be administered to the animals?", :pick => :one
         a_yes "Yes"
@@ -10702,8 +10716,8 @@ survey "IACUC Protocol", :default_mandatory => false do
         a_1 :text
         dependency :rule=>"Z"
         condition_Z :q_cat2, "==", :a_e3
-
-        label :"5.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
+ 
+      label :"5.  Animal Numbers: *Note: Should be listed for the 3 year duration of the protocol. *Attention: Please only include numeric values.  Commas are not allowed"
       
       q_cat16a1 "a) Total number of animals justified "
         a :string
@@ -10716,19 +10730,17 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_cat16d4  "d) Category E: unrelieved pain/distress"
         a :string
-
       
       q_cat17 "6.  Describe the most commonly recognized signs or side effects the animals may experience in reponse to the proposed experiment.  What, if anything, can be done to alleviate these clinical signs?  How will animals be monitored for an adverse reaction (including frequency of monitoring)?"
         a :text
       
       q_cat18 "7. where will the animals be housed?"
         a :string
-
       
       q_cat99 "8. Will any specialized housing and/or husbandry be required (special diets, single housing, metabolic cages, etc.)?", :pick => :one
         a_yes "Yes"
         a_no "No"
-        q "a)Describe and justify:"
+      q "a)Describe and justify:"
         a :text
         dependency :rule=>"A"
         condition_A :q_cat99, "==", :a_yes
@@ -10737,11 +10749,11 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_catyes2 "9.  Will a surgical procedure, either survival or terminal, or tissue harvest prior to death be performed on the animals?", :pick => :one
         a_yes "Yes"
         a_no "No"
-        q "a) Describe the required pre-operative procedures (fasting, etc):"
+      q "a) Describe the required pre-operative procedures (fasting, etc):"
         a :text
         dependency :rule=>"A"
         condition_A :q_catyes2, "==", :a_yes
-        q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
+      q "b)Describe the surgical or tissue harvest procedures performed on living animals in detail, including name of procedure, anatomic approach, tissue manipulation, and closure techniques:"
         a :text
         dependency :rule=>"A and B"
         condition_A :q_catyes2, "count>0"
@@ -10758,14 +10770,12 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_catyes2, "count>0"
         condition_B :q_catyes2, "!=", :a_no
-
       
       q_cat110e "e) Will animals be allowed to recover from the anesthetic?", :pick => :one
         a_yes "Yes"
         a_no "No"
-        dependency :rule=>"A"
+        dependency :rule=>"B"
         condition_B :q_catyes2, "==", :a_yes
-
       
       q_cat11i "i) What procedures will be done to minimize the incidence of sepsis?"
         a :string
@@ -10783,7 +10793,6 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_cat110e, "count>0"
         condition_B :q_cat110e, "!=", :a_no
-
       
       q_cat1fq "f) Will a single animal experience more than one major survival surgical procedure (penetrates and exposes a body cavity or produces substantial impairment of physiologic function:  and the animal recovers from anesthesia)?  If Yes, answere all sub-questions.", :pick => :one
         a_yes "Yes"
@@ -10812,7 +10821,8 @@ survey "IACUC Protocol", :default_mandatory => false do
       q_cat111q "10.  Will the animals be anesthetized?", :pick => :one
         a_yes "Yes"
         a_no  "No"
-        label "a) induction"
+        
+      label "a) induction"
         dependency :rule=>"A"
         condition_A :q_cat111q, "==", :a_yes
       
@@ -10833,7 +10843,8 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_cat111q, "count>0"
         condition_B :q_cat111q, "!=", :a_no
-        label "b) Maintenance"
+
+      label "b) Maintenance"
         dependency :rule=>"A and B"
         condition_A :q_cat111q, "count>0"
         condition_B :q_cat111q, "!=", :a_no
@@ -10876,8 +10887,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_cat112q "11.  Will muscle relaxants (paralytics, neuromuscular blocking agents) be utilized?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a) induction"
+        a_no  "No"
+        
+      label "a) induction"
         dependency :rule=>"A"
         condition_A :q_cat112q, "==", :a_yes
       
@@ -10919,8 +10931,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_cat113q "12. Will anlgesics (pain relievers) be used?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
+        a_no  "No"
+        
+      label "a)List behavioral and.or clinical signs that will be utilized to evaluate pain."
         dependency :rule=>"A"
         condition_A :q_cat113q, "==", :a_yes
       
@@ -10950,8 +10963,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_cat14q "13. Will animals be immunized?", :pick => :one
         a_yes "Yes"
-        a_no "No"
-        label "a) Initial Immunization"
+        a_no  "No"
+        
+      label "a) Initial Immunization"
         dependency :rule=>"A"
         condition_A :q_cat14q, "==", :a_yes
       
@@ -10990,7 +11004,8 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_cat14q, "count>0"
         condition_B :q_cat14q, "!=", :a_no
-        label "b) Re-immunization (booster)"
+
+      label "b) Re-immunization (booster)"
         dependency :rule=>"A and B"
         condition_A :q_cat14q, "count>0"
         condition_B :q_cat14q, "!=", :a_no
@@ -11211,7 +11226,6 @@ survey "IACUC Protocol", :default_mandatory => false do
         dependency :rule=>"A and B"
         condition_A :q_cat22q, "count>0"
         condition_B :q_cat22q, "!=", :a_no
-
       
       q_cat121q "20. Will organisms that are potentially infectious to humans (classified by CDC at some biosafety level) be administered to the animals?", :pick => :one
         a_yes "Yes"
@@ -11329,9 +11343,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_cat124c2 "Exposure:"
         a :string
-        dependency :rule=>"A and B"
-        condition_A :q_cat124q, "count>0"
-        condition_B :q_cat124q, "!=", :a_no
+        dependency :rule=>"B"
+        
+        condition_B :q_cat124q, "==", :a_yes
       
       q_cat124c3 "Excreted:"
         a :string
@@ -11341,9 +11355,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_cat124c4 "Length of excretion:"
         a :string
-        dependency :rule=>"A and B"
-        condition_A :q_cat124q, "count>0"
-        condition_B :q_cat124q, "!=", :a_no
+        dependency :rule=>"B"
+        
+        condition_B :q_cat124q, "==", :a_yes
                     
       q_cat125q "24. Is Natural (no intervention) death required as an endpoint for this study?", :pick => :any
         a_yes "Yes"
@@ -11384,9 +11398,9 @@ survey "IACUC Protocol", :default_mandatory => false do
       
       q_cat126c1 "Route:"
         a :string
-        dependency :rule=>"A and B"
-        condition_A :q_cat126q, "count>0"
-        condition_B :q_cat126q, "!=", :a_no
+        dependency :rule=>"B"
+        
+        condition_B :q_cat126q, "==", :a_yes
       
       q_cat127qee "26. Will a phyical means of euthanasia be used on the animals?", :pick => :one
         a_yes "Yes"
