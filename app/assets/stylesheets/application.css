@@ -8,17 +8,45 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require twitter-bootstrap-static/bootstrap
+ *= require twitter-bootstrap-static/fontawesome
+ *= require surveyor/jquery-ui-timepicker-addon
+ *= require surveyor/ui.slider.extras
+ *= require surveyor
+ *= require custom
  *= require_self
  *= require_tree .
- */
- 
+*/
+.aab {
+padding-bottom: 0px;
+margin: 0px 0 0px;
+border-bottom: 0px 
+}
+body{
+  /*font-size: 1.2em;*/
+}
+
+ol{
+  font-size: 1em;
+}
+
+ul{
+  font-size: 0.8em;
+}
+
+#protocols_table td{
+  font-size: 1em;
+}
+
+#nav{
+  font-size: 1em;
+}
+
 .main {
 	background-color: #FFF;
 }
 
-.qnum {
-	display: none;
-}
+
 
 .headertext a{
 	color: white;
@@ -63,3 +91,45 @@
 #error_explanation h2{
 	font-size: 85%;
 }
+
+.quiet {
+	display: none;
+}
+
+.survey_section ol li{
+	list-style-type: none;
+}
+
+#surveyor {
+	background-color: transparent;
+	font-family: inherit;
+	border-bottom: none;
+	
+}
+
+#survey_form{
+	background-color: transparent;
+	font-size: 1em;
+	border-bottom: none;
+}
+
+.navbar {
+	font-size: 1.5em;
+	border-bottom: none;
+}
+
+
+#surveyor fieldset input[type="text"] {
+	font-size: inherit;
+	width:250px;
+}
+.qnum {
+	font-size: 1em;
+	line-height: 0;
+}
+legend {
+	border-bottom: none;
+	font-size: 1em;
+	
+}
+

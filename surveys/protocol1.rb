@@ -154,8 +154,8 @@ survey "IBC Protocol", :default_mandatory => false do
 end
 
 group "Microorganism Usage Part 1" do  
-    dependency :rule => "M"
-    condition_M :q_application_type, "==", :a_2 
+  dependency :rule => "M"
+  condition_M :q_application_type, "==", :a_2 
 
   label "Complete this section for all uses of microorganisms except non-pathogenic E. coli K-12, Bacillus subtilis, or Saccharomyces 
      cerevisiae recipients in host-vector systems. See the <a href='http://www.selectagents.gov/resources/List_of_Select_Agents_and_Toxins_2012-12-4-English.pdf'>
@@ -316,19 +316,23 @@ group "Microorganism Usage Part 2" do
   end    
 
   group "PI Statement of Understanding" do
-    dependency :rule => "H or M or D"
+    d :rule => "H or M or D"
     condition_H :q_application_type, "==", :a_3
     condition_M :q_application_type, "==", :a_2
     condition_D :q_application_type, "==", :a_1
+
     q "As Principal Investigator, I understand there are federal regulations applicable to work with Select Agent toxins. ", :pick => :any?
-      a "I have reviewed the regulations and the proposed experiments are either exempt, or if not, I have obtained the necessary approvals."
-    label "Description of use of Biological Materials</ br>
+    a "I have reviewed the regulations and the proposed experiments are either exempt, or if not, I have obtained the necessary approvals."
+
+    q "Description of use of Biological Materials</ br>
       This section is required for all applications.</ br>
       In the following space, please describe your project clearly and simply with respect to recombinant DNA, microorganism, and biological toxin usage."
-      a :text
-    label "Appendix D: Laboratory Specific SOPs</ br>
+    a :text
+
+    q "Appendix D: Laboratory Specific SOPs</ br>
       Paste into this section all protocol specific SOPs for working with BSL2 organisms."
-      a :text
+    a :text
+
     label "BY SUBMITTING THIS FORM YOU ACKNOWLEDGE THAT YOU HAVE READ AND AGREE TO THE FOLLOWING STATEMENTS</ br>
       Pursuant to applicable State and Federal laws and regulations and Montana State University policies and procedures:</ br>
       To the best of my knowledge, I affirm that all information contained herein is accurate and complete.</ br>
@@ -346,52 +350,62 @@ group "Microorganism Usage Part 2" do
      end
    end
     section "NIH GUIDELINES ASSESSMENT FOR RESEARCH INVOLVING RECOMBINANT DNA (rDNA)" do
-    q_class2 "Mark the appropriate section(s) that describes this project. If experiment does not fall into any of these categories, contact Biosafety Office for assistance (check all that apply):", :pick => :any
-    a_1 "III A....must receive approval from IBC and NIH Director before initiation of experiments."
-    a_2 "III B….must receive approval from NIH/OBA and IBC before initiation of experiments."
-    a_3 "III C.....must receive approval from IBC, IRB, and RAC review before research participant enrollment."
+      q_class2 "Mark the appropriate section(s) that describes this project. If experiment does not fall into any of these categories, contact Biosafety Office for assistance (check all that apply):", :pick => :any
+      a_1 "III A....must receive approval from IBC and NIH Director before initiation of experiments."
+      a_2 "III B….must receive approval from NIH/OBA and IBC before initiation of experiments."
+      a_3 "III C.....must receive approval from IBC, IRB, and RAC review before research participant enrollment."
     a_4 "III D....must receive approval from IBC before initiation of experiments."
     a_5 "rDNA Involving Whole Animal"
     a_6 "rDNA Involving Whole Plants:"
     a_7 " III E….must notify IBC simultaneously upon initiation of research."
     a_8 "III F......exempt from IBC Review. To request an official exemption letter email lindstrom@montana.edu"
+    
     label "Section III-A-1-a: The deliberate transfer of a drug resistance trait to microorganisms that are not known to acquire 
-    the trait naturally if such acquisition could compromise the use of the drug to control disease agents in humans, 
-    veterinary medicine, or agriculture. (Note that antibiotic resistance markers used for selecting and propagating plasmids in E. coli are not included.)"
+      the trait naturally if such acquisition could compromise the use of the drug to control disease agents in humans, 
+      veterinary medicine, or agriculture. (Note that antibiotic resistance markers used for selecting and propagating plasmids in E. coli are not included.)"
     dependency :rule=>"Z"
     condition_Z :q_class2, "==", :a_1    
+    
     label "Section III-B-1: Experiments involving the cloning of toxin molecules with LD50 of <100ng per kg body weight (e.g., 
       microbial toxins such as botulinum toxin, tetanus toxin)."
     dependency :rule=>"Z"
     condition_Z :q_class2, "==", :a_2    
+    
     label "Section III-C-1: Experiments involving the deliberate transfer of rDNA, or DNA or RNA derived from rDNA, into one or more human research participants."
     dependency :rule=>"Z"
     condition_Z :q_class2, "==", :a_3
+    
     label "< NOTE: Attach response to Points to Consider: Appendix M of the NIH Guidelines and submit any  
     supplemental documents such as investigator brochure, clinical study, correspondence with NIH, etc. "
     label "For rDNA experiments falling under Sections III-D-5-a through III-D-5-d, physical containment requirements may be reduced to the next lower level by appropriate biological containment practices, 
     such as conducting experiments on a virus with an obligate insect vector in the absence of that vector or using a genetically attenuated strain."
     dependency :rule=>"Z"
     condition_Z :q_class2, "==", :a_6
+
     group "III-D" do
-    dependency :rule=>"Z"
-    condition_Z :q_class2, "==", :a_4  
-    q_class22 "III-D-1-a", :pick => :any
-    a_1 "Introduction of rDNA into Risk Group 2 (RG-2) agents."
-    q_class23 "III-D-1-b", :pick => :any
-    a_1 "Introduction of rDNA into Risk Group 3 (RG-3) agents."
-    q_class24 "III-D-2-a", :pick => :any
-    a_1 "Experiments in which DNA from RG- 2, RG- 3 agents, or RG-4 agents is transferred into nonpathogenic prokaryotes or lower eukaryotes."
-    q_class25 "III-D-3-a", :pick => :any
-    a_1 "Use of infectious or defective RG-2 viruses in the presence of helper virus."
-    q_class26 "III-D-3-b", :pick => :any
-    a_1 "Use of infectious or defective RG-3 viruses in the presence of helper virus may be conducted at BL3 containment."
-    q_class27 "III-D-3-d", :pick => :any
-    a_1 "Use of infectious or defective restricted poxviruses in the presence of helper virus shall be determined on a case-by-case 
-    basis following NIH/OBA review. A USDA permit is required for work with plant or animal pathogens."
-    q_class28 "III-D-3-e", :pick => :any
-    a_1 "Use of infectious or defective viruses in the presence of helper virus not covered in Sections III-D-3-a through III-D-3-d."
-  end
+      dependency :rule=>"Z"
+      condition_Z :q_class2, "==", :a_4  
+
+      q_class22 "III-D-1-a", :pick => :any
+      a "Introduction of rDNA into Risk Group 2 (RG-2) agents."
+
+      q_class23 "III-D-1-b", :pick => :any
+      a "Introduction of rDNA into Risk Group 3 (RG-3) agents."
+
+      q_class24 "III-D-2-a", :pick => :any
+      a "Experiments in which DNA from RG- 2, RG- 3 agents, or RG-4 agents is transferred into nonpathogenic prokaryotes or lower eukaryotes."
+
+      q_class25 "III-D-3-a", :pick => :any
+      a "Use of infectious or defective RG-2 viruses in the presence of helper virus."
+
+      q_class26 "III-D-3-b", :pick => :any
+      a "Use of infectious or defective RG-3 viruses in the presence of helper virus may be conducted at BL3 containment."
+      q_class27 "III-D-3-d", :pick => :any
+      a_1 "Use of infectious or defective restricted poxviruses in the presence of helper virus shall be determined on a case-by-case 
+      basis following NIH/OBA review. A USDA permit is required for work with plant or animal pathogens."
+      q_class28 "III-D-3-e", :pick => :any
+      a_1 "Use of infectious or defective viruses in the presence of helper virus not covered in Sections III-D-3-a through III-D-3-d."
+    end
   group "rDNA" do
     dependency :rule=>"Z"
     condition_Z :q_class2, "==", :a_5
