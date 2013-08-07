@@ -72,6 +72,7 @@ namespace :db do
 
   task :symlink do
     run "ln -nfs #{deploy_to}/#{shared_dir}/config/database.yml #{release_path}/config/database.yml"
+    run "ln -nfs #{deploy_to}/#{shared_dir}/config/unicorn.rb #{release_path}/config/unicorn.rb"
   end
   
   desc "Get the remote database and save it locally"
@@ -107,6 +108,7 @@ namespace :assets do
     run "ln -nfs #{deploy_to}/#{shared_dir}/assets/images #{release_path}/public/images"
     run "ln -nfs #{deploy_to}/#{shared_dir}/assets/temp_data #{release_path}/temp_data"
     run "ln -nfs #{deploy_to}/#{shared_dir}/assets/data #{release_path}/data"
+
   end
   task :compile do
     run "cd #{current_path}; RAILS_ENV=production bundle exec rake assets:precompile:all"
@@ -137,5 +139,5 @@ after "deploy:update_code", "db:symlink"
 after "deploy:update_code", "assets:symlink"
 #after "deploy:update_code", "assets:compile"
 
-after "deploy:restart", "rcg_unicorn:start"
+#after "deploy:restart", "rcg_unicornstart"
 #after "rcg_unicorn:stop", "rcg_unicorn:start"

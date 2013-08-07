@@ -1,7 +1,8 @@
 survey "Human Studies Protocol", :default_mandatory => true do
-
   section "Information Section" do
+    
     label "I.   INVESTIGATOR:"
+    
     q_1 "Name: "
     a_1 :string 
     q_2 "Home or School Mailing Address: "
@@ -12,6 +13,7 @@ survey "Human Studies Protocol", :default_mandatory => true do
     a_4 :string
     q_5 "DATE TRAINING COMPLETED "
     a_5 :date
+    
     label "[Required training: CITI training; see website for link]"
     q_6 "Investigator Signature "
     a_6 :string
@@ -19,20 +21,24 @@ survey "Human Studies Protocol", :default_mandatory => true do
     a_7 :string
     q_8 "E-Mail Address of Project Advisor: "
     a_8 :string
-    end
-    	section "Title of Research Project" do
+  end
+
+  section "Title of Research Project" do
     q_9 "II.   TITLE OF RESEARCH PROJECT: "
     a_9 :string
   end
-section "Brief Description of Research Methods" do
+
+  section "Brief Description of Research Methods" do
     q_10 "III.        BRIEF DESCRIPTION OF RESEARCH 
     METHODS (If using a survey/questionnaire, provide a copy). "
     a_10 :text
-    end
-    	section "Risks and Inconviences to Subjects" do
-    q_11 "IV.        RISKS AND INCONVENIENCES TO SUBJECTS (do not answer ‘None’): "
+  end
+  
+  section "Risks and Inconviences to Subjects" do
+    q_11 "IV. RISKS AND INCONVENIENCES TO SUBJECTS (do not answer ‘None’): "
     a_11 :text
-end
+  end
+
 section "Subjects" do
 label "V.         SUBJECTS:"
 q_12 "A.         Expected numbers of subjects:"
@@ -78,10 +84,14 @@ q_26 "Does this survey utilize a standardized and/or validated survey tool/quest
 end
 section "Research Conducted in a Classroom Setting" do
 label "VII.        FOR RESEARCH BEING CONDUCTED IN A CLASSROOM SETTING INVOLVING NORMAL EDUCATIONAL PRACTICES: "
-label "A. This research project must be approved by your Principal or School Administrator, unless there are circumstances or policies that do not make this possible.  Provide a copy of the principal’s signed approval.  If such approval is not possible, please explain.
-
-
-< /br> B. Participation of your students in research must be voluntary and can never affect their rights.  Please make this issue clear on all of your research surveys (use introductory text, see below) and/or interviews (use introductory verbal statement, see below).  The following wording or something similar can be used for the introductory text or statement: Participation in this research is voluntary and participation or non-participation will not affect a student’s grades or class standing in any way.
+label "A. This research project must be approved by your Principal or School Administrator, unless there are circumstances 
+      or policies that do not make this possible.  Provide a copy of the principal’s signed approval.  If such approval is 
+      not possible, please explain.
+      < /br> B. Participation of your students in research must be voluntary and can never affect their rights.  Please make 
+      this issue clear on all of your research surveys (use introductory text, see below) and/or interviews (use introductory 
+      verbal statement, see below).  The following wording or something similar can be used for the introductory text or 
+      statement: Participation in this research is voluntary and participation or non-participation will not affect a student’s grades 
+      or class standing in any way.
 
 
 </ br> C. Extra credit should not be used to encourage participation.  If you absolutely need to use extra credit, then an alternative activity involving the same amount of time and effort must be provided for those who choose not to participate.  This must be clearly described in your IRB application.
