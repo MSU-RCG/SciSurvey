@@ -2,8 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 gem 'pg'
+#gem 'sqlite3'
 gem 'unicorn-rails'
-
+gem 'activeadmin'
 gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem 'therubyracer'
