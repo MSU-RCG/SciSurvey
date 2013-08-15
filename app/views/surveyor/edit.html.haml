@@ -1,3 +1,16 @@
+:plain
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <style>
+    .ui-datepicker{
+      background-color: lightgrey;
+    }
+    table th{
+      text-align: center;
+    }
+    table td{
+      text-align: center;
+    }
+  </style>
 #surveyor
   - unless (types = flash.keys.select{|k| [:notice, :error, :warning].include?(k)}).blank?
     .surveyor_flash
@@ -5,7 +18,7 @@
       .close
   = semantic_form_for(@response_set, :as => :r, :url => surveyor.update_my_survey_path, :html => {:method => :put, :id => "survey_form", :class => @survey.custom_class}) do |f|
 
-    = hidden_field_tag :surveyor_javascript_enabled, false
+    = hidden_field_tag :surveyor_javascript_enabled, true
 
     = render 'partials/section_menu' # unless @sections.size < 3
     .survey_title= @survey.translation(I18n.locale)[:title]
@@ -19,6 +32,7 @@
   %br
 
 :javascript
+  var $ = jQuery.noConflict();
   $(document).ready(function() {
     $("input#surveyor_javascript_enabled").val(true);
   });
