@@ -3,7 +3,7 @@ module SurveyorControllerCustomMethods
   def self.included(base)
     # base.send :before_filter, :require_user   # AuthLogic
     # base.send :before_filter, :login_required  # Restful Authentication
-    base.send :layout, 'application'
+    base.send :layout, :resolve_layout#'application'
   end
 
   # Actions
@@ -35,8 +35,23 @@ module SurveyorControllerCustomMethods
     # the update action redirects to this method if given params[:finish]
     super # surveyor.available_surveys_path
   end
+  
+  private
+
+  def resolve_layout
+    case action_name
+    when "new", "create"
+      "application"
+    when "show"
+      "print_layout"
+    else
+      "application"
+    end
+  end
+  
 end
 class SurveyorController < ApplicationController
   include Surveyor::SurveyorControllerMethods
   include SurveyorControllerCustomMethods
+    
 end
