@@ -44,9 +44,10 @@
           </td>
           <td>
             <%= link_to  'Download', "#{surveyor_path}/#{protocol.survey.access_code}/#{protocol.access_code}.pdf", :format => 'pdf', :class => 'icon-circle-arrow-right' %>
-            <%= link_to t('.edit', :default => t("helpers.links.edit")),
+            <% if !Status.find_by_survey_id(protocol.access_code) || Status.find_by_survey_id(protocol.access_code).state == 'review'%>
+              <%= link_to t('.edit', :default => t("helpers.links.edit")),
                         "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}/take", :class => "icon-pencil" %>
-           
+           <% end %>
             <% if !Status.find_by_survey_id(protocol.access_code) %>
               <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                                         protocol_path(protocol.access_code),

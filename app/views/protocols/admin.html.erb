@@ -60,8 +60,10 @@
          <%= link_to  'Download', "#{surveyor_path}/#{protocol.survey.access_code}/#{protocol.access_code}.pdf", :format => 'pdf', :class => 'icon-circle-arrow-right btn-small' %>
          </td>
          <td>
+         <% if Status.find_by_survey_id(protocol.access_code).nil? || (Status.find_by_survey_id(protocol.access_code).state != 'archive' && Status.find_by_survey_id(protocol.access_code).state != 'accepted')%>
          <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}/take", :class => "icon-pencil btn-small" %>
+         <% end %>
          </td>
          <td>
          <% if !Status.find_by_survey_id(protocol.access_code) %><%= link_to t('.destroy', :default => t("helpers.links.destroy")),
