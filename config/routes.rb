@@ -15,6 +15,7 @@ Protocat::Application.routes.draw do
 
   resources :statuses 
   resources :protocols do
+    post :make_modification
     collection do
       get :admin
     end

@@ -140,4 +140,32 @@ class ProtocolsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  #nees survey_id and access_code
+  def make_modification
+    cur_resp = ResponseSet.where(:user_id => current_user, :access_code => params[:protocol_id]).first
+    mod = ResponseSet.create(:user_id=>current_user.id,
+                          :survey_id => params[:survey_id])
+    resp_set_id = cur_resp.id
+    responses = Response.where(:response_set_id => resp_set_id)
+    responses.each do |resp| 
+      answer_attributes = Answer.find(resp.answer_id).attributes
+      answer_attributes.delete("id")
+      answer_attributes.delete("api_id")
+      answer_attributes.delete("created_at")
+      answer_attributes.delete("updated_at")
+      new_answer = Answer.new(answer_attributes)
+      new_answer.save
+      resp_attributes = resp.attributes
+      resp_attributes.delete("id")
+      resp_attributes.delete("api_id")
+      resp_attributes.delete("created_at")
+      resp_attributes.delete("updated_at")
+      resp_attributes[:answer_id] = new_answer.id
+      resp_attributes[:response_set_id] = mod.id
+      new_resp = Response.new(resp_attributes)
+      new_resp.save
+    end
+    redirect_to :back
+  end
 end
