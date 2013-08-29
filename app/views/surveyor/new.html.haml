@@ -1,0 +1,19 @@
+.span2
+.span5
+  - unless (types = flash.keys.select{|k| [:notice, :error, :warning].include?(k)}).blank?
+    .surveyor_flash
+      = flash_messages(types)
+      .close
+  %h3 Available Research Compliance Forms
+  - @surveys_by_access_code.sort.each do |access_code, surveys|
+    = form_tag surveyor.take_survey_path(:survey_code => access_code) do
+      = button_tag( surveys.first.translation(I18n.locale)[:title], 
+                    :default => surveys.first.translation(I18n.locale)[:title], 
+                    :class => 'btn-large btn-primary btn-block', 
+                    :type => 'submit' )
+
+:javascript
+  var $ = jQuery.noConflict();
+  $(document).ready(function() {
+    $("input#surveyor_javascript_enabled").val(true);
+  });
