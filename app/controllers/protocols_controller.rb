@@ -146,6 +146,8 @@ class ProtocolsController < ApplicationController
     cur_resp = ResponseSet.where(:user_id => current_user, :access_code => params[:protocol_id]).first
     mod = ResponseSet.create(:user_id=>current_user.id,
                           :survey_id => params[:survey_id])
+    mod.parent_id = params[:protocol_id]
+    mod.save
     resp_set_id = cur_resp.id
     responses = Response.where(:response_set_id => resp_set_id)
     responses.each do |resp| 
