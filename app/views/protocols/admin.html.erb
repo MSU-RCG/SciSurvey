@@ -40,9 +40,9 @@
       <tr>
         <td>
           <% if protocol.responses.where(:question_id => @title_questions).count > 0 %>
-            <%= link_to protocol.responses.where(:question_id => @title_questions).first.string_value, "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}" %>
+            <%= link_to protocol.responses.where(:question_id => @title_questions).first.string_value, "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}" , :target => "_blank" %>
           <%else%>
-            <%= link_to "In Progess- Untitled", "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}" %>
+            <%= link_to "In Progess- Untitled", "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}", :target => "_blank"  %>
           <%end%>
         </td>        
         
