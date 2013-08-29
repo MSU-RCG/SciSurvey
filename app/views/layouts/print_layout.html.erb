@@ -1,0 +1,77 @@
+# encoding: UTF-8
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Survey: <%= controller.action_name %></title>
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <%= surveyor_includes %>
+  <style>
+  #surveyor fieldset input[type="text"] {
+  	font-size: inherit;
+  	width:250px;
+  }
+  .qnum {
+  	font-size: 1em;
+  	line-height: 0;
+  }
+  legend {
+  	border-bottom: none;
+  	font-size: 1em;
+  }
+  li.input  {
+      list-style-type: none;
+      border-style:none;
+  }
+  ol{
+    list-style-type: none;
+    padding: 0px 10px 0px 0px;
+  }
+  .survey_title{
+    font-size: 2em;
+    text-align:center;
+    padding:5px 5px 15px 15px;
+    
+  }
+  span.title{
+    font-size: 1.25em;
+    background-color:lightgrey;
+    width: 800px;
+    display:block;
+    border-bottom:thin solid #000000;
+    margin: 5px 0px 5px 0px;
+  }
+  .q_label{
+    border-style:none;
+    padding: 0px 0px 0px 0px;
+  }
+  .choices{
+    border-style:none;
+  }
+  .text{
+    width: 100%;
+    padding: 5px 5px 5px 5px;
+    
+  }
+  li{
+    padding: 0px 0px 0px 5px;
+    margin: 0px 0px 0px 0px;
+  }
+  .q_default{
+    margin: 5px 5px 5px 5px;
+  }
+  </style>
+  <script>
+  function changetext(){
+    $('textarea').each( function(){
+          $(this).css("height", (25 + $('#'+this.id)[0].scrollHeight)+"px");})
+  }
+
+  </script>
+</head>
+<body onload="changetext()" style="width:800px;padding:15px; 15px; 15px; 15px;">
+  <%= yield %>
+  <%= javascript_include_tag "application" %>
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+</body>
+</html>
