@@ -18,7 +18,7 @@
 <%= link_to "View all Protocols", admin_protocols_path, :class=>"btn"%>
 <%= form_tag admin_protocols_path, :method => :get do %>
 <label>Show Protocol By Status </lablel>
-<%= select_tag 'status', "<option>submitted</option><option>review</option><option>accepted</option><option>archived</option>".html_safe %>
+<%= select_tag 'status', "<option>submitted</option><option>review</option><option>approved</option><option>archived</option>".html_safe %>
 <%= submit_tag 'Go' %>
 </div><% end %>
 <table id="protocols_table"  class="table table-striped span12">
@@ -36,6 +36,7 @@
   </thead>
   <tbody>
     <% @protocols.each do |protocol| %>  
+      <%if Status.find_by_survey_id(protocol.access_code).nil? || Status.find_by_survey_id(protocol.access_code).state != "archived" || params[:status] == "archived" %>
       <tr>
         <td>
           <% if protocol.responses.where(:question_id => @title_questions).count > 0 %>
@@ -60,7 +61,7 @@
          <%= link_to  'Download', "#{surveyor_path}/#{protocol.survey.access_code}/#{protocol.access_code}.pdf", :format => 'pdf', :class => 'icon-circle-arrow-right btn-small' %>
          </td>
          <td>
-         <% if Status.find_by_survey_id(protocol.access_code).nil? || (Status.find_by_survey_id(protocol.access_code).state != 'archive' && Status.find_by_survey_id(protocol.access_code).state != 'accepted')%>
+         <% if Status.find_by_survey_id(protocol.access_code).nil? || (Status.find_by_survey_id(protocol.access_code).state != 'archive' && Status.find_by_survey_id(protocol.access_code).state != 'approved')%>
          <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}/take", :class => "icon-pencil btn-small" %>
          <% end %>
@@ -110,13 +111,13 @@
 
             <%= form_for (Status.find_by_survey_id(protocol.access_code)), :url => status_path(Status.find_by_survey_id(protocol.access_code)), :method=> 'put'  do |f| %>
               <%= f.hidden_field :survey_id, :value => protocol.access_code %>
-              <%= f.hidden_field :state, :value => 'accepted' %>
-              <%= f.submit "Accept" %>
+              <%= f.hidden_field :state, :value => 'approved' %>
+              <%= f.submit "Approve" %>
             <% end %>
            <%end%> 
         </td>
         <td>
-          <% if Status.find_by_survey_id(protocol.access_code) && Status.find_by_survey_id(protocol.access_code).state == 'accepted'%>
+          <% if Status.find_by_survey_id(protocol.access_code) && Status.find_by_survey_id(protocol.access_code).state == 'approved'%>
 
             <%= form_for (Status.find_by_survey_id(protocol.access_code)), :url => status_path(Status.find_by_survey_id(protocol.access_code)), :method=> 'put'  do |f| %>
               <%= f.hidden_field :survey_id, :value => protocol.access_code %>
@@ -126,6 +127,7 @@
            <%end%> 
         </td>
       </tr>
+      <%end%>
     <% end %>
   </tbody>
 </table>
