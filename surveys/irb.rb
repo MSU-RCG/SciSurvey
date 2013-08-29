@@ -1,4 +1,4 @@
-survey "Institutional Review Board Application for Review", :default_mandatory => true do
+survey "Institutional Review Board Full Application", :default_mandatory => true do
   section "Section I" do
     label "Beginning January 1, 2006, University policy requires that all protocols submitted from individuals NOT employeed by or students of Montana State University be charged a $500 review fee per application. Renewals for those proposals will be at no charge. Applications from private entities (i.e. projects not administered by MSU's Office of Sponsored Programs) will be charged the $500 fee per application. Renewals for those proposals will also be at no charge.
     All investigators must complete the online training in the use of human subjects. Most investigators will need to choose the Behavioral Sciences Module. Use this link: <a href ='https://www.citiprogram.org/'>Collaborative Institutional Training Initiative (CITI)</a>"
