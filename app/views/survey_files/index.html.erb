@@ -1,0 +1,25 @@
+<h1>Listing survey_files</h1>
+
+<table>
+  <tr>
+    <th>Attachement</th>
+    <th>Response set</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @survey_files.each do |survey_file| %>
+  <tr>
+    <td><%= survey_file.attachement %></td>
+    <td><%= survey_file.response_set_id %></td>
+    <td><%= link_to 'Show', survey_file %></td>
+    <td><%= link_to 'Edit', edit_survey_file_path(survey_file) %></td>
+    <td><%= link_to 'Destroy', survey_file, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Survey file', new_survey_file_path %>

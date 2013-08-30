@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Attachement:</b>
+  <%= @survey_file.attachement %>
+</p>
+
+<p>
+  <b>Response set:</b>
+  <%= @survey_file.response_set_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_survey_file_path(@survey_file) %> |
+<%= link_to 'Back', survey_files_path %>

@@ -1,0 +1,21 @@
+<h1>Listing survey_forms</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @survey_forms.each do |survey_form| %>
+  <tr>
+    <td><%= link_to 'Show', survey_form %></td>
+    <td><%= link_to 'Edit', edit_survey_form_path(survey_form) %></td>
+    <td><%= link_to 'Destroy', survey_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Survey form', new_survey_form_path %>

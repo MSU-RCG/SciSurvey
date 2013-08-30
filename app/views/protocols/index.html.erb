@@ -1,10 +1,20 @@
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <div class='span12'>
+  <style>
+  .fixed-dialog{
+    position: fixed;
+    top: 50px;
+    left: 50px;
+  }
+  </style>
   <script>
     $(document).ready(function() { 
-      $.getScript('assets/javascripts/datatables.js', function() {
-        $('#protocols_table').dataTable();
-      })
-    }
+      $( "#dialog" ).dialog({
+            autoOpen: false,  modal: true, dialogClass: "fixed-dialog" });
+
+    })
 
   </script>
   <%- model_class = Protocol -%>
@@ -23,8 +33,11 @@
         <th>Protocol Title</th>
         <th>Type</th>
         <th>Status</th>
+        <th>Files</th>
         <th><%=t '.actions', :default => t("helpers.Actions") %></th>
         <th></th>
+        <th></th>
+        
       </tr>
     </thead>
     <tbody>
@@ -38,7 +51,11 @@
             <%end%>
           </td>
           <td><%=protocol.survey.title%></td>
-
+          <td>
+            <%- @files[protocol.id.to_s].each do |s|%>
+              <%=link_to s.attachement.url.split('/')[-1], s.attachement.url%>
+            <%-end-%>
+          </td>
           <td>
             <%= Status.find_by_survey_id(protocol.access_code) ? Status.find_by_survey_id(protocol.access_code).state : "none"  %>
           </td>
@@ -57,6 +74,9 @@
             <% else %> 
               <%= 'none' %>
             <% end %>
+          </td>
+          <td>
+            <%= link_to "", "#", :class=>"icon-upload",:title => 'Add Attachment', :rel => 'tooltip', :onclick=>"$('#survey_file_response_set_id').val(#{protocol.id});$('#dialog').dialog('open')"%>
           </td>
           <td>
             <% if Status.find_by_survey_id(protocol.access_code) %>
@@ -78,8 +98,36 @@
        <!--   <td>
             <%= button_to 'Mod', protocol_make_modification_path(protocol.access_code, :survey_id=>protocol.survey_id ), method: "post" %>
           </td>   -->
+          
         </tr>
       <% end %>
     </tbody>
   </table>
+</div>
+<div id="dialog" title="Upload Attachment">
+  <%= form_for(@survey_file) do |f| %>
+    <% if @survey_file.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@survey_file.errors.count, "error") %> prohibited this survey_file from being saved:</h2>
+
+        <ul>
+        <% @survey_file.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :attachement %><br />
+      <%= f.file_field :attachement %>
+    </div>
+    <div class="field">
+
+      <%= f.hidden_field :response_set_id %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
 </div>

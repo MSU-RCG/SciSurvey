@@ -1,4 +1,7 @@
 Protocat::Application.routes.draw do
+  resources :survey_files
+
+
   resources :user_roles do
     collection do
       get :add

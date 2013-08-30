@@ -11,8 +11,10 @@ class ProtocolsController < ApplicationController
       end
 
       @surveys = {}
+      @files = {}
       @protocols.each do |p| 
         @surveys[p.survey_id.to_s] = Survey.find(p.survey_id).access_code
+        @files[p.id.to_s] = SurveyFile.where(:response_set_id => p.id)
       end
       @title_questions = Question.where("text LIKE '%Title%'").map{|q| q.id} + Question.where("text LIKE '%TITLE%'").map{|q| q.id}
       # @statuses = Status.where(:survey_id => @protocols.map { |e|  e.access_code}) 
@@ -31,7 +33,7 @@ class ProtocolsController < ApplicationController
   # GET /protocols
   # GET /protocols.json
   def index
-
+    @survey_file = SurveyFile.new()
 
     
     if !params[:status]
@@ -43,8 +45,10 @@ class ProtocolsController < ApplicationController
     end
 
     @surveys = {}
+    @files ={}
     @protocols.each do |p| 
       @surveys[p.survey_id.to_s] = Survey.find(p.survey_id).access_code
+       @files[p.id.to_s] = SurveyFile.where(:response_set_id => p.id)
     end
     @title_questions = Question.where("text LIKE '%Title%'").map{|q| q.id} + Question.where("text LIKE '%TITLE%'").map{|q| q.id}
     # @statuses = Status.where(:survey_id => @protocols.map { |e|  e.access_code}) 
