@@ -27,6 +27,7 @@
       <th>Protocol Title</th>
       <th>Investigator</th>
       <th>Type</th>
+      <th>Files</th>
       <th>Date Submitted</th>
       <th>Status</th>
       <th><%=t '.actions', :default => t("helpers.Actions") %>
@@ -51,6 +52,11 @@
            <%=protocol.user.email%>
          </td>
          <td><%=protocol.survey.title%></td>
+         <td>
+           <%- @files[protocol.id.to_s].each do |s|%>
+             <%=link_to s.attachement.url.split('/')[-1], s.attachement.url%>
+           <%-end-%>
+         </td>
          <td>
            <%= Status.find_by_survey_id(protocol.access_code) ? Status.find_by_survey_id(protocol.access_code).updated_at.strftime("%m/%d/%Y") : ""  %>
          </td>
