@@ -23,7 +23,7 @@
   <p><%= link_to "View All My Protocols", protocols_path, :class=>"btn-small"%></p>
   <%= form_tag protocols_path, :method => :get do %>
     <label>Show Protocol by status</label>
-    <%= select_tag 'status', "<option>submitted</option><option>review</option><option>accepted</option><option>archived</option>".html_safe %>
+    <%= select_tag 'status', "<option value='submitted'>Submitted</option><option value='review'n>Review</option><option value='approved'>Approved</option><option value='archived'>Archived</option>".html_safe %>
     <%= submit_tag 'Go' %>
   <% end %>
 
@@ -52,7 +52,7 @@
           </td>
           <td><%=protocol.survey.title%></td>
           <td>
-            <%= Status.find_by_survey_id(protocol.access_code) ? Status.find_by_survey_id(protocol.access_code).state : "none"  %>
+            <%= Status.find_by_survey_id(protocol.access_code) ? Status.find_by_survey_id(protocol.access_code).state.capitalize : "None"  %>
           </td>
           <td>
             <%- @files[protocol.id.to_s].each do |s|%>

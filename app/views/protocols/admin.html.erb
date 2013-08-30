@@ -18,13 +18,13 @@
 <%= link_to "View all Protocols", admin_protocols_path, :class=>"btn"%>
 <%= form_tag admin_protocols_path, :method => :get do %>
 <label>Show Protocol By Status </lablel>
-<%= select_tag 'status', "<option>submitted</option><option>review</option><option>approved</option><option>archived</option>".html_safe %>
+<%= select_tag 'status', "<option value='submitted'>Submitted</option><option value='review'n>Review</option><option value='approved'>Approved</option><option value='archived'>Archived</option>".html_safe %>
 <%= submit_tag 'Go' %>
 </div><% end %>
 <table id="protocols_table"  class="table table-striped span12">
   <thead>
     <tr>
-      <th>Protocol Title</th>
+      <!--<th>Protocol Title</th>-->
       <th>Investigator</th>
       <th>Type</th>
       <th>Files</th>
@@ -39,13 +39,13 @@
     <% @protocols.each do |protocol| %>  
       <%if Status.find_by_survey_id(protocol.access_code).nil? || Status.find_by_survey_id(protocol.access_code).state != "archived" || params[:status] == "archived" %>
       <tr>
-        <td>
+        <!--<td>
           <% if protocol.responses.where(:question_id => @title_questions).count > 0 %>
             <%= link_to protocol.responses.where(:question_id => @title_questions).first.string_value, "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}" , :target => "_blank" %>
           <%else%>
             <%= link_to "In Progess- Untitled", "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}", :target => "_blank"  %>
           <%end%>
-        </td>        
+        </td>    -->    
         
         <!--<td><a href="#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}.pdf"><img src="http://findicons.com/files/icons/990/vistaico_toolbar/128/arrow_down.png"></td></a>-->
          <td>
@@ -61,7 +61,7 @@
            <%= Status.find_by_survey_id(protocol.access_code) ? Status.find_by_survey_id(protocol.access_code).updated_at.strftime("%m/%d/%Y") : ""  %>
          </td>
           <td>
-            <%= Status.find_by_survey_id(protocol.access_code) ? Status.find_by_survey_id(protocol.access_code).state : "none"  %>
+            <%= Status.find_by_survey_id(protocol.access_code) ? Status.find_by_survey_id(protocol.access_code).state.capitalize : "None"  %>
          </td>
          <td>
          <%= link_to  'Download', "#{surveyor_path}/#{protocol.survey.access_code}/#{protocol.access_code}.pdf", :format => 'pdf', :target=>'_blank',:class => 'icon-circle-arrow-right btn-small' %>
