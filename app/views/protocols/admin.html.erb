@@ -15,7 +15,7 @@
      <li><%= link_to "archived", admin_protocols_path(:status => 'archived') %></li>
   </ul>
 </div> -->
-<%= link_to "View all Protocols", admin_protocols_path, :class=>"btn"%>
+<%= link_to "View all Current Protocols", admin_protocols_path, :class=>"btn"%><br/><br/>
 <%= form_tag admin_protocols_path, :method => :get do %>
 <label>Show Protocol By Status </lablel>
 <%= select_tag 'status', "<option value='submitted'>Submitted</option><option value='review'n>Review</option><option value='approved'>Approved</option><option value='archived'>Archived</option>".html_safe %>
@@ -66,14 +66,12 @@
          <td>
          <%= link_to "View", "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}", :target => "_blank", :class=>"icon-eye-open"  %>
          <%= link_to  'Download', "#{surveyor_path}/#{protocol.survey.access_code}/#{protocol.access_code}.pdf", :format => 'pdf', :target=>'_blank',:class => 'icon-download-alt btn-small' %>
-         </td>
-         <td>
+         
          <% if Status.find_by_survey_id(protocol.access_code).nil? || (Status.find_by_survey_id(protocol.access_code).state != 'archive' && Status.find_by_survey_id(protocol.access_code).state != 'approved')%>
          <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}/take", :class => "icon-pencil btn-small" %>
          <% end %>
-         </td>
-         <td>
+         
          <% if !Status.find_by_survey_id(protocol.access_code) %><%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       protocol_path(protocol.access_code),
                       :method => :delete,
