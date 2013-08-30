@@ -12,6 +12,7 @@ gem 'wicked_pdf'
 gem 'surveyor'
 gem 'paper_trail'
 gem 'jquery-rails'
+gem 'carrierwave'
 
 # Gems used only for assets and not required
 # in production environments by default.
