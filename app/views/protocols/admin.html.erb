@@ -43,7 +43,7 @@
           <% if protocol.responses.where(:question_id => @title_questions).count > 0 %>
             <%= link_to protocol.responses.where(:question_id => @title_questions).first.string_value, "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}" , :target => "_blank" %>
           <%else%>
-            <%= link_to "In Progess- Untitled", "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}", :target => "_blank"  %>
+            
           <%end%>
         </td>    -->    
         
@@ -64,7 +64,8 @@
             <%= Status.find_by_survey_id(protocol.access_code) ? Status.find_by_survey_id(protocol.access_code).state.capitalize : "None"  %>
          </td>
          <td>
-         <%= link_to  'Download', "#{surveyor_path}/#{protocol.survey.access_code}/#{protocol.access_code}.pdf", :format => 'pdf', :target=>'_blank',:class => 'icon-circle-arrow-right btn-small' %>
+         <%= link_to "View", "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}", :target => "_blank", :class=>"icon-eye-open"  %>
+         <%= link_to  'Download', "#{surveyor_path}/#{protocol.survey.access_code}/#{protocol.access_code}.pdf", :format => 'pdf', :target=>'_blank',:class => 'icon-download-alt btn-small' %>
          </td>
          <td>
          <% if Status.find_by_survey_id(protocol.access_code).nil? || (Status.find_by_survey_id(protocol.access_code).state != 'archive' && Status.find_by_survey_id(protocol.access_code).state != 'approved')%>
