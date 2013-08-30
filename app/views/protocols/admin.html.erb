@@ -98,8 +98,7 @@
                <%= f.submit "Submit" %>
              <% end %>
             <%end%>
-        </td>
-          <td>
+        
           <% if Status.find_by_survey_id(protocol.access_code) && Status.find_by_survey_id(protocol.access_code).state == 'submitted'%>
             <%= form_for (Status.find_by_survey_id(protocol.access_code)), :url => status_path(Status.find_by_survey_id(protocol.access_code)), :method=> 'put'  do |f| %>
               <%= f.hidden_field :survey_id, :value => protocol.access_code %>
@@ -110,8 +109,7 @@
           <% else %>
             
            <%end%> 
-        </td>     
-        <td>
+        
           <% if Status.find_by_survey_id(protocol.access_code) && Status.find_by_survey_id(protocol.access_code).state == 'submitted'%>
 
             <%= form_for (Status.find_by_survey_id(protocol.access_code)), :url => status_path(Status.find_by_survey_id(protocol.access_code)), :method=> 'put'  do |f| %>
@@ -120,8 +118,7 @@
               <%= f.submit "Approve" %>
             <% end %>
            <%end%> 
-        </td>
-        <td>
+        
           <% if Status.find_by_survey_id(protocol.access_code) && Status.find_by_survey_id(protocol.access_code).state == 'approved'%>
 
             <%= form_for (Status.find_by_survey_id(protocol.access_code)), :url => status_path(Status.find_by_survey_id(protocol.access_code)), :method=> 'put'  do |f| %>
