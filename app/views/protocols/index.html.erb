@@ -20,7 +20,7 @@
   <%- model_class = Protocol -%>
 
   <h1>My <%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
-  <p><%= link_to "View All My Protocols", protocols_path, :class=>"btn-small"%></p>
+  <p><%= link_to "View All My Current Protocols", protocols_path, :class=>"btn-small"%></p>
   <%= form_tag protocols_path, :method => :get do %>
     <label>Show Protocol by status</label>
     <%= select_tag 'status', "<option value='submitted'>Submitted</option><option value='review'n>Review</option><option value='approved'>Approved</option><option value='archived'>Archived</option>".html_safe %>
@@ -31,6 +31,7 @@
     <thead>
       <tr>
         <th>Type</th>
+        <th> Last Updated</th>
         <th>Status</th>
         <th>Files</th>
         <th><%=t '.actions', :default => t("helpers.Actions") %></th>
@@ -41,9 +42,11 @@
     </thead>
     <tbody>
       <% @protocols.each do |protocol| %>  
+        <%if Status.find_by_survey_id(protocol.access_code).nil? || Status.find_by_survey_id(protocol.access_code).state != "archived" || params[:status] == "archived" %>
         <tr>
 
           <td><%=protocol.survey.title%></td>
+          <td><%=protocol.updated_at.strftime("%m/%d/%Y") %></td>
           <td>
             <%= Status.find_by_survey_id(protocol.access_code) ? Status.find_by_survey_id(protocol.access_code).state.capitalize : "None"  %>
           </td>
@@ -91,6 +94,7 @@
           </td>   -->
           
         </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>
