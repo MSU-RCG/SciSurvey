@@ -30,7 +30,6 @@
   <table id="protocols_table"  class="table table-striped span11">
     <thead>
       <tr>
-        <th>Protocol Title</th>
         <th>Type</th>
         <th>Status</th>
         <th>Files</th>
@@ -43,13 +42,7 @@
     <tbody>
       <% @protocols.each do |protocol| %>  
         <tr>
-          <td>
-            <% if protocol.responses.where(:question_id => @title_questions).count > 0 %>
-              <%= link_to protocol.responses.where(:question_id => @title_questions).last.string_value, "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}" , :target => "_blank" %>
-            <%else%>
-              <%= link_to "In Progess- Untitled", "#{surveyor_path}/#{@surveys[protocol.survey_id.to_s]}/#{protocol.access_code}", :target => "_blank"  %>
-            <%end%>
-          </td>
+
           <td><%=protocol.survey.title%></td>
           <td>
             <%= Status.find_by_survey_id(protocol.access_code) ? Status.find_by_survey_id(protocol.access_code).state.capitalize : "None"  %>
