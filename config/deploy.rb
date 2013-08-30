@@ -106,7 +106,7 @@ namespace :assets do
   task :symlink do
     run "ln -nfs #{deploy_to}/#{shared_dir}/assets/files #{release_path}/public/files"
     run "ln -nfs #{deploy_to}/#{shared_dir}/assets/images #{release_path}/public/images"
-    run "ln -nfs #{deploy_to}/#{shared_dir}/assets/images #{release_path}/public/uploads"
+    run "ln -nfs #{deploy_to}/#{shared_dir}/assets/uploads #{release_path}/public/uploads"
     run "ln -nfs #{deploy_to}/#{shared_dir}/assets/temp_data #{release_path}/temp_data"
     run "ln -nfs #{deploy_to}/#{shared_dir}/assets/data #{release_path}/data"
 
