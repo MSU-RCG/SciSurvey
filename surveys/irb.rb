@@ -56,27 +56,9 @@ survey "Institutional Review Board Full Application", :default_mandatory => true
     q_17 "Name of Funding Agency to which Proposal is Being Submitted (if applicable):"
       a_1 :string
   end
+
   
   section "Section VI" do
-    label "Signatures"
-    
-    label "Submitted by Investigator"
-    q_18 "Typed Name:"
-     a_1 :string
-     
-    label "Signature:"
-    label "Date:"
-    
-    label "Faculty sponsor (for student)"
-    
-    q_19 "Typed Name:"
-     a_1 :string
-     
-    label "Signature:<br/>Date:"
-
-  end
-  
-  section "Section VII" do
     label "Summary of Activity. Provide answers to each section and add space as needed. Do not refer to an accompanying grant or contract proposal."
     
     q_20 "RATIONALE AND PURPOSE OF RESEARCH (What question is being asked?)"
@@ -160,7 +142,7 @@ survey "Institutional Review Board Full Application", :default_mandatory => true
     end
 
   end
-  section "Section VIII" do
+  section "Section VII" do
     label "Checklist to be Completed by Investigator(s)"
     
     q_40 "Will any group, agency, or organization be involved? (Yes or No. If yes, please confirm"
