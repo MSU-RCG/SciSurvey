@@ -53,8 +53,13 @@
   .text{
     width: 100%;
     padding: 5px 5px 5px 5px;
-    
+    font-size: 1em;
   }
+   .string{
+     
+      font-size: 1em;
+   }
+   
   li{
     padding: 0px 0px 0px 5px;
     margin: 0px 0px 0px 0px;
@@ -67,8 +72,11 @@
   function changetext(){
     $('textarea').each( function(){
           $(this).css("height", (25 + $('#'+this.id)[0].scrollHeight)+"px");})
+  
+     $('.string input[type=text]').each( function(){
+        $(this).replaceWith('<div style="width:600px;word-wrap:break-word;border:1px solid;padding:2px;min-height:1.1em;margin:2px 2px 5px 2px;font-size:1.1em;">'+$(this).val()+'</div>')
+     })
   }
-
   </script>
 </head>
 <body onload="changetext()" style="width:800px;padding:15px; 15px; 15px; 15px;">
