@@ -7,12 +7,23 @@
   %center
     %h3 Available Research Compliance Forms
     .span6  
+      - code =nil
       - @surveys_by_access_code.sort.each do |access_code, surveys|
-        = form_tag surveyor.take_survey_path(:survey_code => access_code) do
+        -if surveys.first.translation(I18n.locale)[:title] == "Institutional Review Board Full Application"
+          - code = access_code
+        - else
+          = form_tag surveyor.take_survey_path(:survey_code => access_code) do
+            = button_tag( surveys.first.translation(I18n.locale)[:title], 
+                          :default => surveys.first.translation(I18n.locale)[:title], 
+                          :class => 'btn-large btn-primary btn-block', 
+                          :type => 'submit' )
+      - unless code.nil?
+        -surveys = @surveys_by_access_code[code]
+        = form_tag surveyor.take_survey_path(:survey_code => code) do
           = button_tag( surveys.first.translation(I18n.locale)[:title], 
                         :default => surveys.first.translation(I18n.locale)[:title], 
                         :class => 'btn-large btn-primary btn-block', 
-                        :type => 'submit' )
+                        :type => 'submit' )                 
 
 :javascript
   var $ = jQuery.noConflict();
