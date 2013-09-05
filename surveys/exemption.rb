@@ -66,7 +66,7 @@ survey "Request for Designation of Research as Exempt", :default_mandatory => tr
       a_1 :text
     
   end
-  section "Section V" do
+  section "Section VI" do
     label "<h3>FOR RESEARCH INVOLVING SURVEYS OR QUESTIONNAIRES</h3>"
     label "(Be sure to indicate on each instrument, survey or questionnaire that participation is voluntary.)"
 
