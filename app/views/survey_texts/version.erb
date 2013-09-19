@@ -1,13 +1,13 @@
 <%- model_class = SurveyText -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %> Version #<%=@version.id%>, created at: <%=@version.created_at%></h1>
-</div>
+
+  <h3><%=t '.title', :default => model_class.model_name.human %> Version #<%=@version.id%>, created at: <%=@version.created_at%></h3>
+
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
   <dd><%= @version.title %></dd>
   <dt><strong><%= model_class.human_attribute_name(:body) %>:</strong></dt>
-  <dd><%= text_area_tag 'body', @version.body, :disabled=>true, :style=>"width:700px;" %></dd>
+  <dd><%= text_area_tag 'body', @version.body, :disabled=>true, :style=>"width:800px;height:500px;" %></dd>
 </dl>
 
 <div class="form-actions">
