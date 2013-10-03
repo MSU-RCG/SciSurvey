@@ -9,10 +9,10 @@ survey "IBC Protocol", :default_mandatory => false do
       a_1 :string
    
     q_application_type "Application Type: (select all that apply)", :pick => :any
-      a_1 "Recombinant or Synthetic Nucleic Acids (bacterial host-plasmid vector systems; recombinant or synthetic viruses in tissue culture; recombinant or synthetic nucleic acids in plants or animals; recombinant or synthetic influenzae viruses; >10 liter culture)"
+      a_1 "Recombinant or Synthetic Nucleic Acids (host-vector systems; recombinant or synthetic viruses in tissue culture; recombinant or synthetic nucleic acids in plants or animals; recombinant or synthetic influenzae viruses; >10 liter culture)"
       a_2 "Biological Materials Registration (human, animal, and/or plant pathogens; plants; animals,)"
       a_3 "Biological Toxin"
-      a_4 "Transgenic Animal Registration, only"
+      a_4 "Transgenic Animal Registration"
   end
 
 
@@ -44,8 +44,10 @@ section "New Submission Information" do
     ["BSL1", "BSL2", "BSL3"].each{ |level| a level}
   
   
-    q_funding_agencies "Funding Agencies:"
-    a_1 :text
+    q_funding_agencies "Source(s) of Funds (e.g. agencies, IDC's etc.):"
+    a_1 :string
+     q_funding_agenciesb "Fund #:"
+     a_1 :string
     
     
     repeater "Personnel Conducting Experiments" do
@@ -60,24 +62,29 @@ section "New Submission Information" do
         a "First Name", :string
         a "Last Name", :string
         a "Responsibilities", :text
-        a "Training and Experience (include CITI training)", :text
+        a "Training and Experience", :text
     end
 
 #good 
-   q_2 "Have you and each of your listed personnel completed the CITI training <a href=\'http://www.citiprogram.org/\'>(http://www.citiprogram.org?)</a>", :pick => :one, :display_type => :dropdown
+   q_2 "Have you and each of your listed personnel completed the CITI Biosafety training <a href=\'http://www.citiprogram.org/\'>(http://www.citiprogram.org?)</a>?", :pick => :one, :display_type => :dropdown
     ["Yes","No"].each{ |level| a level}
 
  
-   q_3 "Will human subjects and/or human clinical specimens be used in this research? Yes or no.  If yes, please explain."
-      a_1 :text
+   q_3 "Will human subjects and/or human clinical specimens be used in this research?", :pick=> :one
+      a_1"Yes"
+      a_2"No"
+   q_3a "If yes, please describe and do you have approval from the IRB?"
+       a_1  :text
  
    
     q_4 "Will you transport or ship biological agents/infectious substances/diagnostic specimens?" , :pick=>:one
       a_1 "Yes"
       a_2 "No"
+    q_4a "If yes, please desribe what will be transported or shipped."
+     a_1 :text
 
  
-   q_5 "Will you use <a href='http://www.selectagents.gov/resources/List_of_Select_Agents_and_Toxins_2012-12-4-English.pdf'>Select Agents?" , :pick=> :one
+   q_5 "Will you use <a href='http://www.selectagents.gov/resources/List_of_Select_Agents_and_Toxins_2012-12-4-English.pdf'>Select Agents?</a>" , :pick=> :one
       a_1 "Yes"
       a_2 "No"
 
@@ -85,9 +92,10 @@ section "New Submission Information" do
   q_6 "Will you use agents subject to export controls?" ,:pick=> :one
       a_1 "Yes"
       a_2 "No"
-
+  q_6a "If yes, please explain."
+       a_1 :text
   
-  q_7 "Are permits (import, transport, release to the environment required to work with this material?  If yes, please submit a copy of all permits with this registration." , :pick=> :one
+  q_7 "Are permits (import, transport, release to the environment) required to work with this material?  If yes, please submit a copy of all permits with this registration." , :pick=> :one
       a_1 "Yes"
       a_2 "No"
 
@@ -129,7 +137,7 @@ section "Biological Materials Registration" do
       a_3 "Animals"
       
 
-# "please add additional answers to pathogen use repeater questions.  Questions and/or answere to add are indented to far left."
+# "please add additional answers to pathogen use repeater questions.  Questions and/or answers to add are indented to far left."
 
   label "Pathogen Use--Please complete the following information for each human, animal and plant pathogen used in this project."
   
@@ -139,7 +147,7 @@ section "Biological Materials Registration" do
   q_10 "Pathogen ID"
       a_1 "Genus and species (and strain if known)", :string
       a_2 "Type of Agent:  bacterium, virus, fungus, prion",  :string
-      a_3 "Biosafety Level:  1,2,3,4", :string
+      a_3 "Biosafety Level: 1,2,or 3", :string
       a_4 "Is the microorganism on the CDC <a href=\'http://www.selectagents.gov/resources/List_of_Select_Agents_and_Toxins_2012-12-4-English.pdf\'>Select Agents List?</a>", :string 
       a_5 "Source of Agent", :string
       a_6 "Pathogenic to", :string
@@ -149,7 +157,7 @@ section "Biological Materials Registration" do
       a_10 "Effective Treatments (e.g. antibiotics, immunization)", :text
       a_11 "Appropriate Disinfectant and contact time:", :string
       a_12 "How will you inactivate the agent upon completion of work?", :text
-      a_13 "Does this organism synthesize a toxic molecule lethal for vertebrates at an LD50<100 ng/kg or a toxin on the Select Agent list?  If yes, please identify the toxin here and be sure to complete the BIOLOGICAL TOXIN section of this form by selecting the check box for BIOLOGICAL TOXINS at the beginning of the form.", :text   
+      a_13 "Does this organism synthesize a toxic molecule lethal for vertebrates at an LD50<100ng/kg bodyweight or a toxin on the Select Agent list?  If yes, please identify the toxin here and be sure to complete the BIOLOGICAL TOXIN section of this form by selecting the check box for BIOLOGICAL TOXINS at the beginning of the form.", :text   
   end
  
    
@@ -160,7 +168,7 @@ section "Biological Materials Registration" do
         a_2 "Rm#", :string
         a_3 "Facility", :string
         a_4 "Type", :string
-        a_5 "Qty", :strin
+        a_5 "Quantity", :string
      end
   
 
@@ -218,7 +226,8 @@ section "Animal Use" do
         a_4 "Subcutaneous"
         a_5 "Intramuscular"
         a_6 "Intracerebroventricular"
-        a_7 "Other"
+        a_7 "Oral"
+        a_8 "Other"
   end
        
   repeater "Animal Housing" do    
@@ -233,7 +242,10 @@ section "Animal Use" do
       a_1 "Building", :text
       a_2 "Room", :string
   end  
-end #end section
+
+   q_101 "Are there risks for animal handlers or animal care staff to handle the animals infected with the pathogens listed above (e.g. shedding of pathogen in urine or feces; transmission through bites or scratches; or aggressive animal temperament)?" 
+  a_1 :text
+     end #end section
 
 
  
@@ -247,34 +259,34 @@ end #end section
     label "Fill out this section if your project involves the use of Recombinant and/or Synthetic Nucleic Acid Molecules.    More information: <a href='http://oba.od.nih.gov/oba/faqs/Synthetic_FAQs-Sept-2012.pdf'>Frequently Asked Questions NIH 
         Guidelines for Research Involving Recombinant or Synthetic Nucleic Acid Molecules</a>"
 
-    label"Check YES or NO to each question to determine which sections of the NIH Guidelines pertain to your project.  You will be asked to describe your project in more detatil at the end of the survey.  Please address each item checked YES in that description.</a>"
+    label"Check YES or NO to each question to determine which sections of the NIH Guidelines pertain to your project.  You will be asked to describe your project in more detatil at the end of the survey."
 
      q_21 "1.  Does your project include deliberate transfer of a drug resistance trait to microorganisms that are NOT known to acquire the trait naturally? (Section III-A)? If yes, also answer question 22.", :pick=> :one
         a_1 "Yes"
         a_2 "No"
   
-    q_22 "1.a  Could such a transfer compromise the use of the drug to control disease agents in humans, veterinary medicine, or agriculture?", :pick=> :one
+    q_22 "Could such a transfer compromise the use of the drug to control disease agents in humans, veterinary medicine, or agriculture?", :pick=> :one
       a_1 "Yes"
       a_2 "No"
     
-    q_23 "2.  Does your project include cloning toxin molecules with an LD50 of less than 100 nanograms per kilogram body weight ? (Section III-B)   If YES, please make sure to also complete the Biological Toxin section by selecting the checkbox for Biological Toxins at the beginning of the form.", :pick => :one
+    q_23 "Does your project include cloning toxin molecules with an LD50 of less than 100 nanograms per kilogram body weight ? (Section III-B)   If YES, please make sure to also complete the Biological Toxin section by selecting the checkbox for Biological Toxins at the beginning of the form.", :pick => :one
       a_1"Yes"
       a_2"No" 
       
-    q_24 "3.  Does your project include experiments using Risk Group 2, Risk Group 3, Risk Group 4, or Select Agents as host-vector systems? (Section III-D-1)  If YES, please make sure to also complete the Biological Materials Registration section by selecting the checkbox for BIOLOGICAL MATERIALS REGISTRATION at the beginning of the form.", :pick=> :one
+    q_24 "Does your project include experiments using Risk Group 2, Risk Group 3, Risk Group 4, or Select Agents as host-vector systems? (Section III-D-1)  If YES, please make sure to also complete the Biological Materials Registration section by selecting the checkbox for BIOLOGICAL MATERIALS REGISTRATION at the beginning of the form.", :pick=> :one
       a_1 "Yes"
       a_2 "No"
 
    
-    q_25 "4.  Does your project include experiments in which nucleic acids from Risk Group 2, Risk Group 3, Risk Group 4, or Restricted Agents is cloned into nonpathogenic prokaryotic or lower eukaryotic host-vector systems? (Section III-D-2)?", :pick=> :one
+    q_25 "Does your project include experiments in which nucleic acids from Risk Group 2, Risk Group 3, Risk Group 4, or Restricted Agents are cloned into non-pathogenic prokaryotic or lower eukaryotic host-vector systems? (Section III-D-2)?", :pick=> :one
       a_1 "Yes"
       a_2 "No"
  
-    q_26 "5.  Does your project include experiments involving the use of infectious DNA or RNA viruses or defective DNA or RNA viruses in the presence of helper virus in tissue culture systems?  (Section III-D-3)", :pick=> :one
+    q_26 "Does your project include experiments involving the use of infectious DNA or RNA viruses or defective DNA or RNA viruses in the presence of helper virus in tissue culture systems?  (Section III-D-3)", :pick=> :one
       a_1 "Yes"
       a_2 "No"      
         
-    q_27 "6.  Does your project include experiments involving genetically engineered plants? (Section III-D-5, III-E-2).  If yes, please be sure to fill out the Biological Materials section of the survey by selecting the checkbox for BIOLOGICAL MATERIALS REGISTRATION at the beginning of the form.", :pick=> :one
+    q_27 "Does your project include experiments involving genetically engineered plants? (Section III-D-5, III-E-2).", :pick=> :one
       a_1 "Yes"
       a_2 "No"
         
@@ -286,18 +298,19 @@ end #end section
       a_1 "Yes"
       a_2 "No"
 
-    q_30 "9.  Does your project include experiments involving viable rDNA-modified microorganisms tested on animals?  (Section III-D-4, III-E-3). If yes, please make sure to also complete the Biological Materials Registration section by selecting the checkbox for BIOLOGICAL MATERIALS REGISTRATION at the beginning of the form." , :pick=> :one
+    q_30 "9.  Does your project include experiments involving viable rDNA-modified microorganisms tested on animals?  (Section III-D-4, III-E-3)." , :pick=> :one
       a_1 "Yes"
       a_2 "No"
    
-    q_31"10.  Does your project include experiments involving whole animals in which the animalís genome has been altered by introduction of DNA into the germ line (i.e.transgenic animals)? (Section III-D-4, III-E-3)  If yes, then please register your transgenic animals by checking the TRANSGENIC ANIMAL REGISTRATION check box at the beginning of the form.", :pick=> :one
+    q_31"10.  Does your project include experiments involving whole animals in which the animal's genome has been altered by introduction of DNA into the germ line (i.e.transgenic animals)? (Section III-D-4, III-E-3)  If yes, then please register your transgenic animals by checking the TRANSGENIC ANIMAL REGISTRATION check box at the beginning of the form.", :pick=> :one
       a_1 "Yes"
       a_2 "No"
 
     q_32 "11.  Does your project include experiments involving the deliberate transfer of recombinant or synthetic nucleic acids into one or more human research participants (Section III-C)?", :pick=> :one
       a_1 "Yes"
       a_2 "No"
-  end#endgroup  
+
+  end#endgrouprecomsynnucacids  
 
 #good
 
@@ -307,45 +320,101 @@ end #end section
     q_33 "Will proteins or regulatory RNAs be expressed?", :pick=> :one
       a_1 "Yes"
       a_2 "No"
+    q_33a "If yes, please describe."
+      a_1 :text
  
      
     q_34 "Is the source of nucleic acid to be cloned associated with alterations of normal mammalian cell cycle or cell growth (i.e. a potentially oncogenic or tumorigenic gene?)", :pick=> :one
       a_1 "Yes"
       a_2 "No"
+   q_34a "If yes, please explain."
+       a_1 :text
 
     q_35 "Will your experiments be conducted outside of containment? (e.g. outside the facility, field trial?)", :pick=> :one
       a_1 "Yes"
       a_2 "No"
+   q_35a "If yes, please explain."
+      a_1 :text
     
     q_36 "Will your experiments transfer drug, vaccine, or chemical resistance genes(excluding common resistance markers in plasmid vectors or transposons used for cloning or mutagenesis.)?", :pick=> :one
         a_1 "Yes"
         a_2 "No"
+  q_36a "If yes, please explain."
+        a_1 :text
     
-    q_37 "Will your experimenst make a pathogen more virulent?", :pick=> :one
+    q_37 "Will your experiments make a pathogen more virulent?", :pick=> :one
         a_1 "Yes"
         a_2 "No" 
+     q_37a "If yes, please explain."
+        a_1 :text
   
     q_38 "Will your experiments alter genes associated with an agent's transmissibility?", :pick=> :one
         a_1 "Yes"
         a_2 "No"
+    q_38a "If yes, please explain."
+        a_1 :text
 
-    q_39 "Will yourexperimnets enable evasion of diagnostic/detection modalities?", :pick=> :one
+    q_39 "Will your experiments enable evasion of diagnostic/detection modalities?", :pick=> :one
         a_1 "Yes"
         a_2 "No"
+     q_39a "If yes, please explain."
+        a_1 :text
 
     q_40 "Will your experiments alter the host range or tropism of a pathogen?", :pick=> :one
         a_1 "Yes"
         a_2 "No"
+     q_40a "If yes,please explain."
+        a_2 :text
 
     q_41 "Will your experiments change an organisms's normal ability to survive?", :pick=> :one
         a_1 "Yes"
         a_2 "No"
+    q_41a "If yes, please explain."
+        a_1 :text
+      end#endgrouprecomquestions
 
-    q_42 "If you checked YES to any of the above, please explain in more detail:"
+#group "Recombinant or Synthetic Nucleic Acid Contructs" do
+    label "Please detail all recombinant or synthetic nucleic acid constructs below."
+    repeater "Recombinant Construct" do
+      q_51 "Recombinant Construct"
+        a_1 "Gene name:", :string
+        a_2 "Source of nucleic acid sequence (e.g. human, mouse, corn, pathogen):", :string
+        a_3 "Function/Biological Activity:",  :text
+        a_4 "Vector (plasmid, phage or virus):", :string
+        a_5 "Construct Name (e.g. pTR-UF-GFP):", :string
+        a_6 "Host strain for vector (e.g. E. coli K-12):", :string
+        a_7 "List target recipients of recombinant or synthetic nucleic acid (cell lines, animals, bacteria)  Provide Genus/species or common name:",  :text
+        a_8 "If using tissue culture/cell lines, specify name and origin and whether or not they are tumorigenic or oncogenic." , :text
+        a_9 "How will you introduce the gene into each host--types of manipulations planned (e.g. transfection, trandsuction, injection)?",  :text
+        a_10 "Where is recombinant made?", :text
+        a_11 "Discuss any risks associated with the release of the recombinant vector or the genetically modified host organism to humans or to the environment.", :text
+    end
+#end#endgrouprecconstructs
+
+
+# group "Eukaryotic Viral Vectors" do
+    label "Please provide more information for any eukaryotic viral vectors listed above if you use >2/3 the viral genome."
+
+    repeater "Viral Vector" do
+      q_52 "Additional Viral Vector Information"
+        a_1 "Name of viral vector:", :string
+        a_2 "Is the virus replication defective?  Must answer Yes or No.  If yes, how so.  If no, provide justification for using a replication competant virus.",  :text
+        a_3 "Will you use a defective viral vector in the presence of helper Virus?  If yes, specify.",  :text
+        a_4 "List all helper plasmids used to produce recombinant virus.",  :text
+        a_5 "Discuss the probability and consequences of recombination events leading to restoration of a replication competant virus.",   :text
+        a_6 "Discuss safety features of the viral vector (e.g. gene deletions, expression of packaging genes on multiple plasmids, limited tissue tropism, self-inactivating long terminal repeats).",  :text
+        a_7 "Has the vector preparation been tested or will it be tested for the presence of replication competent virus?  If yes, describe the method used for testing and attach data if available.", :text
+    end#repeater
+#end#endviralvector
+   
+  group "Recombinant or synthetic nucleic acid risk assessment." do
+    label "Please answer some more questions to assess the risk of your proposed recombinant and/or synthetic nucleic acid experiments."
+
+    q_53 "What are the risks to humans of accidental exposure to each of the recombinant or synthetic DNA/RNA insert(s) you will be using. Consider whether the recombinant nucleic acids encode for replication competent viruses, toxins, cytokines, oncogenes, growth factors, hormones, or allergens. For inhibitory RNA molecules, discuss the consequences of the loss of the targeted gene product and potential off-target effects."
       a_1 :text
-  end#end group
+  end#endrdnariskassess
 
-  #section "Recombinant or synthetic nucleic Acid Use in animals" do
+  #group "Recombinant or Synthetic Nucleic Acid Use in Animals" do
     label "Please complete this section only if your experiments involve the use of recombinant or synthetic nucleic acids in animals."
     
     repeater "Animal Use" do
@@ -358,13 +427,19 @@ end #end section
           a_5 "Subcutaneous"
           a_6 "Intramuscular"
           a_7 "Intracerebroventricular"
-          a_8 "Other"         
-        q_43b "Where will animals be housed?"
-          a_9 "Building", :string   
-          a_10 "Room", :string
-        q_43c "Where will you perform procedures using animals?"
-          a_11 "Building", :text
-          a_12 "Room", :string
+          a_8 "Other"
+      q_43b "If other, please describe."
+           a_1:string       
+        label "Where will animals be housed?"
+          q_43c "Building"
+            a_1 :string   
+          q_43d "Room"
+            a_1 :string
+        label "Where will you perform procedures using animals?"
+          q_43e "Building"
+            a_1 :text
+          q_43f "Room"
+            a_1 :string
      end
  
 
@@ -372,10 +447,11 @@ end #end section
         a_1 "Yes"
         a_2 "No"
 
- # end
+#  end
+ #endgrouprdnaanimals
 
   group "Recombinant or Synthetic Nucleic Acid in Plants" do
-    label "Please complete this section only if your experiments involve the use of recombinant or synthetic nucleic acids in animals." 
+    label "Please complete this section only if your experiments involve the use of recombinant or synthetic nucleic acids in plants." 
     
     q_45 "What types of plants will you use?"
       a_1 :text
@@ -397,52 +473,10 @@ end #end section
  
     q_50 "How will recombinant plant materials be disposed of upon completion of experiments?"
       a_1 :text
-  end
+ 
 
-#
-#  group "Recombinant Contructs" do
-    label "Please detail all recombinant constructs below."
-    repeater "Recombinant Construct" do
-      q_51 "Recombinant Construct"
-        a_1 "Gene name:", :string
-        a_2 "Source of nucleic acid sequence (e.g. human, mouse, corn, pathogen):", :string
-        a_3 "Function/Biological Activity:",  :text
-        a_4 "Vector (plasmid, phage or virus):", :string
-        a_5 "Construct Name (e.g. pTR-UF-GFP):", :string
-        a_6 "Host strain for vector (e.g. E. coli K-12):", :string
-        a_7 "List target recipients of recombinant or synthetic nucleic acid (cell lines, animals, bacteria)  Provide Genus/species or common name:",  :text
-        a_8 "If using tissue culture/cell lines, specify name and origin and whether or not they are tumorigenic or oncogenic." , :text
-        a_9 "How will you introduce the gene into each host--types of manipulations planned (e.g. transfection, trandsuction, injection)?",  :text
-        a_10 "Where is recombinant made?", :text
-        a_11 "Discuss any risks associated with the release of the recombinant vector or the genetically modified host organism to humans or to the environment.", :text
-    end
-#  end
-
-
- # group "Eukaryotic viral vectors" do
-    label "Please provide more information for any eukaryotic viral vectors listed above if you use >2/3 the viral genome."
-
-    repeater "Viral Vector" do
-      q_52 "Additional viral Vector Information"
-        a_1 "Name of viral vector:", :string
-        a_2 "Is the virus replication defective?  Must answer Yes or No.  If yes, how so.  If no, provide justification for using a replication competant virus.",  :text
-        a_3 "Will you use a defective viral vector in the presence of helper Virus?  If yes, specify.",  :text
-        a_4 "List all helper plasmids used to produce recombinant virus.",  :text
-        a_5 "Discuss the probability and consequences of recombination events leading to restoration of a replication competant virus.",   :text
-        a_6 "Discuss safety features of the viral vector (e.g. gene deletions, expression of packaging genes on multiple plasmids, limited tissue tropism, self-inactivating long terminal repeats).",  :text
-        a_7 "Has the vector preparation been tested or will it be tested for the presence of replication competent virus?  If yes, describe the method used for testing and attach data if available.", :text
-    end
- # end
-  
-  
-  group "Recombinant or synthetic nucleic acid risk assessment and risk mitigation." do
-    label "Please answer some more questions to assess the risk of your proposed recombinant and/or synthetic nucleic acid experiments."
-
-    q_53 "What are the risks to humans of accidental exposure to each of the recombinant or synthetic DNA/RNA insert(s) you will be using. Consider whether the recombinant nucleic acids encode for replication competent viruses, toxins, cytokines, oncogenes, growth factors, hormones, or allergens. For inhibitory RNA molecules, discuss the consequences of the loss of the targeted gene product and potential off-target effects."
-      a_1 :text
-  end
-end#end section
-# good
+end#endrdnaplants
+end#endrdnasection
 
 section "Transgenic Animal Registration Only" do  
 
@@ -468,7 +502,7 @@ section "Transgenic Animal Registration Only" do
       a_1 "Microinjection of gene construct into pronuclear fertilized oocytes"
       a_2 "Insertion of gene construct into embryonic stem cells that are microinjected into oocytes"
       a_3 "Vector-mediated transfer of construct to embryonic stem cells for microinjection into oocytes"
-      a_4 "Other", :text
+      a_4 "Other"
 
   end
 #  group "Transgenic Animal Registration" do
@@ -505,16 +539,11 @@ section "Transgenic Animal Registration Only" do
       a_1 "Yes"
       a_2 "No"
 
-    q_64 "Are there plans to express the toxin in a recombinant expression system??", :pick => :one
+    q_64 "Are there plans to express the toxin in a recombinant expression system?  If yes, please review the comments following this question.", :pick => :one
       a_1 "Yes"
       a_2 "No"
 
-    label "If the toxin is on the Select Agent list, these are restricted experiments that require approval by HHS prior to initiation. Proceeding without prior approval is violation of section 13 </br>
-      of the Select Agent regulations (see section 73.13, <a href=\'http://www.selectagents.gov/Regulations.html\'>http://www.selectagents.gov/Regulations.html</a>).</br>
-      Cloning of toxins with an LD50 of less than 100 nanograms per kilogram body weight cannot be done without approval by both the NIH/OBA and the MSU IBC. (see Sections </br>
-      III-B and III-B-1 of the NIH Guidelines for Recombinant and Nucleic Acid Research, <a href'http://oba.od.nih.gov/oba/rac/Guidelines/NIH_Guidelines.htm'>
-      http://oba.od.nih.gov/oba/rac/Guidelines/NIH_Guidelines.htm</a>)</br>
-      Toxins with an LD50 of <100 ng/kg body weight include select agent toxins, botulinum toxins tetanus toxin, diphtheria toxin, and Shigella dysenteriae neurotoxin."
+    label "If the toxin is on the Select Agent list, these are restricted experiments that require approval by HHS prior to initiation. Proceeding without prior approval is violation of section 13 </br> of the Select Agent regulations (see section 73.13, <ahref=\'http://www.selectagents.gov/Regulations.html\'>http://www.selectagents.gov/Regulations.html</a>).</br> Cloning of toxins with an LD50 of less than 100 nanograms per kilogram body weight cannot be done without approval by both the NIH/OBA and the MSU IBC. (see Sections </br>      III-B and III-B-1 of the NIH Guidelines for Recombinant and Nucleic Acid Research, <a href'http://oba.od.nih.gov/oba/rac/Guidelines/NIH_Guidelines.htm'>     http://oba.od.nih.gov/oba/rac/Guidelines/NIH_Guidelines.htm</a>)</br>Toxins with an LD50 of <100 ng/kg body weight include select agent toxins, botulinum toxins tetanus toxin, diphtheria toxin, and Shigella dysenteriae neurotoxin."
 
     q_65 "Describe the types of experiments that will be performed. "
       a_1 :text
@@ -525,14 +554,13 @@ section "Transgenic Animal Registration Only" do
     q_67 "What is the LD50 of the toxin? Cite the source of information. "
       a_1 :text
 
-    q_68 "Will the toxin be transferred to another investigator at any time, either on-site or at another institution?", :pick => :one
+    q_68 "Will the toxin be transferred to another investigator at any time, either on-site or at another institution? If yes, please read the comments following this question.", :pick => :one
       a_1 "Yes"
       a_2 "No"
 
-    label "See the required documentation for due diligence: <a href=\'http://www.selectagents.gov/Toxin_Due_Diligence_Provision.html\'>
-      http://www.selectagents.gov/Toxin_Due_Diligence_Provision.html.</a> Documentation must be provided to the IBC and approved prior to transfer."
+    label "See the required documentation for due diligence: <a href=\'http://www.selectagents.gov/Toxin_Due_Diligence_Provision.html\'>     http://www.selectagents.gov/Toxin_Due_Diligence_Provision.html.</a> Documentation must be provided to the IBC and approved prior to transfer."
 
-    repeater "Identify all locations where the microorganism will be stored, and/or weighed and where experiments will be conducted" do
+    repeater "Identify all locations where the toxin will be stored, reconstituted, and/or aliquoted and where experiments will be conducted" do
       dependency :rule => "B"
       condition_B :q_application_type, "==", :a_3
       q_69 " Add Location"
@@ -540,7 +568,7 @@ section "Transgenic Animal Registration Only" do
         a_2 "Rm#", :string
         a_3 "Facility", :string
         a_4 "Type", :string
-        a_5 "Qty (storage location)", :string
+        a_5 "Quantity (storage location)", :string
     end
 
   # group "Biological Toxin" do
@@ -550,21 +578,21 @@ section "Transgenic Animal Registration Only" do
     label "Means of transportation (if storage and experiment locations are not the same):"
       a_1 :text
 
-    q_70 "10) Does the experiment involve the administration of toxin to animals?", :pick => :one
+    q_70 "Does the experiment involve the administration of toxin to animals?", :pick => :one
       a_3 "Yes"
       a_2 "No"
 
-    q_71 "11) Identify the method of disposal/deactivation of contaminated materials and remaining agent: "
+    q_71 "Identify the method of disposal/deactivation of contaminated materials and remaining agent: "
       a_1 :text
 
-    q_72 "12) Describe your written protocol covering the secure storage, safe handling and emergency procedures in case of an accident (exposure to staff or spill) for this toxin. "
+    q_72 "Describe your written protocol covering the secure storage, safe handling and emergency procedures in case of an accident (exposure to staff or spill) for this toxin. "
       a_1 :text
 
-    q_73 "13) Is there an antidote available for persons exposed to the toxin?", :pick => :one
+    q_73 "Is there an antidote available for persons exposed to the toxin?", :pick => :one
       a_1 "Yes"
       a_2 "No"
 
-    q_74 "14) Have all personnel involved with this project received documented initial training and yearly updates regarding the procedures for handling the toxin?", :pick => :one
+    q_74 "Have all personnel involved with this project received documented initial training and yearly updates regarding the procedures for handling the toxin?", :pick => :one
       a_1 "Yes"
       a_2 "No"
   # end    
@@ -579,11 +607,11 @@ section "PI Statement of Understanding" do
     # condition_D :q_application_type, "==", :a_1
  
 
- q_75 "As Principal Investigator, I understand there are federal regulations applicable to work with Select Agent toxins. ", :pick => :one
+ q_75 "As Principal Investigator, I understand there are federal regulations applicable to work with Select Agent toxins. ", :pick => :any
       a_1 "I have reviewed the regulations and the proposed experiments are excluded from the Select Agent Regulations." 
       a_2 "As Principal Investigator, I am approved to work on the proposed experiments by either the Centers for Disease Control or the United States Department of Agriculture (USDA)Select Agent program and meet all of the requirements imposed upon me and my projects by MSU and the Select Agent Regulations."
  
-  group "Description of Use of Biologicl Materials" do
+  group "Description of Use of Biological Materials" do
       q_76 "Please describe the proposed work in lay terms.  If your project includes more than one area or phase or includes several steps, please describe the project in a sequential manner.  Please be cognizant of your answers to the questions in this form and use this space to pull all of the information together.  Your narrative must include:<br?>  
       1)	a brief introduction,<br/>
       2)	the specific goal(s) of your experiment(s),<br/>
@@ -620,8 +648,7 @@ section "PI Statement of Understanding" do
 
 
 
- label
-"BY SUBMITTING THIS FORM YOU ACKNOWLEDGE THAT YOU HAVE READ AND AGREE TO THE FOLLOWING STATEMENTS</ br>
+ label "BY SUBMITTING THIS FORM YOU ACKNOWLEDGE THAT YOU HAVE READ AND AGREE TO THE FOLLOWING STATEMENTS</ br>
       Pursuant to applicable State and Federal laws and regulations and Montana State University policies and procedures:</ br>
       To the best of my knowledge, I affirm that all information contained herein is accurate and complete.</ br>
       I agree to comply with federal, state, and university requirements pertaining to handling, shipment, transfer, and disposal of biological materials, to include annual lab inspections.</ br>
