@@ -1,3 +1,6 @@
+:plain
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css">
 .span2
 .span7
   - unless (types = flash.keys.select{|k| [:notice, :error, :warning].include?(k)}).blank?
@@ -12,18 +15,82 @@
         -if surveys.first.translation(I18n.locale)[:title] == "Institutional Review Board Full Application"
           - code = access_code
         - else
-          = form_tag surveyor.take_survey_path(:survey_code => access_code) do
-            = button_tag( surveys.first.translation(I18n.locale)[:title], 
-                          :default => surveys.first.translation(I18n.locale)[:title], 
-                          :class => 'btn-large btn-primary btn-block', 
-                          :type => 'submit' )
+          %div{:style=>"border-style:solid;border-width:2px;width:800px;"}
+            %div{:style=>'width:450px;'}
+              = form_tag surveyor.take_survey_path(:survey_code => access_code) do
+                = button_tag( surveys.first.translation(I18n.locale)[:title], 
+                              :default => surveys.first.translation(I18n.locale)[:title], 
+                              :class => 'btn-large btn-primary btn-block', 
+                              :type => 'submit' )
+
+                -if surveys.first.translation(I18n.locale)[:title] == "IBC Protocol"
+                  %a{:onclick=>"$('##{surveys.first.id}').dialog({title: '#{surveys.first.translation(I18n.locale)[:title]}', width: 800})"}
+                    Submission Instructions
+              %div{:id=>surveys.first.id, :style=>"display:none;width:500px;"}
+                The MSU Institutional Biosafety Committee (IBC) is responsible for review and oversight of research and teaching activities that use recombinant DNA, infectious agents, and toxins. If you are working with these materials, you must submit a protocol(s) to the IBC for approval. Please complete the appropriate sections of the forms. Your protocol will be reviewed by the IBC and you will be notified whether your protocol is approved or needs revision. Approvals are valid for 3 years. If you have questions regarding the information required, please contact Kirk Lubick.
+                %br
+                %br
+                The IBC meets on the fourth Monday of each month. Please submit IBC protocols for review two weeks in advance of the scheduled meeting. If there are no protocols for review, the meeting will be cancelled.
+                %br
+                %br
+                %table{:class=>"table"}
+                  %tr
+                    %th
+                      IBC Protocol Submission Dates
+                    %th
+                      IBC Meeting Dates
+                  %tr
+                    %td 
+                      October 14, 2013	
+                    %td
+                      October 28, 2013
+                  
+                  %tr
+                    %td
+                      November 4, 2013
+                    %td
+                      November 18, 2013
+                  
+                  %tr
+                    %td
+                      December 2, 2013
+                    %td
+                      December 16, 2013
+
+
+                %h4
+                  Contacts:
+                Diane Harn, interim Coordinator
+                %br
+                dwharn@montana.edu
+                %br
+                994-6757
+                %br
+                %br
+                Kirk Lubick, Biosafety Officer
+                %br
+                Kirk.lubick@montana.edu
+                %br
+                994-6998
+                %br
+                %br
+                Justin Cook, Director
+                %br
+                Office of Research Compliance
+                %br
+                jcook@montana.edu
+                %br
+                994-4171
+          
       - unless code.nil?
         -surveys = @surveys_by_access_code[code]
-        = form_tag surveyor.take_survey_path(:survey_code => code) do
-          = button_tag( surveys.first.translation(I18n.locale)[:title], 
-                        :default => surveys.first.translation(I18n.locale)[:title], 
-                        :class => 'btn-large btn-primary btn-block', 
-                        :type => 'submit' )                 
+        %div{:style=>"border-style:solid;border-width:2px;width:800px;"}
+          %div{:style=>'width:400px;'}
+            = form_tag surveyor.take_survey_path(:survey_code => code) do
+              = button_tag( surveys.first.translation(I18n.locale)[:title], 
+                            :default => surveys.first.translation(I18n.locale)[:title], 
+                            :class => 'btn-large btn-primary btn-block', 
+                            :type => 'submit' )                 
 
 :javascript
   var $ = jQuery.noConflict();
