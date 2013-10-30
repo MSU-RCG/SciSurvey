@@ -22,9 +22,15 @@
       .headertext a:visited {color:white;}
       .headertext a:hover {color:lightgrey;}
     </style>
-
+    <script>
+    function changetext(){
+      $('textarea').each( function(){
+            $(this).css("height", (25 + $('#'+this.id)[0].scrollHeight)+"px");})
+            $(this).css("width","500px")
+    }
+    </script>
   </head>
-  <body onload="$('textarea').each( function(){$(this).css('font-size','1.2em');})">
+  <body onload="$('textarea').each( function(){$(this).css('font-size','1.2em');}),changetext();">
     <div class='container'>
       <div class='row'>
         <div class='span12' id='msu-logo'>
